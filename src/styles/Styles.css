@@ -1,0 +1,120 @@
+
+.home-body{
+    overflow: hidden;
+    background-color: white;
+    max-height: 950px;
+    display: flex;
+    
+}
+
+.img-blue{
+    position: absolute;
+    z-index: 1;
+}
+
+.img-dragon{
+    position: relative;
+    top:10px;
+    left: 350px;
+    height: 70em;
+    width: 70em;
+    z-index: 12;
+}
+
+.img-crow{
+    position: relative;
+    width: 40em;
+    z-index: 10;
+}
+
+.info-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 200px;
+    top: 370px;
+    left: 600px;
+    padding: 40px;
+    position: absolute;
+    z-index: 20;
+}
+
+.info-home p{
+    text-align: center;
+    font-size: 66px;
+    line-height: 80px;
+    font-weight: 800;
+    color: rgb(0, 0, 0);
+    padding-bottom: 10px;
+}
+
+.info-home button{
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 25px;
+    color: white;
+    background-image:url('../assets/bgText2.png');
+    padding: 10px 20px 10px 20px;    
+}
+
+
+
+/* Character Sheet */
+/* 
+.charSheet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
+.ability-sumary{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+
+.box-ability{
+    left: 33px;
+    position: absolute;
+}
+
+.ability-name{
+    text-align: center;
+    position: relative;
+    color: black;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.ability-score{
+    text-align: center;
+    position: relative;
+    color: black;
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.ability-modifier{
+    bottom: 4px;
+    text-align: center;
+    position: relative;
+    color: black;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.ability-controls button{
+    position: relative;
+    border: 2px solid #C53131;
+    border-radius: 24px;
+    font-weight: 700;
+    margin: 0px 10px 0px 10px;
+    padding: 0px 10px 5px 10px;
+}
