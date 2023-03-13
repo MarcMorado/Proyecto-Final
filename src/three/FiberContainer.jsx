@@ -8,7 +8,7 @@ export function FiberContainer() {
     <Canvas camera={{ position: [14.4666, 2.0365, 5.556165], fov: 40 }} shadows>
       <CharPresention />
       <Ground />
-      <OrbitControls minDistance={14} maxDistance={30} enableRotate={true}/>
+      <OrbitControls minDistance={14} maxDistance={30} enableRotate={false}/>
     </Canvas>
   );
 }
