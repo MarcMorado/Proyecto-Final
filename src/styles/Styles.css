@@ -138,18 +138,19 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 450px;
+    width: 340px;
     position: absolute;
-    left:700px;
+    left:800px;
     top:100px;
 }
 
 .char-details input{
     position: relative;
-    margin: 10px;
+    margin: 0px 10px 4px 10px;
     padding: 0px 4px 0px 4px;
     border-radius: 5px;
     border: 2px solid rgb(4, 97, 199, .6);
+    width: 110px;
 }
 
 .char-details p{
@@ -157,6 +158,8 @@
 }
 
 .char-details-container{
+    top:-15px;
+    right:14px;
     position: absolute;
 }
 
@@ -210,3 +213,4 @@
     height: 150px;
     width: 100%;
 }
+

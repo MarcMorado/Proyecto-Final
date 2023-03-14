@@ -12,7 +12,7 @@ export const Character = forwardRef((props, ref) => {
         value: props.colors,
       },
       brightnessThresholds: {
-        value: [0.6, 0.35, 0.001],
+        value: [0.7, 0.35, 0.001],
       },
       lightPosition: { value: new Vector3(15, 15, 15) },
     }),
@@ -25,7 +25,6 @@ export const Character = forwardRef((props, ref) => {
         castShadow
         receiveShadow
         geometry={nodes.Group27308.geometry}
-        // material={nodes.Group27308.material}
         position={[0.33, -0.05, -0.68]}
         scale={[0.1, 0.1, 0.1]}
       >

@@ -14,6 +14,28 @@ export default function CharCreation() {
   const [alignment, setAlignment] = useState("");
   const [experience, setExperience] = useState(0);
 
+  //* Skills
+
+  const [acrobatics, setAcrobatics] = useState(0);
+  const [animalHandling, setAnimalHandling] = useState(0);
+  const [arcana, setArcana] = useState(0);
+  const [athletics, setAthletics] = useState(0);
+  const [deception, setDeception] = useState(0);
+  const [history, setHistory] = useState(0);
+  const [insight, setInsight] = useState(0);
+  const [intimidation, setIntimidation] = useState(0);
+  const [investigation, setInvestigation] = useState(0);
+  const [medicine, setMedicine] = useState(0);
+  const [nature, setNature] = useState(0);
+  const [perception, setPerception] = useState(0);
+  const [performance, setPerformance] = useState(0);
+  const [persuasion, setPersuasion] = useState(0);
+  const [religion, setReligion] = useState(0);
+  const [sleightOfHands, setSleightOfHands] = useState(0);
+  const [stealth, setStealth] = useState(0);
+  const [survival, setSurvival] = useState(0);
+
+
   //* Character STATS
   const [str, setStr] = useState(10);
   const [dex, setDex] = useState(10);
@@ -138,15 +160,16 @@ export default function CharCreation() {
               ></input>
             </div>
             <div>
-              <p>Level</p>
+              <p>Race</p>
               <input
                 type="text"
-                name="level"
-                value={level}
+                name="race"
+                value={race}
                 required
-                onChange={(e) => setLevel(e.target.value)}
+                onChange={(e) => setRace(e.target.value)}
               ></input>
             </div>
+            
             <div>
               <p>Background</p>
               <input
@@ -158,13 +181,13 @@ export default function CharCreation() {
               ></input>
             </div>
             <div>
-              <p>Race</p>
+              <p>Level</p>
               <input
                 type="text"
-                name="race"
-                value={race}
+                name="level"
+                value={level}
                 required
-                onChange={(e) => setRace(e.target.value)}
+                onChange={(e) => setLevel(e.target.value)}
               ></input>
             </div>
             <div>
@@ -394,7 +417,136 @@ export default function CharCreation() {
           </div>
         </div>
         <div className="life"></div>
-        <div className="traits"></div>
+        <div className="skills">
+          <div className="skills-titles">
+            <div className="skills-titles-left">
+              <div>
+                <p>prof</p>
+              </div>
+              <div>
+                <p>mod</p>
+              </div>
+              <div>
+                <p>skill</p>
+              </div>
+            </div>
+            <div className="skills-titles-right">
+              <div>
+                <p>bonus</p>
+              </div>
+            </div>
+          </div>
+          <div className="skills-list">
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">dex</div>
+              <div className="skill-name">Acrobatics</div>
+              <div className="skill-mod">{acrobatics}</div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">wis</div>
+              <div className="skill-name">Animal Handling</div>
+              <div className="skill-mod">{animalHandling}</div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">int</div>
+              <div className="skill-name">Arcana</div>
+              <div className="skill-mod">{arcana}</div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">str</div>
+              <div className="skill-name">Athletics</div>
+              <div className="skill-mod">{athletics}</div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">cha</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">int</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">wis</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">cha</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">int</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">wis</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">int</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">wis</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">cha</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">cha</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">int</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">dex</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">dex</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+            <div className="skill">
+              <input type="checkbox" className="skill-button"></input>
+              <div className="skill-mod">wis</div>
+              <div className="skill-name"></div>
+              <div className="skill-mod"></div>
+            </div>
+          </div>
+        </div>
         <button
           onClick={saveChar()}
           className="bg-gradient-to-r from-cyan-500 to-blue-500 drop-shadow-md save-character"
