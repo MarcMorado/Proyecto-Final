@@ -2,7 +2,6 @@ import { Character } from "../three/Character";
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Color } from "three";
-import { GUI } from "dat.gui";
 import '../styles/Styles.css';
 
 export function CharPresention() {

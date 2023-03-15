@@ -1,216 +1,327 @@
-
-.home-body{
-    overflow: hidden;
-    background-color: white;
-    max-height: 950px;
-    display: flex;
-    
+@font-face {
+    font-family: 'Black';
+    src: local('NotoSansJP-Black'),
+    url('../fonts/NotoSansJP-Black.otf')format('truetype');
 }
 
-.img-blue{
-    position: absolute;
-    z-index: 1;
+@font-face {
+    font-family: 'Bold';
+    src: local('NotoSansJP-Bold'),
+    url('../fonts/NotoSansJP-Bold.otf')format('truetype');
 }
 
-.img-dragon{
-    position: relative;
-    top:10px;
-    left: 350px;
-    height: 70em;
-    width: 70em;
-    z-index: 12;
+@font-face {
+    font-family: 'Light';
+    src: local('NotoSansJP-Light'),
+    url('../fonts/NotoSansJP-Light.otf')format('truetype');
+}
+@font-face {
+    font-family: 'Medium';
+    src: local('NotoSansJP-Medium'),
+    url('../fonts/NotoSansJP-Medium.otf')format('truetype');
+}
+@font-face {
+    font-family: 'Regular';
+    src: local('NotoSansJP-Regular'),
+    url('../fonts/NotoSansJP-Regular.otf')format('truetype');
+}
+@font-face {
+    font-family: 'Thin';
+    src: local('NotoSansJP-Thin'),
+    url('../fonts/NotoSansJP-Thin.otf')format('truetype');
 }
 
-.img-crow{
-    position: relative;
-    width: 40em;
-    z-index: 10;
+body{
+    font-family: 'Regular';
 }
 
-.info-home{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
-    height: 200px;
-    top: 370px;
-    left: 600px;
-    padding: 40px;
-    position: absolute;
-    z-index: 20;
+.home-body {
+  overflow: hidden;
+  background-color: white;
+  max-height: 950px;
+  display: flex;
 }
 
-.info-home p{
-    text-align: center;
-    font-size: 66px;
-    line-height: 80px;
-    font-weight: 800;
-    color: rgb(0, 0, 0);
-    padding-bottom: 10px;
+.img-blue {
+  position: absolute;
+  z-index: 1;
 }
 
-.info-home button{
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 25px;
-    color: white;
-    background-image:url('../assets/bgText2.png');
-    padding: 10px 20px 10px 20px;    
+.img-dragon {
+  position: relative;
+  top: 10px;
+  left: 350px;
+  height: 70em;
+  width: 70em;
+  z-index: 12;
 }
 
-
-
-/* Character Sheet */ 
-
-.ability-sumary{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    width: 140px;
-    height: 140px;
+.img-crow {
+  position: relative;
+  width: 40em;
+  z-index: 10;
 }
 
-
-.box-ability{
-    left: 33px;
-    position: absolute;
+.info-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 200px;
+  top: 370px;
+  left: 600px;
+  padding: 40px;
+  position: absolute;
+  z-index: 20;
 }
 
-.ability-name{
-    left: 3px;
-    text-align: center;
-    position: relative;
-    color: rgb(73, 73, 73);
-    top:6px;
-    font-size: 9px;
-    text-transform: uppercase;
-    font-weight: 800;
-}
-.ability-score{
-    left: 3px;
-    text-align: center;
-    position: relative;
-    color: black;
-    font-size: 32px;
-    text-transform: uppercase;
-    font-weight: 700;
-}
-.ability-modifier{
-    left: 3px;
-    top: 1px;
-    text-align: center;
-    position: relative;
-    color: black;
-    font-size: 20px;
-    text-transform: uppercase;
-    font-weight: 700;
+.info-home p {
+  text-align: center;
+  font-size: 66px;
+  line-height: 80px;
+  font-family: 'Bold';
+  color: rgb(0, 0, 0);
+  padding-bottom: 10px;
 }
 
-.ability-controls button{
-    left: 4px;
-    position: relative;
-    text-align:center;
-    border: 2px solid rgb(4, 97, 199);
-    border-radius: 24px;
-    font-weight: 700;
-    margin: 0px 10px 0px 10px;
-    width: 30px;
-    height: 32px;
+.info-home button {
+  font-size: 20px;
+  font-family: 'Medium';
+  border-radius: 25px;
+  color: white;
+  background-image: url("../assets/bgText2.png");
+  padding: 10px 20px 10px 20px;
 }
 
+/* Character Sheet */
 
-
-.save-character{
-    position: relative;
-    left: 1440px;
-    padding: 6px 30px 6px 30px;
-    font-weight: 700;
-    font-size: 20px;
-    border-radius: 10px;
-    border: 2px solid rgb(4, 97, 199);
-    bottom: 180px;
+.ability-sumary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 140px;
+  height: 140px;
+}
+.mainStats {
+  max-width: 200px;
 }
 
-.char-details{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 340px;
-    position: absolute;
-    left:800px;
-    top:100px;
+.box-ability {
+  left: 33px;
+  position: absolute;
 }
 
-.char-details input{
-    position: relative;
-    margin: 0px 10px 4px 10px;
-    padding: 0px 4px 0px 4px;
-    border-radius: 5px;
-    border: 2px solid rgb(4, 97, 199, .6);
-    width: 110px;
+.ability-name {
+  left: 3px;
+  text-align: center;
+  position: relative;
+  color: rgb(73, 73, 73);
+  top: 6px;
+  font-size: 9px;
+  text-transform: uppercase;
+  font-family: 'Black';
+}
+.ability-score {
+  left: 3px;
+  text-align: center;
+  position: relative;
+  color: black;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-family: 'Medium';
+}
+.ability-modifier {
+  left: 3px;
+  top: 1px;
+  text-align: center;
+  position: relative;
+  color: black;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: 'Medium';
 }
 
-.char-details p{
-    position: relative;
+.ability-controls button {
+  left: 4px;
+  position: relative;
+  text-align: center;
+  border: 2px solid rgb(20, 108, 148);
+  border-radius: 24px;
+  font-family: 'Medium';
+  margin: 0px 10px 0px 10px;
+  width: 30px;
+  height: 32px;
 }
 
-.char-details-container{
-    top:-15px;
-    right:14px;
-    position: absolute;
+.ability-controls button p {
+  position: relative;
+  bottom: 1px;
 }
 
-.char-details-container svg{
-    height: 270px;
+.save-character {
+  position: relative;
+  left: 1440px;
+  padding: 6px 30px 6px 30px;
+  font-family: 'Medium';
+  font-size: 20px;
+  border-radius: 10px;
+  border: 2px solid rgb(20, 108, 148);
+  bottom: 180px;
+}
+
+.char-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 340px;
+  position: absolute;
+  left: 800px;
+  top: 100px;
+}
+
+.char-details input {
+  position: relative;
+  margin: 0px 10px 4px 10px;
+  padding: 0px 4px 0px 4px;
+  border-radius: 5px;
+  border: 2px solid rgb(20, 108, 148, 0.6);
+  width: 110px;
+}
+
+.char-details p {
+  position: relative;
+}
+
+.char-details-container {
+  top: -15px;
+  right: 14px;
+  position: absolute;
+}
+
+.char-details-container svg {
+  height: 270px;
 }
 
 /* 3D MODEL */
 
-.char-display{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-
+.char-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 }
 
-.char-display input{
-    position: relative;
-    top: 30px;
-    left:1400px;
-    border: 2px solid #0461C7;
-    text-align: center;
-    font-weight: 700;
-    border-radius: 4px;
+.char-display input {
+  position: relative;
+  top: 30px;
+  left: 1400px;
+  border: 2px solid rgb(20, 108, 148);
+  text-align: center;
+  font-family: 'Medium';
+  border-radius: 4px;
 }
 
-.char-model-container{
-    position: absolute;
-    left: 1200px;
-    top:80px;
+.char-model-container {
+  position: absolute;
+  left: 1200px;
+  top: 80px;
 }
 
-.char-model-container svg{
-    width: 623px;
-    height: 660px;
-    z-index: 5;
+.char-model-container svg {
+  width: 623px;
+  height: 660px;
+  z-index: 5;
 }
 
-.char-model{
-    position: relative;
-    height: 660px;
-    width: 623px;
-    bottom: 660px;
-    z-index: 10;
+.char-model {
+  position: relative;
+  height: 660px;
+  width: 623px;
+  bottom: 660px;
+  z-index: 10;
 }
 
-.foot{
-    background-color: black;
-    height: 150px;
-    width: 100%;
+.foot {
+  background-color: black;
+  height: 150px;
+  width: 100%;
 }
 
+/* SKILLS */
+
+.skills {
+  position: absolute;
+  top: 90px;
+  left: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+}
+
+.skills-titles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  text-transform: uppercase;
+  font-family: 'Bold';
+  font-size: 11px;
+  color: rgba(4, 16, 29, 0.7);
+}
+
+.skills-titles-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.skills-titles-prof {
+  position: relative;
+  right: 35px;
+}
+
+.skills-titles-mod {
+  position: relative;
+  right: 28px;
+}
+
+.skills-titles-right {
+  position: relative;
+  left: 10px;
+}
+
+.skill {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dotted rgba(4, 16, 29, 0.1);
+}
+
+.skill-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-mod {
+  width: 50px;
+  padding-left: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-family: 'Bold';
+  text-transform: uppercase;
+  color: rgba(4, 16, 29, 0.7);
+}
+
+.skill-name {
+  width: 150px;
+  padding: 0px 0px 0px 20px;
+}
