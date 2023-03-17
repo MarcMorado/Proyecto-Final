@@ -33,6 +33,7 @@
 
 body{
     font-family: 'Regular';
+    overflow: hidden;
 }
 
 .home-body {
@@ -102,15 +103,21 @@ body{
   align-items: center;
   padding: 20px;
   width: 140px;
-  height: 140px;
+  height: 130px;
 }
 .mainStats {
   max-width: 200px;
+  position: relative;
+  left: 30px;
 }
 
 .box-ability {
   left: 33px;
   position: absolute;
+}
+
+.box-ability svg{
+  height: 100px;
 }
 
 .ability-name {
@@ -178,8 +185,8 @@ body{
   align-items: center;
   width: 340px;
   position: absolute;
-  left: 800px;
-  top: 100px;
+  left: 880px;
+  top: 159px;
 }
 
 .char-details input {
@@ -206,6 +213,11 @@ body{
 }
 
 /* 3D MODEL */
+
+.tabs{
+  position: relative;
+  z-index: 10;
+}
 
 .char-display {
   display: flex;
@@ -255,8 +267,8 @@ body{
 
 .skills {
   position: absolute;
-  top: 100px;
-  left: 180px;
+  top: 98px;
+  left: 170px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -363,6 +375,13 @@ body{
 
 /* SAVING THROWS */
 
+.saving{
+  width: 300px;
+  position: absolute;
+  top: 375px;
+  left: 906px;
+}
+
 .saving-container{
   position: absolute;
   z-index: 1;
@@ -415,18 +434,108 @@ body{
   height: 200px;
 }
 
+/* SENSES */
 
-/* ACTIONS */
-
-.actions-container{
+.senses{
+  width: 300px;
   position: absolute;
-  top:0;
-  left:0;
+  top: 604px;
+  left: 906px;
+}
+
+.senses-container{
+  position: absolute;
   z-index: 1;
 }
 
-.actions-container svg{
-  width: 660px;
-  height: 630px;
+.senses-container svg{
+  height: 200px;
+  width: 280px;
+}
+
+/* ITEMS */
+
+.items-container{
+  position: absolute;
+  top:380px;
+  left:550px;
+  z-index: 1;
+}
+
+.items-container svg{
+  width: 280px;
+  height: 340px;
+}
+
+/* HEALTH */
+
+.health-container{
+  position: absolute;
+  top:84px;
+  left:530px;
+  z-index: 1;
+}
+
+.health-container svg{
+  width: 320px;
+  height: 90px;
+}
+
+/* INITIATIVE */
+
+.initiative-container{
+  z-index: 1;
+  position: absolute;
+  top: 317px;
+  left: 580px;
+}
+
+/* INSPIRATION */
+
+.inspiration-container{
+  z-index: 1;
+  position: absolute;
+  top: 310px;
+  left: 730px;
+}
+
+/* PROFICIENCY */
+
+.prof-container{
+  z-index: 1;
+  position: absolute;
+  top: 190px;
+  left: 530px;
+}
+
+/* SPEED */
+
+.speed-container{
+  z-index: 1;
+  position: absolute;
+  top: 190px;
+  left: 753px;
+}
+
+/* ARMOR */
+
+.armor-container{
+  z-index: 1;
+  position: absolute;
+  top: 190px;
+  left: 650px;
+}
+
+/* DEFENSES */
+
+.defenses-container{
+  z-index: 1;
+  position: absolute;
+  top: 755px;
+  left: 480px;
+}
+
+.defenses-container svg{
+  width: 410px;
 }
 
