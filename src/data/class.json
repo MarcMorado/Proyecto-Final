@@ -1,0 +1,72 @@
+[{
+    "barbarian":{
+        "name": "Barbarian",
+        "hitDice":"1d12",
+        "hitPoints": 12,
+        "proficiencies":{
+            "armor":"Light armor, medium armor, shields",
+            "weapons":"Simple weapons, martial weapons",
+            "tools":"none",
+            "savingThrows":"Strength, Constitution",
+            "skills":"Choose two from Animal Handling, Athletics, Intimidation, Nature, Perception, and Survival"
+        },
+        "features":{
+            "rage":{
+                "name":"Rage",
+                "description":"In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action."
+            },
+            "unarmoredDefense":{
+                "name":"Unarmored Defense",
+                "description":"While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit."
+            }
+        }
+    },
+    "sorcerer":{
+        "name": "Sorcerer",
+        "hitDice":"1d6",
+        "hitPoints": 6,
+        "proficiencies":{
+            "armor":"None",
+            "weapons":"Daggers, darts, slings, quarterstaffs, light crossbows",
+            "tools":"none",
+            "savingThrows":"Constitution, Charisma",
+            "skills":"Choose two from Arcana, Deception, Insight, Intimidation, Persuasion, and Religion"
+        },
+        "features":{
+            "spellcasting":{
+                "name":"Spellcasting",
+                "description":"An event in your past, or in the life of a parent or ancestor, left an indelible mark on you, infusing you with arcane magic. This font of magic, whatever its origin, fuels your spells. See Spells Rules for the general rules of spellcasting and the Spells Listing for the sorcerer spell list."
+            },
+            "origin":{
+                "name":"Sorcerous Origin",
+                "description":"Choose a sorcerous origin, which describes the source of your innate magical power: Draconic Bloodline, detailed at the end of the class description, or one from another source."
+            }
+        }
+    },
+    "rogue":{
+        "name": "Rogue",
+        "hitDice":"1d8",
+        "hitPoints": 8,
+        "proficiencies":{
+            "armor":"Light armor",
+            "weapons":" Simple weapons, hand crossbows, longswords, rapiers, shortswords",
+            "tools":"Thieves tools",
+            "savingThrows":"Dexterity, Intelligence",
+            "skills":" Choose four from Acrobatics, Athletics, Deception, Insight, Intimidation, Investigation, Perception, Performance, Persuasion, Sleight of Hand, and Stealth"
+        },
+        "features":{
+            "expertise":{
+                "name":"Expertise",
+                "description":"At 1st level, choose two of your skill proficiencies, or one of your skill proficiencies and your proficiency with thieves’ tools. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies."
+            },
+            "sneakAttack":{
+                "name":"Sneak Attack",
+                "description":"Beginning at 1st level, you know how to strike subtly and exploit a foe’s distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or a ranged weapon."
+            },
+            "thievesCant":{
+                "name":"Thieves Cant",
+                "description":"During your rogue training you learned thieves’ cant, a secret mix of dialect, jargon, and code that allows you to hide messages in seemingly normal conversation. Only another creature that knows thieves’ cant understands such messages. It takes four times longer to convey such a message than it does to speak the same idea plainly."
+            }
+        }
+    }
+}]

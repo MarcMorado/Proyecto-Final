@@ -258,6 +258,8 @@ body{
 }
 
 .foot {
+  position: relative;
+  top: 70px;
   background-color: black;
   height: 150px;
   width: 100%;
@@ -469,7 +471,7 @@ body{
 
 /* HEALTH */
 
-.health-container{
+.health{
   position: absolute;
   top:84px;
   left:530px;
@@ -481,13 +483,70 @@ body{
   height: 90px;
 }
 
+.health-main{
+  position: relative;
+  bottom:80px;
+  left: 20px;
+}
+
+.health-title{
+  font-family: 'Bold';
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.health-score{
+  position: relative;
+  left: 95px;
+  font-family: 'Black';
+}
+
+.health-score input{
+  width: 100px;
+  padding: 10px 0px 10px 0px;
+  font-size: 20px;
+  text-align: center;
+  border: 2px solid rgb(20, 108, 148, 0.1);
+}
+
 /* INITIATIVE */
 
-.initiative-container{
+.initiative{
   z-index: 1;
   position: absolute;
   top: 317px;
   left: 580px;
+}
+
+.initiative svg{
+  max-width: 70px;
+  max-height: 50px;
+}
+
+.initiative-title{
+  position: relative;
+  top:-65px;
+  z-index: 10;
+  text-transform: uppercase;
+  font-family: 'Bold';
+  font-size: 10px;
+  left: 9px;
+}
+
+.initiative-score{
+  z-index: 10;
+  position: relative;
+  top: -58px;
+  left: 23px;
+}
+
+.initiative-score input{
+  z-index: 10;
+  text-align: center;
+  max-width: 40px;
+  border-radius: 10px;
+  font-family: 'Black';
+  font-size: 20px;
 }
 
 /* INSPIRATION */
@@ -499,6 +558,28 @@ body{
   left: 730px;
 }
 
+.inspiration{
+  text-transform: uppercase;
+  position: absolute;
+  top: 299px;
+  left: 733px;
+  z-index: 10;
+  font-family: 'Bold';
+  text-align: center;
+}
+
+.inspiration-title{
+  position: relative;
+  top: -3px;
+  font-family: 'Bold';
+  font-size: 10px;
+}
+
+.inspiration-score{
+  font-family: 'Black';
+  font-size: 30px;
+}
+
 /* PROFICIENCY */
 
 .prof-container{
@@ -506,6 +587,34 @@ body{
   position: absolute;
   top: 190px;
   left: 530px;
+}
+
+.prof-container svg{
+  width: 100px;
+  height: 100px;
+}
+
+.prof-bonus{
+  position:absolute;
+  top: 194px;
+  left: 550px;
+  z-index: 10;
+  text-align: center;
+  
+}
+
+.prof-title{
+  max-width: 80px;
+  text-transform: uppercase;
+  font-family: 'Bold';
+  font-size: 8px;
+}
+
+.prof-score{
+  position: relative;
+  top: -4px;
+  font-family: 'Black';
+  font-size: 40px;
 }
 
 /* SPEED */
@@ -516,14 +625,29 @@ body{
   top: 190px;
   left: 753px;
 }
-
+.speed-container svg{
+  
+  width: 100px;
+}
 /* ARMOR */
 
-.armor-container{
+.armor{
   z-index: 1;
   position: absolute;
   top: 190px;
   left: 650px;
+}
+
+.armor-score input{
+  position: relative;
+  bottom:130px;
+  left: 20px;
+  font-family: 'Black';
+  font-size: 30px;
+  max-width: 50px;
+  border-radius: 10px;
+  z-index: 10;
+  text-align: center;
 }
 
 /* DEFENSES */

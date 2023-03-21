@@ -1,0 +1,180 @@
+[{
+    "simpleMelee":{
+        "club":{
+            "name": "Club",
+            "cost": "1 sp",
+            "damage": "1d4",
+            "damageType": "Bludgeoning",
+            "weight": "2 lb",
+            "properties": "Light"
+        },
+        "dagger":{
+            "name": "Dagger",
+            "cost": "2 gp",
+            "damage": "1d4",
+            "damageType": "Piercing",
+            "weight": "1 lb",
+            "properties": "Finesse, light, thrown (range 20/60)"
+        },
+        "handAxe":{
+            "name": "Hand axe",
+            "cost": "5 gp",
+            "damage": "1d6",
+            "damageType": "Slashing",
+            "weight": "2 lb",
+            "properties": "Light, thrown (range 20/60)"
+        },
+        "spear":{
+            "name": "Spear",
+            "cost": "1 gp",
+            "damage": "1d6",
+            "damageType": "Piercing",
+            "weight": "3 lb",
+            "properties": "Thrown (range 20/60), versatile (1d8)"
+        }
+    },
+    "simpleRanged":{
+        "crossbowLight":{
+            "name": "Light Crossbow",
+            "cost": "25 gp",
+            "damage": "1d8",
+            "damageType": "Piercing",
+            "weight": "5 lb",
+            "properties": "Ammunition (range 80/320), loading, two-handed"
+        },
+        "dagger":{
+            "name": "Dagger",
+            "cost": "5 cp",
+            "damage": "1d4",
+            "damageType": "Piercing",
+            "weight": "1/4 lb",
+            "properties": "Finesse, thrown (range 20/60)"
+        },
+        "handAxe":{
+            "name": "Hand axe",
+            "cost": "25 gp",
+            "damage": "1d6",
+            "damageType": "Piercing",
+            "weight": "2 lb",
+            "properties": "Ammunition (range 80/320), two-handed"
+        },
+        "spear":{
+            "name": "Spear",
+            "cost": "1 sp",
+            "damage": "1d4",
+            "damageType": "Bludgeoning",
+            "weight": "-",
+            "properties": "Ammunition (range 30/120)"
+        }
+    },
+    "martialMelee":{
+        "battleaxe":{
+            "name": "Battleaxe",
+            "cost": "10 gp",
+            "damage": "1d8",
+            "damageType": "Slashing",
+            "weight": "4 lb",
+            "properties": "Versatile (1d10)"
+        },
+        "greataxe":{
+            "name": "Greataxe",
+            "cost": "30 cp",
+            "damage": "1d12",
+            "damageType": "Slashing",
+            "weight": "7 lb",
+            "properties": "Heavy, two-handed"
+        },
+        "longsword":{
+            "name": "Longsword",
+            "cost": "15 gp",
+            "damage": "1d8",
+            "damageType": "Slashing",
+            "weight": "3 lb",
+            "properties": "Versatile (1d10)"
+        },
+        "rapier":{
+            "name": "Rapier",
+            "cost": "25 sp",
+            "damage": "1d8",
+            "damageType": "Piercing",
+            "weight": "2 lb",
+            "properties": "Finesse"
+        }
+    },
+    "martialRanged":{
+        "crossbow":{
+            "name": "Heavy Crossbow",
+            "cost": "50 gp",
+            "damage": "1d10",
+            "damageType": "Piercing",
+            "weight": "18 lb",
+            "properties": "Ammunition (range 100/400), heavy, loading, two-handed"
+        },
+        "longbow":{
+            "name": "Longbow",
+            "cost": "50 cp",
+            "damage": "1d8",
+            "damageType": "Piercing",
+            "weight": "2 lb",
+            "properties": "Ammunition (range 150/600), heavy, two-handed"
+        }
+    },
+    "ammunition":{
+        "arrows":{
+            "name": "Arrows (20)",
+            "cost": "1 gp",
+            "weight": "1 lb"
+        },
+        "needles":{
+            "name": "Blowgun needles (50)",
+            "cost": "1 gp",
+            "weight": "1 lb"
+        },
+        "bolts":{
+            "name": "Crossbow bolts (20)",
+            "cost": "1 gp",
+            "weight": "1 1/2 lb"
+        },
+        "slingBullets":{
+            "name": "Sling bullets (20)",
+            "cost": "10 gp",
+            "weight": "1 1/2 lb"
+        }
+    },
+    "arcaneFocus":{
+        "wand":{
+            "name": "Wand",
+            "cost": "5 gp",
+            "weight": "4 lb"
+        },
+        "staff":{
+            "name": "Staff",
+            "cost": "10 gp",
+            "weight": "1 lb"
+        }
+    },
+    "druidicFocus":{
+        "totem":{
+            "name": "Totem",
+            "cost": "1 gp",
+            "weight": "-"
+        },
+        "woodenStaff":{
+            "name": "Wooden staff",
+            "cost": "5 gp",
+            "weight": "4 lb"
+        }
+    },
+    "holySymbol":{
+        "amulet":{
+            "name": "Amulet",
+            "cost": "5 gp",
+            "weight": "1 lb"
+        },
+        "reliquary":{
+            "name": "Reliquary",
+            "cost": "5 p",
+            "weight": "2 lb"
+        }
+    }
+}]
