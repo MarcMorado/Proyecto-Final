@@ -189,12 +189,31 @@ body{
   top: 159px;
 }
 
+.chr-dets-spacing{
+  padding: 0px 10px 4px 10px;
+}
+
+.p-dropdown{
+  width: 110px;
+}
+
+.mydrop .p-dropdown-trigger{
+  justify-content: end;
+}
+
+.mydrop .p-inputtext{
+  font-family: 'Regular';
+  font-size: 13px;
+  overflow: visible;
+  padding: .4rem .4rem;
+}
+
 .char-details input {
   position: relative;
   margin: 0px 10px 4px 10px;
   padding: 0px 4px 0px 4px;
   border-radius: 5px;
-  border: 2px solid rgb(20, 108, 148, 0.6);
+  border: 1px solid rgba(70, 70, 70, 0.4);
   width: 110px;
 }
 
@@ -537,7 +556,7 @@ body{
   z-index: 10;
   position: relative;
   top: -58px;
-  left: 23px;
+  left: 22px;
 }
 
 .initiative-score input{

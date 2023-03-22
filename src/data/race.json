@@ -1,0 +1,41 @@
+{
+  "Elf": {
+    "name": "Elf",
+    "bonus": {
+      "str": 0,
+      "dex": 2,
+      "cons": 0,
+      "int": 0,
+      "wis": 0,
+      "char": 0
+    },
+    "features": "Darkvision",
+    "speed": 30
+  },
+  "Human": {
+    "name": "Human",
+    "bonus": {
+      "str": 1,
+      "dex": 1,
+      "cons": 1,
+      "int": 1,
+      "wis": 1,
+      "char": 1
+    },
+    "features": null,
+    "speed": 30
+  },
+  "Dragonborn": {
+    "name": "Dragonborn",
+    "bonus": {
+      "str": 2,
+      "dex": 0,
+      "cons": 0,
+      "int": 0,
+      "wis": 0,
+      "char": 1
+    },
+    "features": "Fire Resistance",
+    "speed": 30
+  }
+}

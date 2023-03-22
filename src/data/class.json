@@ -1,5 +1,5 @@
-[{
-    "barbarian":{
+{
+    "Barbarian":{
         "name": "Barbarian",
         "hitDice":"1d12",
         "hitPoints": 12,
@@ -21,7 +21,7 @@
             }
         }
     },
-    "sorcerer":{
+    "Sorcerer":{
         "name": "Sorcerer",
         "hitDice":"1d6",
         "hitPoints": 6,
@@ -43,7 +43,7 @@
             }
         }
     },
-    "rogue":{
+    "Rogue":{
         "name": "Rogue",
         "hitDice":"1d8",
         "hitPoints": 8,
@@ -69,4 +69,4 @@
             }
         }
     }
-}]
+}

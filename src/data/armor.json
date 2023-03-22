@@ -1,126 +1,124 @@
-[
-  {
-    "lightArmor": {
-      "padded": {
-        "name": "Padded armor",
-        "cost": "5 gp",
-        "aC": 11,
-        "strength": null,
-        "stealth": "disadvantage",
-        "weight": "8 lb",
-        "description": "Padded armor consists of quilted layers of cloth and batting."
-      },
-      "leather": {
-        "name": "Leather armor",
-        "cost": "10 gp",
-        "AC": 11,
-        "Strength": 0,
-        "Stealth": null,
-        "Weight": "10 lb",
-        "description": "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials."
-      },
-      "studdedLeather": {
-        "name": "Studded leather",
-        "cost": "45 gp",
-        "AC": 11,
-        "Strength": null,
-        "Stealth": null,
-        "Weight": "13 lb",
-        "description": "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes."
-      }
+{
+  "lightArmor": {
+    "padded": {
+      "name": "Padded armor",
+      "cost": "5 gp",
+      "aC": 11,
+      "strength": null,
+      "stealth": "disadvantage",
+      "weight": "8 lb",
+      "description": "Padded armor consists of quilted layers of cloth and batting."
     },
-    "mediumArmor": {
-      "hide": {
-        "name": "Hide armor",
-        "cost": "10 gp",
-        "aC": 12,
-        "strength": null,
-        "stealth": null,
-        "weight": "12 lb",
-        "description": "This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor."
-      },
-      "chainShirt": {
-        "name": "Chain shirt",
-        "cost": "50 gp",
-        "aC": 13,
-        "strength": null,
-        "stealth": null,
-        "weight": "20 lb",
-        "description": "Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers."
-      },
-      "scaleMail": {
-        "name": "Scale mail",
-        "cost": "50 gp",
-        "aC": 14,
-        "strength": null,
-        "stealth": "disadvantage",
-        "weight": "45 lb",
-        "description": "This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets."
-      },
-      "breastplate": {
-        "name": "Breastplate",
-        "cost": "400 gp",
-        "aC": 14,
-        "strength": null,
-        "stealth": null,
-        "weight": "20 lb",
-        "description": "This armor consists of a fitted metal chest piece worn with supple leather. Although it leaves the legs and arms relatively unprotected, this armor provides good protection for the wearer's vital organs while leaving the wearer relatively unencumbered."
-      },
-      "halfPlate": {
-        "name": "Half plate",
-        "cost": "750 gp",
-        "aC": 15,
-        "strength": null,
-        "stealth": "disadvantage",
-        "weight": "40 lb",
-        "description": "Half plate consists of shaped metal plates that cover most of the wearer's body. It does not include leg protection beyond simple greaves that are attached with leather straps."
-      }
+    "leather": {
+      "name": "Leather armor",
+      "cost": "10 gp",
+      "AC": 11,
+      "Strength": 0,
+      "Stealth": null,
+      "Weight": "10 lb",
+      "description": "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials."
     },
-    "heavyArmor":{
-        "ringMail": {
-            "name": "Ring mail",
-            "cost": "30 gp",
-            "aC": 14,
-            "strength": null,
-            "stealth": "disadvantage",
-            "weight": "40 lb",
-            "description": "This armor is leather armor with heavy rings sewn into it. The rings help reinforce the armor against blows from swords and axes. Ring mail is inferior to chain mail, and it's usually worn only by those who can't afford better armor."
-          },
-          "chainMail": {
-            "name": "Chain mail",
-            "cost": "75 gp",
-            "aC": 16,
-            "strength": 13,
-            "stealth": "disadvantage",
-            "weight": "55 lb",
-            "description": "Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. The suit includes gauntlets."
-          },
-          "splint": {
-            "name": "Splint",
-            "cost": "200 gp",
-            "aC": 17,
-            "strength": 15,
-            "stealth": "disadvantage",
-            "weight": "60 lb",
-            "description": "This armor is made of narrow vertical strips of metal riveted to a backing of leather that is worn over cloth padding. Flexible chain mail protects the joints."
-          },
-          "plate": {
-            "name": "Plate armor",
-            "cost": "1500 gp",
-            "aC": 18,
-            "strength": 15,
-            "stealth": "disadvantage",
-            "weight": "65 lb",
-            "description": "Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneath the armor. Buckles and straps distribute the weight over the body."
-          }
-    },
-    "shield":{
-        "name":"Shield",
-        "cost":"10 gp",
-        "aC":2,
-        "strength":null,
-        "stealth":null,
-        "weight":"6lb"
+    "studdedLeather": {
+      "name": "Studded leather",
+      "cost": "45 gp",
+      "AC": 11,
+      "Strength": null,
+      "Stealth": null,
+      "Weight": "13 lb",
+      "description": "Made from tough but flexible leather, studded leather is reinforced with close-set rivets or spikes."
     }
+  },
+  "mediumArmor": {
+    "hide": {
+      "name": "Hide armor",
+      "cost": "10 gp",
+      "aC": 12,
+      "strength": null,
+      "stealth": null,
+      "weight": "12 lb",
+      "description": "This crude armor consists of thick furs and pelts. It is commonly worn by barbarian tribes, evil humanoids, and other folk who lack access to the tools and materials needed to create better armor."
+    },
+    "chainShirt": {
+      "name": "Chain shirt",
+      "cost": "50 gp",
+      "aC": 13,
+      "strength": null,
+      "stealth": null,
+      "weight": "20 lb",
+      "description": "Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers."
+    },
+    "scaleMail": {
+      "name": "Scale mail",
+      "cost": "50 gp",
+      "aC": 14,
+      "strength": null,
+      "stealth": "disadvantage",
+      "weight": "45 lb",
+      "description": "This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets."
+    },
+    "breastplate": {
+      "name": "Breastplate",
+      "cost": "400 gp",
+      "aC": 14,
+      "strength": null,
+      "stealth": null,
+      "weight": "20 lb",
+      "description": "This armor consists of a fitted metal chest piece worn with supple leather. Although it leaves the legs and arms relatively unprotected, this armor provides good protection for the wearer's vital organs while leaving the wearer relatively unencumbered."
+    },
+    "halfPlate": {
+      "name": "Half plate",
+      "cost": "750 gp",
+      "aC": 15,
+      "strength": null,
+      "stealth": "disadvantage",
+      "weight": "40 lb",
+      "description": "Half plate consists of shaped metal plates that cover most of the wearer's body. It does not include leg protection beyond simple greaves that are attached with leather straps."
+    }
+  },
+  "heavyArmor": {
+    "ringMail": {
+      "name": "Ring mail",
+      "cost": "30 gp",
+      "aC": 14,
+      "strength": null,
+      "stealth": "disadvantage",
+      "weight": "40 lb",
+      "description": "This armor is leather armor with heavy rings sewn into it. The rings help reinforce the armor against blows from swords and axes. Ring mail is inferior to chain mail, and it's usually worn only by those who can't afford better armor."
+    },
+    "chainMail": {
+      "name": "Chain mail",
+      "cost": "75 gp",
+      "aC": 16,
+      "strength": 13,
+      "stealth": "disadvantage",
+      "weight": "55 lb",
+      "description": "Made of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. The suit includes gauntlets."
+    },
+    "splint": {
+      "name": "Splint",
+      "cost": "200 gp",
+      "aC": 17,
+      "strength": 15,
+      "stealth": "disadvantage",
+      "weight": "60 lb",
+      "description": "This armor is made of narrow vertical strips of metal riveted to a backing of leather that is worn over cloth padding. Flexible chain mail protects the joints."
+    },
+    "plate": {
+      "name": "Plate armor",
+      "cost": "1500 gp",
+      "aC": 18,
+      "strength": 15,
+      "stealth": "disadvantage",
+      "weight": "65 lb",
+      "description": "Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneath the armor. Buckles and straps distribute the weight over the body."
+    }
+  },
+  "shield": {
+    "name": "Shield",
+    "cost": "10 gp",
+    "aC": 2,
+    "strength": null,
+    "stealth": null,
+    "weight": "6lb"
   }
-]
+}

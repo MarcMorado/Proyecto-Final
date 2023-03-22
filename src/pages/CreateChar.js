@@ -1,8 +1,21 @@
 import { useEffect, useState } from "react";
-import "../styles/Styles.css";
+
 import { FiberContainer } from "../three/FiberContainer";
 
+//? JSON
+import Races from "../data/race.json";
+
+//? DROPDOWN
+import { Dropdown } from "primereact/dropdown";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+
+import "../styles/Styles.css";
+
 const characters = [];
+const racesMenu = ["Elf", "Human", "Dragonborn"];
+const classMenu = ["Barbarian", "Rogue", "Sorcerer"];
 
 export default function CharCreation() {
   //* Character details
@@ -20,6 +33,11 @@ export default function CharCreation() {
   const [armor, setArmor] = useState(0);
   const [speed, setSpeed] = useState(0);
 
+  //*Equipment
+  const [equipment, setEquipment] = useState({
+    armor: "",
+    weapon: "",
+  });
 
   //* Skills
   const [acrobatics, setAcrobatics] = useState(0);
@@ -79,71 +97,72 @@ export default function CharCreation() {
     setStealth(Math.floor((dex - 10) / 2));
     setSurvival(Math.floor((wis - 10) / 2));
 
-    setSavingStr(Math.floor((str - 10) / 2) + level);
-    setSavingDex(Math.floor((dex - 10) / 2) + level);
-    setSavingCon(Math.floor((cons - 10) / 2) + level);
-    setSavingInt(Math.floor((int - 10) / 2) + level);
-    setSavingWis(Math.floor((wis - 10) / 2) + level);
-    setSavingCha(Math.floor((char - 10) / 2) + level);
+    setSavingStr(Math.floor(((str - 10) / 2)+ level));
+    setSavingDex(Math.floor(((dex - 10) / 2)+ level));
+    setSavingCon(Math.floor(((cons - 10) / 2)+ level));
+    setSavingInt(Math.floor(((int - 10) / 2) + level));
+    setSavingWis(Math.floor(((wis - 10) / 2) + level));
+    setSavingCha(Math.floor(((char - 10) / 2) + level));
+    console.log(Races[race]);
   });
-
+  
   const saveChar = () => {
     characters.push({
-      charName: "",
-      race: "",
-      class: "",
-      level: "",
-      background: "",
-      alignment: "",
-      expPoints: "",
-      armorClass: "",
-      initiative: "",
-      speed: "",
-      hitPoints: "",
+      charName: name,
+      race: race,
+      class: clase,
+      level: level,
+      background: background,
+      alignment: alignment,
+      expPoints: experience,
+      armorClass: armor,
+      initiative: initiative,
+      speed: speed,
+      hitPoints: health,
       personality: "",
       ideals: "",
       bonds: "",
       flaws: "",
-      inspiration: "",
-      proficiencyBonus: "",
-      equipment: {},
+      inspiration: inspiration,
+      proficiencyBonus: profBonus,
+      equipment: equipment,
       habilities: {},
       traits: {},
       stats: {
-        str: "",
-        dex: "",
-        const: "",
-        int: "",
-        wis: "",
-        char: "",
+        str: str,
+        dex: dex,
+        const: cons,
+        int: int,
+        wis: wis,
+        char: char,
       },
       savingThrows: {
-        str: "",
-        dex: "",
-        const: "",
-        int: "",
-        wis: "",
-        char: "",
+        str: savingStr,
+        dex: savingDex,
+        const: savingCon,
+        int: savingInt,
+        wis: savingWis,
+        char: savingCha,
       },
       skills: {
-        acrobatics: "",
-        animalHandling: "",
-        arcana: "",
-        athletics: "",
-        deception: "",
-        history: "",
-        insight: "",
-        intimidation: "",
-        investigation: "",
-        medicine: "",
-        nature: "",
-        percepcion: "",
-        performance: "",
-        persuasion: "",
-        religion: "",
-        sleightOfHands: "",
-        stealth: "",
-        survival: "",
+        acrobatics: acrobatics,
+        animalHandling: animalHandling,
+        arcana: arcana,
+        athletics: athletics,
+        deception: deception,
+        history: history,
+        insight: insight,
+        intimidation: intimidation,
+        investigation: investigation,
+        medicine: medicine,
+        nature: nature,
+        perception: perception,
+        performance: performance,
+        persuasion: persuasion,
+        religion: religion,
+        sleightOfHands: sleightOfHands,
+        stealth: stealth,
+        survival: survival,
       },
     });
   };
@@ -189,27 +208,27 @@ export default function CharCreation() {
                 ></path>
               </svg>
             </div>
-            <div>
+            <div className="chr-dets-spacing">
+              
               <p>Class</p>
-              <input
-                type="text"
-                name="clase"
+              <Dropdown
                 value={clase}
-                required
-                onChange={(e) => setClase(e.target.value)}
-              ></input>
+                onChange={(e) => setClase(e.value)}
+                options={classMenu}
+                placeholder="Select class"
+                className="w-full md:w-14rem mydrop"
+              />
             </div>
-            <div>
+            <div className="chr-dets-spacing">
               <p>Race</p>
-              <input
-                type="text"
-                name="race"
+              <Dropdown
                 value={race}
-                required
-                onChange={(e) => setRace(e.target.value)}
-              ></input>
+                onChange={(e) => setRace(e.value)}
+                options={racesMenu}
+                placeholder="Select race"
+                className="w-full md:w-14rem mydrop"
+              />
             </div>
-
             <div>
               <p>Background</p>
               <input
@@ -720,9 +739,8 @@ export default function CharCreation() {
               <p>health</p>
             </div>
             <div className="health-score">
-                  <input type='number' defaultValue={health} name='health'></input>
-            </div>  
-
+              <input type="number" defaultValue={health} name="health"></input>
+            </div>
           </div>
         </div>
         {/* INITIATIVE */}
@@ -743,25 +761,29 @@ export default function CharCreation() {
             <p>initiative</p>
           </div>
           <div className="initiative-score">
-          <input type='number' defaultValue={initiative} name='initiative'></input>
+            <input
+              type="number"
+              defaultValue={initiative}
+              name="initiative"
+            ></input>
           </div>
         </div>
         {/* ARMOR */}
         <div className="armor">
-        <div className="armor-container">
-          <svg xmlns="https://www.w3.org/2000/svg">
-            <path
-              fill="#FEFEFE"
-              d="M72.8,30.7v13.7c-1,3.6-9.7,30.9-31.9,38.6c-0.3-0.4-0.8-0.7-1.4-0.7c-0.6,0-1,0.3-1.4,0.7 C26,78.7,17.9,68.6,12.9,59.8c0,0,0,0,0,0c-0.3-0.5-0.6-1-0.8-1.5c-3.6-6.7-5.4-12.4-5.9-14V30.7c0.7-0.3,1.2-0.9,1.2-1.7 c0-0.1,0-0.2-0.1-0.3c6.2-4,8.5-11.5,9.2-15.2L38.1,7c0.3,0.4,0.8,0.7,1.4,0.7c0.6,0,1.1-0.3,1.4-0.7l21.4,6.6 c0.8,3.6,3,11.1,9.2,15.2V29c0,0.2,0,0.4,0.1,0.6C71.8,30.1,72.3,30.5,72.8,30.7z"
-            ></path>
-            <path
-              fill="#146C94"
-              d="M73.2,27.3c-0.4,0-0.8,0.2-1.1,0.4c-5.8-3.9-7.9-11.3-8.6-14.5l-0.1-0.4l-22-6.7c-0.1-0.9-0.8-1.7-1.8-1.7 s-1.7,0.8-1.8,1.7l-22,6.7l-0.1,0.4c-0.6,3.2-2.7,10.6-8.6,14.5c-0.3-0.3-0.7-0.4-1.1-0.4c-1,0-1.8,0.8-1.8,1.9 c0,0.8,0.5,1.5,1.2,1.7v13.5v0.2c0.9,3.2,9.7,31.2,32.4,39.2c0.1,1,0.8,1.8,1.8,1.8s1.8-0.8,1.8-1.8c9.3-3.3,17.3-10.1,23.8-20.4 c5.3-8.4,7.9-16.5,8.6-18.8V30.9c0.7-0.3,1.2-0.9,1.2-1.7C75,28.1,74.2,27.3,73.2,27.3z M72.5,44.3c-1,3.6-9.6,30.5-31.5,38.2 c-0.3-0.4-0.8-0.7-1.4-0.7c-0.6,0-1,0.3-1.4,0.7C16.3,74.8,7.8,47.9,6.7,44.3V30.9c0.7-0.3,1.2-0.9,1.2-1.7c0-0.1,0-0.2-0.1-0.3 c6.1-4,8.4-11.4,9.1-15l21.3-6.5c0.3,0.4,0.8,0.7,1.4,0.7c0.6,0,1.1-0.3,1.4-0.7l21.2,6.5c0.8,3.6,3,11,9.1,15c0,0.1,0,0.2,0,0.3 c0,0.8,0.5,1.5,1.2,1.7V44.3z M73.2,27.3c-0.4,0-0.8,0.2-1.1,0.4c-5.8-3.9-7.9-11.3-8.6-14.5l-0.1-0.4l-22-6.7 c-0.1-0.9-0.8-1.7-1.8-1.7s-1.7,0.8-1.8,1.7l-22,6.7l-0.1,0.4c-0.6,3.2-2.7,10.6-8.6,14.5c-0.3-0.3-0.7-0.4-1.1-0.4 c-1,0-1.8,0.8-1.8,1.9c0,0.8,0.5,1.5,1.2,1.7v13.5v0.2c0.9,3.2,9.7,31.2,32.4,39.2c0.1,1,0.8,1.8,1.8,1.8s1.8-0.8,1.8-1.8 c9.3-3.3,17.3-10.1,23.8-20.4c5.3-8.4,7.9-16.5,8.6-18.8V30.9c0.7-0.3,1.2-0.9,1.2-1.7C75,28.1,74.2,27.3,73.2,27.3z M72.5,44.3 c-1,3.6-9.6,30.5-31.5,38.2c-0.3-0.4-0.8-0.7-1.4-0.7c-0.6,0-1,0.3-1.4,0.7C16.3,74.8,7.8,47.9,6.7,44.3V30.9 c0.7-0.3,1.2-0.9,1.2-1.7c0-0.1,0-0.2-0.1-0.3c6.1-4,8.4-11.4,9.1-15l21.3-6.5c0.3,0.4,0.8,0.7,1.4,0.7c0.6,0,1.1-0.3,1.4-0.7 l21.2,6.5c0.8,3.6,3,11,9.1,15c0,0.1,0,0.2,0,0.3c0,0.8,0.5,1.5,1.2,1.7V44.3z M78.1,24.5c-8.7-1.8-9.9-14.9-9.9-15l-0.1-0.8L39.5,0 L10.9,8.7l-0.1,0.8c0,0.1-1.2,13.3-9.9,15l-1,0.2v20.4v0.3C0,45.8,9.6,82.1,39.1,89.9l0.3,0.1l0.3-0.1C69.5,82.1,79,45.8,79.1,45.4 V24.7L78.1,24.5z M76.7,45C76,47.5,66.6,80.1,39.5,87.5C12.6,80.1,3.2,47.4,2.5,45V26.7c8.3-2.4,10.3-13,10.7-16.1l26.4-8l26.4,8 c0.4,3.1,2.4,13.7,10.7,16.1V45z M63.5,13.2l-0.1-0.4l-22-6.7c-0.1-0.9-0.8-1.7-1.8-1.7s-1.7,0.8-1.8,1.7l-22,6.7l-0.1,0.4 c-0.6,3.2-2.7,10.6-8.6,14.5c-0.3-0.3-0.7-0.4-1.1-0.4c-1,0-1.8,0.8-1.8,1.9c0,0.8,0.5,1.5,1.2,1.7v13.5v0.2 c0.9,3.2,9.7,31.2,32.4,39.2c0.1,1,0.8,1.8,1.8,1.8s1.8-0.8,1.8-1.8c9.3-3.3,17.3-10.1,23.8-20.4c5.3-8.4,7.9-16.5,8.6-18.8V30.9 c0.7-0.3,1.2-0.9,1.2-1.7c0-1-0.8-1.9-1.8-1.9c-0.4,0-0.8,0.2-1.1,0.4C66.2,23.9,64.1,16.4,63.5,13.2z M72.5,30.9v13.5 c-1,3.6-9.6,30.5-31.5,38.2c-0.3-0.4-0.8-0.7-1.4-0.7c-0.6,0-1,0.3-1.4,0.7C16.3,74.8,7.8,47.9,6.7,44.3V30.9 c0.7-0.3,1.2-0.9,1.2-1.7c0-0.1,0-0.2-0.1-0.3c6.1-4,8.4-11.4,9.1-15l21.3-6.5c0.3,0.4,0.8,0.7,1.4,0.7c0.6,0,1.1-0.3,1.4-0.7 l21.2,6.5c0.8,3.6,3,11,9.1,15c0,0.1,0,0.2,0,0.3C71.3,30,71.8,30.6,72.5,30.9z"
-            ></path>
-          </svg>
-        </div>
+          <div className="armor-container">
+            <svg xmlns="https://www.w3.org/2000/svg">
+              <path
+                fill="#FEFEFE"
+                d="M72.8,30.7v13.7c-1,3.6-9.7,30.9-31.9,38.6c-0.3-0.4-0.8-0.7-1.4-0.7c-0.6,0-1,0.3-1.4,0.7 C26,78.7,17.9,68.6,12.9,59.8c0,0,0,0,0,0c-0.3-0.5-0.6-1-0.8-1.5c-3.6-6.7-5.4-12.4-5.9-14V30.7c0.7-0.3,1.2-0.9,1.2-1.7 c0-0.1,0-0.2-0.1-0.3c6.2-4,8.5-11.5,9.2-15.2L38.1,7c0.3,0.4,0.8,0.7,1.4,0.7c0.6,0,1.1-0.3,1.4-0.7l21.4,6.6 c0.8,3.6,3,11.1,9.2,15.2V29c0,0.2,0,0.4,0.1,0.6C71.8,30.1,72.3,30.5,72.8,30.7z"
+              ></path>
+              <path
+                fill="#146C94"
+                d="M73.2,27.3c-0.4,0-0.8,0.2-1.1,0.4c-5.8-3.9-7.9-11.3-8.6-14.5l-0.1-0.4l-22-6.7c-0.1-0.9-0.8-1.7-1.8-1.7 s-1.7,0.8-1.8,1.7l-22,6.7l-0.1,0.4c-0.6,3.2-2.7,10.6-8.6,14.5c-0.3-0.3-0.7-0.4-1.1-0.4c-1,0-1.8,0.8-1.8,1.9 c0,0.8,0.5,1.5,1.2,1.7v13.5v0.2c0.9,3.2,9.7,31.2,32.4,39.2c0.1,1,0.8,1.8,1.8,1.8s1.8-0.8,1.8-1.8c9.3-3.3,17.3-10.1,23.8-20.4 c5.3-8.4,7.9-16.5,8.6-18.8V30.9c0.7-0.3,1.2-0.9,1.2-1.7C75,28.1,74.2,27.3,73.2,27.3z M72.5,44.3c-1,3.6-9.6,30.5-31.5,38.2 c-0.3-0.4-0.8-0.7-1.4-0.7c-0.6,0-1,0.3-1.4,0.7C16.3,74.8,7.8,47.9,6.7,44.3V30.9c0.7-0.3,1.2-0.9,1.2-1.7c0-0.1,0-0.2-0.1-0.3 c6.1-4,8.4-11.4,9.1-15l21.3-6.5c0.3,0.4,0.8,0.7,1.4,0.7c0.6,0,1.1-0.3,1.4-0.7l21.2,6.5c0.8,3.6,3,11,9.1,15c0,0.1,0,0.2,0,0.3 c0,0.8,0.5,1.5,1.2,1.7V44.3z M73.2,27.3c-0.4,0-0.8,0.2-1.1,0.4c-5.8-3.9-7.9-11.3-8.6-14.5l-0.1-0.4l-22-6.7 c-0.1-0.9-0.8-1.7-1.8-1.7s-1.7,0.8-1.8,1.7l-22,6.7l-0.1,0.4c-0.6,3.2-2.7,10.6-8.6,14.5c-0.3-0.3-0.7-0.4-1.1-0.4 c-1,0-1.8,0.8-1.8,1.9c0,0.8,0.5,1.5,1.2,1.7v13.5v0.2c0.9,3.2,9.7,31.2,32.4,39.2c0.1,1,0.8,1.8,1.8,1.8s1.8-0.8,1.8-1.8 c9.3-3.3,17.3-10.1,23.8-20.4c5.3-8.4,7.9-16.5,8.6-18.8V30.9c0.7-0.3,1.2-0.9,1.2-1.7C75,28.1,74.2,27.3,73.2,27.3z M72.5,44.3 c-1,3.6-9.6,30.5-31.5,38.2c-0.3-0.4-0.8-0.7-1.4-0.7c-0.6,0-1,0.3-1.4,0.7C16.3,74.8,7.8,47.9,6.7,44.3V30.9 c0.7-0.3,1.2-0.9,1.2-1.7c0-0.1,0-0.2-0.1-0.3c6.1-4,8.4-11.4,9.1-15l21.3-6.5c0.3,0.4,0.8,0.7,1.4,0.7c0.6,0,1.1-0.3,1.4-0.7 l21.2,6.5c0.8,3.6,3,11,9.1,15c0,0.1,0,0.2,0,0.3c0,0.8,0.5,1.5,1.2,1.7V44.3z M78.1,24.5c-8.7-1.8-9.9-14.9-9.9-15l-0.1-0.8L39.5,0 L10.9,8.7l-0.1,0.8c0,0.1-1.2,13.3-9.9,15l-1,0.2v20.4v0.3C0,45.8,9.6,82.1,39.1,89.9l0.3,0.1l0.3-0.1C69.5,82.1,79,45.8,79.1,45.4 V24.7L78.1,24.5z M76.7,45C76,47.5,66.6,80.1,39.5,87.5C12.6,80.1,3.2,47.4,2.5,45V26.7c8.3-2.4,10.3-13,10.7-16.1l26.4-8l26.4,8 c0.4,3.1,2.4,13.7,10.7,16.1V45z M63.5,13.2l-0.1-0.4l-22-6.7c-0.1-0.9-0.8-1.7-1.8-1.7s-1.7,0.8-1.8,1.7l-22,6.7l-0.1,0.4 c-0.6,3.2-2.7,10.6-8.6,14.5c-0.3-0.3-0.7-0.4-1.1-0.4c-1,0-1.8,0.8-1.8,1.9c0,0.8,0.5,1.5,1.2,1.7v13.5v0.2 c0.9,3.2,9.7,31.2,32.4,39.2c0.1,1,0.8,1.8,1.8,1.8s1.8-0.8,1.8-1.8c9.3-3.3,17.3-10.1,23.8-20.4c5.3-8.4,7.9-16.5,8.6-18.8V30.9 c0.7-0.3,1.2-0.9,1.2-1.7c0-1-0.8-1.9-1.8-1.9c-0.4,0-0.8,0.2-1.1,0.4C66.2,23.9,64.1,16.4,63.5,13.2z M72.5,30.9v13.5 c-1,3.6-9.6,30.5-31.5,38.2c-0.3-0.4-0.8-0.7-1.4-0.7c-0.6,0-1,0.3-1.4,0.7C16.3,74.8,7.8,47.9,6.7,44.3V30.9 c0.7-0.3,1.2-0.9,1.2-1.7c0-0.1,0-0.2-0.1-0.3c6.1-4,8.4-11.4,9.1-15l21.3-6.5c0.3,0.4,0.8,0.7,1.4,0.7c0.6,0,1.1-0.3,1.4-0.7 l21.2,6.5c0.8,3.6,3,11,9.1,15c0,0.1,0,0.2,0,0.3C71.3,30,71.8,30.6,72.5,30.9z"
+              ></path>
+            </svg>
+          </div>
           <div className="armor-score">
-          <input type='number' defaultValue={armor} name='armor'></input>
+            <input type="number" defaultValue={armor} name="armor"></input>
           </div>
         </div>
         {/* PROFICIENCY */}
