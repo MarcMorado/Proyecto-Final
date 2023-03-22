@@ -4,6 +4,9 @@ import { FiberContainer } from "../three/FiberContainer";
 
 //? JSON
 import Races from "../data/race.json";
+import Clases from "../data/class.json";
+import Armors from "../data/armor.json";
+import Weapons from "../data/weapons.json";
 
 //? DROPDOWN
 import { Dropdown } from "primereact/dropdown";
@@ -18,12 +21,15 @@ const racesMenu = ["Elf", "Human", "Dragonborn"];
 const classMenu = ["Barbarian", "Rogue", "Sorcerer"];
 
 export default function CharCreation() {
+  // const [isExpanded, setIsExpanded] = useState(false);
+  const [expandedFeature, setExpandedFeature] = useState(null);
+
   //* Character details
   const [name, setName] = useState("");
-  const [clase, setClase] = useState("");
-  const [level, setLevel] = useState(0);
+  const [clase, setClase] = useState("Barbarian");
+  const [level, setLevel] = useState(1);
   const [background, setBackground] = useState("");
-  const [race, setRace] = useState("");
+  const [race, setRace] = useState();
   const [alignment, setAlignment] = useState("");
   const [experience, setExperience] = useState(0);
 
@@ -97,15 +103,59 @@ export default function CharCreation() {
     setStealth(Math.floor((dex - 10) / 2));
     setSurvival(Math.floor((wis - 10) / 2));
 
-    setSavingStr(Math.floor(((str - 10) / 2)+ level));
-    setSavingDex(Math.floor(((dex - 10) / 2)+ level));
-    setSavingCon(Math.floor(((cons - 10) / 2)+ level));
-    setSavingInt(Math.floor(((int - 10) / 2) + level));
-    setSavingWis(Math.floor(((wis - 10) / 2) + level));
-    setSavingCha(Math.floor(((char - 10) / 2) + level));
-    console.log(Races[race]);
+    setSavingStr(Math.floor((str - 10) / 2 + level));
+    setSavingDex(Math.floor((dex - 10) / 2 + level));
+    setSavingCon(Math.floor((cons - 10) / 2 + level));
+    setSavingInt(Math.floor((int - 10) / 2 + level));
+    setSavingWis(Math.floor((wis - 10) / 2 + level));
+    setSavingCha(Math.floor((char - 10) / 2 + level));
   });
+
+  //* RACE UPDATE
+  useEffect(() => {
+    if (race != undefined) {
+      setStr(Races[race].bonus.str);
+      setDex(Races[race].bonus.dex);
+      setCons(Races[race].bonus.cons);
+      setInt(Races[race].bonus.int);
+      setWis(Races[race].bonus.wis);
+      setChar(Races[race].bonus.char);
+
+      setSpeed(Races[race].speed);
+    }
+  }, [race]);
+
+  //* CLASS UPDATE
+  useEffect(() => {
+    if (clase != undefined) {
+      setHealth(Clases[clase].hitPoints);
+    }
+  }, [clase]);
+
+  //* LEVELING
+  const levelUp = (e) => {
+    setLevel(parseInt(e.target.value));
+    if (clase != undefined) {
+      setHealth(Math.floor(health + Math.random() * Clases[clase].hitDice));
+    }
+  };
+
+  //* FEATURE LIST
+  const featuresList = Object.keys(Clases[clase].features).map((featureKey) => {
+    const feature = Clases[clase].features[featureKey];
+    const isExpanded = expandedFeature === featureKey;
   
+    return (
+      <li key={featureKey}>
+        <button onClick={() => setExpandedFeature(isExpanded ? null : featureKey)}>
+        <strong> {feature.name}:</strong>
+        </button>
+        {isExpanded && <p>{feature.description}</p>}
+      </li>
+    );
+  });
+
+
   const saveChar = () => {
     characters.push({
       charName: name,
@@ -209,7 +259,6 @@ export default function CharCreation() {
               </svg>
             </div>
             <div className="chr-dets-spacing">
-              
               <p>Class</p>
               <Dropdown
                 value={clase}
@@ -242,11 +291,11 @@ export default function CharCreation() {
             <div>
               <p>Level</p>
               <input
-                type="text"
+                type="number"
                 name="level"
                 value={level}
                 required
-                onChange={(e) => setLevel(e.target.value)}
+                onChange={levelUp}
               ></input>
             </div>
             <div>
@@ -739,7 +788,7 @@ export default function CharCreation() {
               <p>health</p>
             </div>
             <div className="health-score">
-              <input type="number" defaultValue={health} name="health"></input>
+              <p>{health}</p>
             </div>
           </div>
         </div>
@@ -894,6 +943,14 @@ export default function CharCreation() {
                 "
               ></path>
             </svg>
+          </div>
+          <div className="features">
+            <div className="features-title">
+              <div>
+                <h2>{clase} Features:</h2>
+                <ul>{featuresList}</ul>
+              </div>
+            </div>
           </div>
         </div>
         <button

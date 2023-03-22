@@ -1,7 +1,7 @@
 {
     "Barbarian":{
         "name": "Barbarian",
-        "hitDice":"1d12",
+        "hitDice":12,
         "hitPoints": 12,
         "proficiencies":{
             "armor":"Light armor, medium armor, shields",
@@ -23,7 +23,7 @@
     },
     "Sorcerer":{
         "name": "Sorcerer",
-        "hitDice":"1d6",
+        "hitDice":6,
         "hitPoints": 6,
         "proficiencies":{
             "armor":"None",
@@ -45,7 +45,7 @@
     },
     "Rogue":{
         "name": "Rogue",
-        "hitDice":"1d8",
+        "hitDice":8,
         "hitPoints": 8,
         "proficiencies":{
             "armor":"Light armor",

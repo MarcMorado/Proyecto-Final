@@ -488,6 +488,14 @@ body{
   height: 340px;
 }
 
+.features{
+  position: absolute;
+  left: 500px;
+  top:400px;
+  max-width: 250px;
+  z-index: 10;
+}
+
 /* HEALTH */
 
 .health{
@@ -516,16 +524,15 @@ body{
 
 .health-score{
   position: relative;
-  left: 95px;
+  left: -23px;
+  bottom: 20px;
   font-family: 'Black';
 }
 
-.health-score input{
-  width: 100px;
+.health-score p{
   padding: 10px 0px 10px 0px;
-  font-size: 20px;
+  font-size: 40px;
   text-align: center;
-  border: 2px solid rgb(20, 108, 148, 0.1);
 }
 
 /* INITIATIVE */
