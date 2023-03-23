@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import data from "../data/armor.json";
 import "../styles/styleItems.css"
 
-function ArmorSelector() {
+function ArmorSelector(props) {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedArmor, setSelectedArmor] = useState(null);
 
@@ -14,6 +14,7 @@ function ArmorSelector() {
   const handleArmorChange = (event) => {
     const armor = JSON.parse(event.target.value);
     setSelectedArmor(armor);
+    props.setSelectedArmor(armor);
   };
 
   const deleteArmor = () => {

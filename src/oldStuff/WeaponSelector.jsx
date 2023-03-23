@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import data from "../data/weapons.json";
 import "../styles/styleItems.css"
 
-function WeaponSelector(props) {
+function WeaponSelector() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedWeapon, setSelectedWeapon] = useState(null);
 
@@ -13,7 +13,7 @@ function WeaponSelector(props) {
 
   const handleWeaponChange = (event) => {
     const weapon = JSON.parse(event.target.value);
-    setSelectedWeapon(weapon);
+    // setSelectedWeapon(weapon);
     props.setSelectedWeapon(weapon);
   };
 

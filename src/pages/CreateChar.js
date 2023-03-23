@@ -31,6 +31,9 @@ export default function CharCreation() {
   const [weaponSelectors, setWeaponSelectors] = useState([]);
   const [armorSelectors, setArmorSelectors] = useState([]);
 
+  const [selectedWeapon, setSelectedWeapon] = useState(null);
+  const [selectedArmor, setSelectedArmor] = useState(null);
+
   //* Character details
   const [name, setName] = useState("");
   const [clase, setClase] = useState("Barbarian");
@@ -45,12 +48,6 @@ export default function CharCreation() {
   const [initiative, setInitiative] = useState(0);
   const [armor, setArmor] = useState(0);
   const [speed, setSpeed] = useState(0);
-
-  //*Equipment
-  const [equipment, setEquipment] = useState({
-    armor: "",
-    weapon: "",
-  });
 
   //* Skills
   const [acrobatics, setAcrobatics] = useState(0);
@@ -166,12 +163,25 @@ export default function CharCreation() {
 
   //! TEST
   const addWeapon = () => {
-    setWeaponSelectors([...weaponSelectors, <WeaponSelector />]);
+    setWeaponSelectors([
+      ...weaponSelectors,
+      <WeaponSelector setSelectedWeapon={setSelectedWeapon} />,
+    ]);
   };
+
   const addArmor = () => {
-    setArmorSelectors([...armorSelectors, <ArmorSelector />]);
+    setArmorSelectors([
+      ...armorSelectors,
+      <ArmorSelector setSelectedArmor={setSelectedArmor} />,
+    ]);
   };
-  
+
+  useEffect(() => {
+    if (selectedArmor !== null) {
+      setArmor(selectedArmor.aC);
+    }
+  }, [addArmor]);
+
   const saveChar = () => {
     characters.push({
       charName: name,
@@ -187,7 +197,10 @@ export default function CharCreation() {
       hitPoints: health,
       inspiration: inspiration,
       proficiencyBonus: profBonus,
-      equipment: equipment,
+      equipment: {
+        armor: selectedArmor,
+        weapon: selectedWeapon,
+      },
       stats: {
         str: str,
         dex: dex,
@@ -225,9 +238,8 @@ export default function CharCreation() {
         survival: survival,
       },
     });
-  console.log(characters);
+    console.log(characters);
   };
-
 
   return (
     <div data-theme="autumn">
@@ -845,7 +857,7 @@ export default function CharCreation() {
             </svg>
           </div>
           <div className="armor-score">
-            <input type="number" defaultValue={armor} name="armor"></input>
+            <p>{armor}</p>
           </div>
         </div>
         {/* PROFICIENCY */}
@@ -978,11 +990,8 @@ export default function CharCreation() {
             </div>
           </div>
         </div>
-        
       </div>
-      <button onClick={saveChar}>
-              guardar
-      </button>
+      <button onClick={saveChar}>guardar</button>
       <div className="foot"></div>
     </div>
   );
