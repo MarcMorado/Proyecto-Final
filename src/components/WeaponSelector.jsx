@@ -25,9 +25,19 @@ function WeaponSelector() {
       {selectedWeapon ? (
         <div>
           <div>
-          <p>Name: {selectedWeapon.name}</p>
-          <p>Damage: {selectedWeapon.damage}</p>
-          <p>Damage Type: {selectedWeapon.damageType}</p>
+          <p><strong>Name: </strong>{selectedWeapon.name}</p>
+          {selectedWeapon.damage ? (
+            <p><strong>Damage: </strong>{selectedWeapon.damage}</p>
+          ): null}
+          {selectedWeapon.damageType ? (
+            <p><strong>Damage Type: </strong>{selectedWeapon.damageType}</p>
+          ): null}
+          {selectedWeapon.weight ? (
+            <p><strong>Weight: </strong>{selectedWeapon.weight}</p>
+          ): null}
+          {selectedWeapon.properties ? (
+            <p><strong>properties: </strong>{selectedWeapon.properties}</p>
+          ): null}
           </div>
           <div>
           <button onClick={deleteWeapon}>x</button>
@@ -36,9 +46,8 @@ function WeaponSelector() {
       ) : (
         <div>
           <h2>Weapon Selector</h2>
-          <label htmlFor="category">Select a category:</label>
           <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
-            <option value="">--Please choose a category--</option>
+            <option value="">--Choose a category--</option>
             {Object.keys(data).map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -47,9 +56,8 @@ function WeaponSelector() {
           </select>
           {selectedCategory && (
             <div>
-              <label htmlFor="weapon">Select a weapon:</label>
               <select id="weapon" onChange={handleWeaponChange}>
-                <option value="">--Please choose a weapon--</option>
+                <option value="">--Choose a weapon--</option>
                 {data[selectedCategory].map((weapon) => (
                   <option key={weapon.name} value={JSON.stringify(weapon)}>
                     {weapon.name}

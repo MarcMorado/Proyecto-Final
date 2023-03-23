@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-
 import { FiberContainer } from "../three/FiberContainer";
 
 //? JSON
 import Races from "../data/race.json";
 import Clases from "../data/class.json";
-import Armors from "../data/armor.json";
-import Weapons from "../data/weapons.json";
+
+//? ITEM COMPONENT
 import WeaponSelector from "../components/WeaponSelector";
 import ArmorSelector from "../components/ArmorSelector";
 
@@ -16,15 +15,21 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
+//? CUSTOM CSS
 import "../styles/Styles.css";
 
+//? ARRAYS
 const characters = [];
 const racesMenu = ["Elf", "Human", "Dragonborn"];
 const classMenu = ["Barbarian", "Rogue", "Sorcerer"];
 
 export default function CharCreation() {
-  // const [isExpanded, setIsExpanded] = useState(false);
+  //* Expand features
   const [expandedFeature, setExpandedFeature] = useState(null);
+
+  //* ITEMS
+  const [weaponSelectors, setWeaponSelectors] = useState([]);
+  const [armorSelectors, setArmorSelectors] = useState([]);
 
   //* Character details
   const [name, setName] = useState("");
@@ -146,25 +151,28 @@ export default function CharCreation() {
   const featuresList = Object.keys(Clases[clase].features).map((featureKey) => {
     const feature = Clases[clase].features[featureKey];
     const isExpanded = expandedFeature === featureKey;
-  
+
     return (
       <li key={featureKey}>
-        <button onClick={() => setExpandedFeature(isExpanded ? null : featureKey)}>
-        <strong> {feature.name}:</strong>
+        <button
+          onClick={() => setExpandedFeature(isExpanded ? null : featureKey)}
+        >
+          <strong> {feature.name}:</strong>
         </button>
         {isExpanded && <p>{feature.description}</p>}
       </li>
     );
   });
 
-
   //! TEST
 
+  const addWeapon = () => {
+    setWeaponSelectors([...weaponSelectors, <WeaponSelector />]);
+  };
+  const addArmor = () => {
+    setArmorSelectors([...armorSelectors, <ArmorSelector />]);
+  };
   
-
-
-
-
   const saveChar = () => {
     characters.push({
       charName: name,
@@ -937,8 +945,18 @@ export default function CharCreation() {
               d="M408,6.39V4.47h-6.14V0h-2.68s-1.06,1.54-3.91,1.54H12.73C9.88,1.54,8.82,0,8.82,0H6.14V4.47H0V6.39c2.53,0,2.67,4.14,2.67,4.14V81.91S2.53,86,0,86v2H6.14v7H8.82V3.31H399.18V91.69H8.82V95s1.06-1.54,3.91-1.54H395.27c2.84,0,3.9,1.52,3.91,1.54h2.68V88H408V86c-2.53,0-2.67-4.13-2.67-4.13V10.53S405.47,6.39,408,6.39ZM6.27,81.91H4.14V12.12H6.27Zm397.79.48h-2.12V12.61h2.12Z"
             ></path>
           </svg>
-          <WeaponSelector />
-          <ArmorSelector />
+          <div>
+            <button onClick={addWeapon}>Add weapon</button>
+            {weaponSelectors.map((weaponSelector, index) => (
+              <div key={index}>{weaponSelector}</div>
+            ))}
+          </div>
+          <div>
+            <button onClick={addArmor}>Add armor</button>
+            {armorSelectors.map((armorSelector, index) => (
+              <div key={index}>{armorSelector}</div>
+            ))}
+          </div>
         </div>
         {/* ITEMS */}
         <div className="items">

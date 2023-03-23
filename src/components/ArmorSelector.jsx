@@ -25,9 +25,22 @@ function ArmorSelector() {
       {selectedArmor ? (
         <div>
           <div>
-          <p>Name: {selectedArmor.name}</p>
-          <p>Damage: {selectedArmor.damage}</p>
-          <p>Damage Type: {selectedArmor.damageType}</p>
+          <p><strong>Name: </strong>{selectedArmor.name}</p>
+          {selectedArmor.aC ? (
+            <p><strong>Armor class: </strong>{selectedArmor.aC}</p>
+          ): null}
+          {selectedArmor.strength ? (
+            <p><strong>Strength: </strong>{selectedArmor.strength}</p>
+          ): null}
+          {selectedArmor.stealth ? (
+            <p><strong>Stealth: </strong>{selectedArmor.stealth}</p>
+          ): null}
+          {selectedArmor.weight ? (
+            <p><strong>Weight: </strong>{selectedArmor.weight}</p>
+          ): null}
+          {selectedArmor.description ? (
+            <p><strong>Description: </strong>{selectedArmor.description}</p>
+          ): null}
           </div>
           <div>
           <button onClick={deleteArmor}>x</button>
@@ -36,9 +49,8 @@ function ArmorSelector() {
       ) : (
         <div>
           <h2>Armor Selector</h2>
-          <label htmlFor="category">Select a category:</label>
           <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
-            <option value="">--Please choose a category--</option>
+            <option value="">--Choose a category--</option>
             {Object.keys(data).map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -47,9 +59,8 @@ function ArmorSelector() {
           </select>
           {selectedCategory && (
             <div>
-              <label htmlFor="armor">Select a armor:</label>
               <select id="armor" onChange={handleArmorChange}>
-                <option value="">--Please choose a armor--</option>
+                <option value="">--Choose a armor--</option>
                 {data[selectedCategory].map((armor) => (
                   <option key={armor.name} value={JSON.stringify(armor)}>
                     {armor.name}

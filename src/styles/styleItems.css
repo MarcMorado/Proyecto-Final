@@ -3,3 +3,11 @@
     bottom:140px;
     left: 10px;
 }
+
+.armor-select{
+    position: relative;
+    bottom:380px;
+    left: 400px;
+    z-index: 10;
+    max-width: 300px;
+}

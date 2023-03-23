@@ -12,7 +12,7 @@
     {
       "name": "Leather armor",
       "cost": "10 gp",
-      "AC": 11,
+      "aC": 11,
       "Strength": 0,
       "Stealth": null,
       "Weight": "10 lb",
@@ -21,7 +21,7 @@
     {
       "name": "Studded leather",
       "cost": "45 gp",
-      "AC": 11,
+      "aC": 11,
       "Strength": null,
       "Stealth": null,
       "Weight": "13 lb",
