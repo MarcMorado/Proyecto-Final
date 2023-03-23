@@ -7,6 +7,7 @@ import Races from "../data/race.json";
 import Clases from "../data/class.json";
 import Armors from "../data/armor.json";
 import Weapons from "../data/weapons.json";
+// import WeaponSelector from "../components/WeaponSelector";
 
 //? DROPDOWN
 import { Dropdown } from "primereact/dropdown";
@@ -113,7 +114,7 @@ export default function CharCreation() {
 
   //* RACE UPDATE
   useEffect(() => {
-    if (race != undefined) {
+    if (race !== undefined) {
       setStr(Races[race].bonus.str);
       setDex(Races[race].bonus.dex);
       setCons(Races[race].bonus.cons);
@@ -127,7 +128,7 @@ export default function CharCreation() {
 
   //* CLASS UPDATE
   useEffect(() => {
-    if (clase != undefined) {
+    if (clase !== undefined) {
       setHealth(Clases[clase].hitPoints);
     }
   }, [clase]);
@@ -135,7 +136,7 @@ export default function CharCreation() {
   //* LEVELING
   const levelUp = (e) => {
     setLevel(parseInt(e.target.value));
-    if (clase != undefined) {
+    if (clase !== undefined) {
       setHealth(Math.floor(health + Math.random() * Clases[clase].hitDice));
     }
   };
@@ -154,6 +155,13 @@ export default function CharCreation() {
       </li>
     );
   });
+
+
+  //! TEST
+
+  
+
+
 
 
   const saveChar = () => {
@@ -219,6 +227,7 @@ export default function CharCreation() {
   return (
     <div data-theme="autumn">
       <div className="charSheet">
+        {/* <WeaponSelector /> */}
         <div className="charDets">
           <div className="char-display">
             <input
