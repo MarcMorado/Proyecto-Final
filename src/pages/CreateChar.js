@@ -165,7 +165,6 @@ export default function CharCreation() {
   });
 
   //! TEST
-
   const addWeapon = () => {
     setWeaponSelectors([...weaponSelectors, <WeaponSelector />]);
   };
@@ -186,15 +185,9 @@ export default function CharCreation() {
       initiative: initiative,
       speed: speed,
       hitPoints: health,
-      personality: "",
-      ideals: "",
-      bonds: "",
-      flaws: "",
       inspiration: inspiration,
       proficiencyBonus: profBonus,
       equipment: equipment,
-      habilities: {},
-      traits: {},
       stats: {
         str: str,
         dex: dex,
@@ -232,7 +225,10 @@ export default function CharCreation() {
         survival: survival,
       },
     });
+  console.log(characters);
   };
+
+
   return (
     <div data-theme="autumn">
       <div className="charSheet">
@@ -982,13 +978,11 @@ export default function CharCreation() {
             </div>
           </div>
         </div>
-        <button
-          onClick={saveChar()}
-          className="bg-gradient-to-r from-cyan-500 to-blue-500 drop-shadow-md save-character"
-        >
-          Guardar pj
-        </button>
+        
       </div>
+      <button onClick={saveChar}>
+              guardar
+      </button>
       <div className="foot"></div>
     </div>
   );

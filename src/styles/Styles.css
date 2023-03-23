@@ -168,14 +168,7 @@ body{
 }
 
 .save-character {
-  position: relative;
-  left: 1440px;
-  padding: 6px 30px 6px 30px;
-  font-family: 'Medium';
-  font-size: 20px;
-  border-radius: 10px;
-  border: 2px solid rgb(20, 108, 148);
-  bottom: 180px;
+  
 }
 
 .char-details {
