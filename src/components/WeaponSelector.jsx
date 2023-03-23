@@ -1,61 +1,63 @@
 import React, { useState } from "react";
-import weaponsJSON from "../data/weapons.json";
+import data from "../data/weapons.json";
+import "../styles/styleItems.css"
 
 function WeaponSelector() {
-  const [category, setCategory] = useState(null);
-  const [weapon, setWeapon] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedWeapon, setSelectedWeapon] = useState(null);
 
   const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-    setWeapon(null); // reset weapon selection when changing category
+    setSelectedCategory(event.target.value);
+    setSelectedWeapon(null);
   };
 
   const handleWeaponChange = (event) => {
-    setWeapon(event.target.value);
+    const weapon = JSON.parse(event.target.value);
+    setSelectedWeapon(weapon);
   };
 
-  const weaponsInCategory = weaponsJSON.filter(
-    (weapon) => weapon.category === category
-  );
+  const deleteWeapon = () => {
+    setSelectedWeapon(null)
+  }
 
   return (
-    <div>
-      <h2>Weapon Selector</h2>
-      <div>
-        <label htmlFor="category-select">Category:</label>
-        <select
-          id="category-select"
-          value={category}
-          onChange={handleCategoryChange}
-        >
-          <option value="">Select a category</option>
-          <option value="simpleMelee">Simple Melee</option>
-          <option value="simpleRanged">Simple Ranged</option>
-          <option value="martialMelee">Martial Melee</option>
-          <option value="martialRanged">Martial Ranged</option>
-        </select>
-      </div>
-      {category && (
+    <div className="weapon-select">
+      {selectedWeapon ? (
         <div>
-          <label htmlFor="weapon-select">Weapon:</label>
-          <select
-            id="weapon-select"
-            value={weapon}
-            onChange={handleWeaponChange}
-          >
-            <option value="">Select a weapon</option>
-            {weaponsInCategory.map((weapon) => (
-              <option key={weapon.name} value={weapon.name}>
-                {weapon.name} ({weapon.damage})
+          <div>
+          <p>Name: {selectedWeapon.name}</p>
+          <p>Damage: {selectedWeapon.damage}</p>
+          <p>Damage Type: {selectedWeapon.damageType}</p>
+          </div>
+          <div>
+          <button onClick={deleteWeapon}>x</button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <h2>Weapon Selector</h2>
+          <label htmlFor="category">Select a category:</label>
+          <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="">--Please choose a category--</option>
+            {Object.keys(data).map((category) => (
+              <option key={category} value={category}>
+                {category}
               </option>
             ))}
           </select>
-        </div>
-      )}
-      {weapon && (
-        <div>
-          <p>Selected weapon: {weapon}</p>
-          <p>Damage: {weaponsJSON.find(w => w.name === weapon).damage}</p>
+          {selectedCategory && (
+            <div>
+              <label htmlFor="weapon">Select a weapon:</label>
+              <select id="weapon" onChange={handleWeaponChange}>
+                <option value="">--Please choose a weapon--</option>
+                {data[selectedCategory].map((weapon) => (
+                  <option key={weapon.name} value={JSON.stringify(weapon)}>
+                    {weapon.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
       )}
     </div>
