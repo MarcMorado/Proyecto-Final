@@ -14,7 +14,8 @@ import { Dropdown } from "primereact/dropdown";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-
+//? SERVICES
+import * as charService from "../services/charService";
 //? CUSTOM CSS
 import "../styles/Styles.css";
 
@@ -182,7 +183,7 @@ export default function CharCreation() {
     }
   }, [addArmor]);
 
-  const saveChar = () => {
+  const saveChar = async() => {
     characters.push({
       charName: name,
       race: race,
@@ -239,6 +240,10 @@ export default function CharCreation() {
       },
     });
     console.log(characters);
+
+    //funcion que manda characters al server, pasando por el charService
+    await charService.createChar(characters);
+
   };
 
   return (
