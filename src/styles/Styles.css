@@ -682,5 +682,13 @@ body{
   width: 410px;
 }
 
+/* NAVBAR */
 
+.navbar button{
+  color: rgb(192, 192, 192);
+}
+
+.sanctum{
+  color: white;
+}
 

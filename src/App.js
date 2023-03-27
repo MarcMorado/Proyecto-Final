@@ -3,6 +3,9 @@ import Navbar from "./components/Navbar";
 import {Route, Routes} from 'react-router-dom';
 import Home from "./pages/Home";
 import CreateChar from "./pages/CreateChar";
+import Login from "./pages/Login";
+import Signup from './pages/Signup';
+import CharacterList from "./pages/CharacterList";
 
 
 function App() {
@@ -13,6 +16,9 @@ function App() {
       <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/new-char' element={<CreateChar />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/my-characters' element={<CharacterList />} />
         </Routes>
       </div>
     </div>
