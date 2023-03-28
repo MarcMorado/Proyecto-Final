@@ -20,18 +20,20 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
 //? SERVICES
-import * as charService from "../services/charService";
+import * as charService from "../services/character.service";
 
 //? CUSTOM CSS
 import "../styles/Styles.css";
 
 //? ARRAYS
-const characters = [];
 const racesMenu = ["Elf", "Human", "Dragonborn"];
 const classMenu = ["Barbarian", "Rogue", "Sorcerer"];
 
+
+//? FUNCTION
 export default function CharCreation() {
-  //! TEST WEAPON CONTEXT
+  
+  //* WEAPON CONTEXT
 
   const { selectedWeapon } = useContext(WeaponContext);
   const { selectedArmor } = useContext(ArmorContext);
@@ -170,7 +172,6 @@ export default function CharCreation() {
     );
   });
 
-  //! TEST
   const addWeapon = () => {
     setWeaponSelectors([...weaponSelectors, <WeaponSelector />]);
   };
@@ -186,7 +187,7 @@ export default function CharCreation() {
   }, [selectedArmor]);
 
   const saveChar = async () => {
-    characters.push({
+    const character = {
       charName: name,
       race: race,
       class: clase,
@@ -240,13 +241,10 @@ export default function CharCreation() {
         stealth: stealth,
         survival: survival,
       },
-    });
-
-    const json = JSON.stringify(characters);
-    localStorage.setItem("characters", json);
+    };
 
     //? funcion que manda characters al server, pasando por el charService
-    await charService.createChar(characters);
+    charService.createChar(character);
   };
 
   return (
