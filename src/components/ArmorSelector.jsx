@@ -1,25 +1,14 @@
-import React, { useState } from "react";
-import data from "../data/armor.json";
+import React, { useContext } from "react";
+import { ArmorContext } from "../context/ArmorContext";
 import "../styles/styleItems.css"
 
-function ArmorSelector(props) {
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedArmor, setSelectedArmor] = useState(null);
-
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-    setSelectedArmor(null);
-  };
-
-  const handleArmorChange = (event) => {
-    const armor = JSON.parse(event.target.value);
-    setSelectedArmor(armor);
-    props.setSelectedArmor(armor);
-  };
-
-  const deleteArmor = () => {
-    setSelectedArmor(null)
-  }
+function ArmorSelector() {
+  const { selectedCategory } = useContext(ArmorContext);
+  const { selectedArmor } = useContext(ArmorContext);
+  const { handleCategoryChange } = useContext(ArmorContext);
+  const { handleArmorChange } = useContext(ArmorContext);
+  const { deleteArmor } = useContext(ArmorContext);
+  const { data } = useContext(ArmorContext);
 
   return (
     <div className="armor-select">

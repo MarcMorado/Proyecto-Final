@@ -11,6 +11,7 @@ import ArmorSelector from "../components/ArmorSelector";
 
 //?CONTEXT
 import { WeaponContext } from "../context/WeaponContext";
+import { ArmorContext } from "../context/ArmorContext";
 
 //? DROPDOWN
 import { Dropdown } from "primereact/dropdown";
@@ -30,12 +31,10 @@ const racesMenu = ["Elf", "Human", "Dragonborn"];
 const classMenu = ["Barbarian", "Rogue", "Sorcerer"];
 
 export default function CharCreation() {
-
-
-  //! TEST
+  //! TEST WEAPON CONTEXT
 
   const { selectedWeapon } = useContext(WeaponContext);
-
+  const { selectedArmor } = useContext(ArmorContext);
 
   //* Expand features
   const [expandedFeature, setExpandedFeature] = useState(null);
@@ -43,9 +42,6 @@ export default function CharCreation() {
   //* ITEMS
   const [weaponSelectors, setWeaponSelectors] = useState([]);
   const [armorSelectors, setArmorSelectors] = useState([]);
-
-  // const [selectedWeapon, setSelectedWeapon] = useState(null);
-  const [selectedArmor, setSelectedArmor] = useState(null);
 
   //* Character details
   const [name, setName] = useState("");
@@ -176,26 +172,20 @@ export default function CharCreation() {
 
   //! TEST
   const addWeapon = () => {
-    setWeaponSelectors([
-      ...weaponSelectors,
-      selectedWeapon,
-    ]);
+    setWeaponSelectors([...weaponSelectors, <WeaponSelector />]);
   };
 
   const addArmor = () => {
-    setArmorSelectors([
-      ...armorSelectors,
-      <ArmorSelector setSelectedArmor={setSelectedArmor} />,
-    ]);
+    setArmorSelectors([...armorSelectors, <ArmorSelector />]);
   };
 
   useEffect(() => {
     if (selectedArmor !== null) {
       setArmor(selectedArmor.aC);
     }
-  }, [addArmor]);
+  }, [selectedArmor]);
 
-  const saveChar = async() => {
+  const saveChar = async () => {
     characters.push({
       charName: name,
       race: race,
@@ -251,13 +241,12 @@ export default function CharCreation() {
         survival: survival,
       },
     });
-    console.log(characters);
 
     const json = JSON.stringify(characters);
-    localStorage.setItem('characters', json);
+    localStorage.setItem("characters", json);
+
     //? funcion que manda characters al server, pasando por el charService
     await charService.createChar(characters);
-
   };
 
   return (
