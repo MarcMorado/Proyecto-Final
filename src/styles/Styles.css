@@ -692,3 +692,12 @@ body{
   color: white;
 }
 
+/* Character List */
+
+.characters-btn{
+  border: 2px solid rgb(16, 88, 121);
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+}

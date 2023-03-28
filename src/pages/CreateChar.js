@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FiberContainer } from "../three/FiberContainer";
 
 //? JSON
@@ -9,13 +9,18 @@ import Clases from "../data/class.json";
 import WeaponSelector from "../components/WeaponSelector";
 import ArmorSelector from "../components/ArmorSelector";
 
+//?CONTEXT
+import { WeaponContext } from "../context/WeaponContext";
+
 //? DROPDOWN
 import { Dropdown } from "primereact/dropdown";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+
 //? SERVICES
 import * as charService from "../services/charService";
+
 //? CUSTOM CSS
 import "../styles/Styles.css";
 
@@ -25,6 +30,13 @@ const racesMenu = ["Elf", "Human", "Dragonborn"];
 const classMenu = ["Barbarian", "Rogue", "Sorcerer"];
 
 export default function CharCreation() {
+
+
+  //! TEST
+
+  const { selectedWeapon } = useContext(WeaponContext);
+
+
   //* Expand features
   const [expandedFeature, setExpandedFeature] = useState(null);
 
@@ -32,7 +44,7 @@ export default function CharCreation() {
   const [weaponSelectors, setWeaponSelectors] = useState([]);
   const [armorSelectors, setArmorSelectors] = useState([]);
 
-  const [selectedWeapon, setSelectedWeapon] = useState(null);
+  // const [selectedWeapon, setSelectedWeapon] = useState(null);
   const [selectedArmor, setSelectedArmor] = useState(null);
 
   //* Character details
@@ -166,7 +178,7 @@ export default function CharCreation() {
   const addWeapon = () => {
     setWeaponSelectors([
       ...weaponSelectors,
-      <WeaponSelector setSelectedWeapon={setSelectedWeapon} />,
+      selectedWeapon,
     ]);
   };
 
@@ -241,7 +253,9 @@ export default function CharCreation() {
     });
     console.log(characters);
 
-    //funcion que manda characters al server, pasando por el charService
+    const json = JSON.stringify(characters);
+    localStorage.setItem('characters', json);
+    //? funcion que manda characters al server, pasando por el charService
     await charService.createChar(characters);
 
   };

@@ -5,6 +5,7 @@ import "../styles/StyleLogSign.css";
 export default function SingUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -13,6 +14,7 @@ export default function SingUp() {
     setEmail("");
     localStorage.setItem("email", email);
     localStorage.setItem("password", password);
+    localStorage.setItem("username", username);
 
     if (email !== null && password !== null) {
       navigate("/login");
@@ -24,6 +26,15 @@ export default function SingUp() {
       <div className="login-component">
         <h2 className="login-title">SING UP</h2>
         <form className="login-form" onSubmit={handleSubmit}>
+        <label htmlFor="email">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            required
+            onChange={(e) => setUsername(e.target.value)}
+          ></input>
           <label htmlFor="email">Email</label>
           <input
             type="text"

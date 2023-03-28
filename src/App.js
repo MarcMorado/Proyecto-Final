@@ -6,9 +6,14 @@ import CreateChar from "./pages/CreateChar";
 import Login from "./pages/Login";
 import Signup from './pages/Signup';
 import CharacterList from "./pages/CharacterList";
+import Profile from "./pages/Profile";
+import Game from "./pages/Game";
+import CreateGame from "./pages/CreateGame";
 
 
 function App() {
+  
+  
   return (
     <div className="App">
       <Navbar />
@@ -19,6 +24,9 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/my-characters' element={<CharacterList />} />
+          <Route path='/my-profile' element={<Profile />} />     
+          <Route path='/game' element={<Game />} />     
+          <Route path='/find-game' element={<CreateGame />} />                    
         </Routes>
       </div>
     </div>

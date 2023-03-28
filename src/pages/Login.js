@@ -16,13 +16,10 @@ export default function Login() {
   const gotoSingUpPage = () => navigate("/signup");
 
   const handleSubmit = (e) => {
-    console.log("email check", emailCheck);
-    console.log("email act", email);
     e.preventDefault();
     setPassword("");
     setEmail("");
     if (email === emailCheck) {
-      console.log("holis");
       localStorage.setItem("email", email);
       errorEmail = false;
     }
@@ -30,12 +27,11 @@ export default function Login() {
       localStorage.setItem("password", password);
       errorPassword = false;
     }
-    console.log(errorEmail, errorPassword);
     if (errorEmail === false && errorPassword === false) {
+      localStorage.setItem("isLoggedIn", "true");
       navigate("/");
     }
   };
-
 
   return (
     <div className="login-container">
