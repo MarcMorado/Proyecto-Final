@@ -11,11 +11,22 @@ import Game from "./pages/Game";
 import CreateGame from "./pages/CreateGame";
 import { WeaponProvider } from "./context/WeaponContext";
 import { ArmorProvider } from "./context/ArmorContext";
+import io from "socket.io-client";
+import { useEffect } from "react";
+import { CreateGameProvider } from "./context/CreateGameContext";
 
 function App() {
+
+  const socket = io("http://localhost:3002");
+
+  useEffect(() => {
+    socket.emit("mensaje", "Hola desde el cliente");
+  }, []);
+
   return (
     <WeaponProvider>
       <ArmorProvider>
+        <CreateGameProvider>
         <div className="App">
           <Navbar />
           <div className="">
@@ -28,9 +39,11 @@ function App() {
               <Route path="/my-profile" element={<Profile />} />
               <Route path="/game" element={<Game />} />
               <Route path="/find-game" element={<CreateGame />} />
+              <Route path="/game/:id" element={<Game />} />
             </Routes>
           </div>
         </div>
+        </CreateGameProvider>
       </ArmorProvider>
     </WeaponProvider>
   );
