@@ -1,11 +1,111 @@
 /* Character Sheet */
-.sheet-modal{
-    position: absolute;
-    background: wheat;
-    width: 30%;
-    height: 1020px;
-    top: 70px;
-    left: 1330px;
-    z-index: 1;
+.sht-container{
+    width: auto;
+    height: 92vh;
+    position: relative;
+    background: rgb(13, 11, 8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 8px black;
+}
 
+.sht-modal{
+    position: absolute;
+    top: 70px;
+    left: 44%;
+    z-index: 1;
+}
+.sht-container img{
+    position: relative;
+    height: 100%;
+    width: auto;
+    z-index: 2;
+}
+
+.sht-stats{
+    position: absolute;
+    z-index: 3;
+    top:480px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 360px;
+}
+
+.sht-stat{
+   padding: 0px 6px 0px 6px ;
+}
+
+.container {
+    background-image: url('../assets/sheet/stat.png');
+    width: 115px;
+    height: 141px;
+    background-size: cover;
+    position: relative;
+    font-family: 'diabloL';
+  }
+  
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    text-align: center;
+  }
+
+  .text{
+    position: relative;
+    top: 30px;
+  }
+
+.stat-number{
+    position: relative;
+    top: 16px;
+    font-size: 50px;
+}
+
+.plus-minus{
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    top: 2px;
+    width: 90px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+    left: 2px;
+}
+.btn-minus{
+    position: relative;
+    left: 1px;
+}
+.btn-plus{
+    position: relative;
+    right: 1px;
+}
+.plus-minus button:hover{
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 3px white;
+}
+.plus-minus p{
+    text-align: center;
+    font-size: 25px;
+    position: relative;
+    bottom:3px;
+}
+@media screen and (max-width: 500px) {
+    .sht-modal{
+        left:0;
+    }
+    .sht-container{
+        width: 100%;
+        height: 100%;
+    }
+    .sht-container img{
+        width: 90%;
+    }
 }

@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'diablo';
+    src: local('Diablo-Heavy'),
+    url('./fonts/Diablo/Diablo-Heavy.ttf')format('truetype');
+}
+@font-face {
+    font-family: 'diabloL';
+    src: local('Diablo-Light'),
+    url('./fonts/Diablo/Diablo-Light.ttf')format('truetype');
+}
