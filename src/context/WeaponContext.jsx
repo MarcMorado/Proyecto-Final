@@ -29,7 +29,6 @@ export const WeaponProvider = (props) => {
     handleWeaponChange,
     deleteWeapon,
   };
-  console.log(data);
   return (
     <WeaponContext.Provider value={values}>
       {props.children}

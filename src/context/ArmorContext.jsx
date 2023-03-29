@@ -29,7 +29,6 @@ export const ArmorProvider = (props) => {
     handleArmorChange,
     deleteArmor,
   };
-  console.log(data);
   return (
     <ArmorContext.Provider value={values}>
       {props.children}

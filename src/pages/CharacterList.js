@@ -1,34 +1,37 @@
-import { useNavigate } from 'react-router-dom';
-import '../styles/Styles.css'
+import { useContext } from "react";
+import CharacterSheet from "../components/CharacterSheet";
+import { CharacterContext } from "../context/CharacterContext.jsx";
+import "../styles/Styles.css";
 
-export default function CharacterList () {   
-    const navigate = useNavigate();
-    //* Loading character list from local storage
-    const json = localStorage.getItem("characters");
-    const characters= JSON.parse(json);
-  
-    const toCharacterCreation = () =>navigate('/new-char');
+export default function CharacterList() {
+  const { characters, toCharacterCreation, openSheet } = useContext(CharacterContext);
+  const { selected } = useContext(CharacterContext);
 
-    return(
-        <div>
-            <p>Character List</p>
-            {characters &&
-                characters.map((characters) => {
-                    return(
-                    <button key={characters.name} className="characters-btn">
-                        <p>
-                            <strong>{characters.charName}</strong>
-                        </p>
-                        <p>
-                            {characters.class}
-                        </p>
-                        <p>Level: {characters.level}</p>
-                    </button>
-                )})
-            }
-            <button onClick={toCharacterCreation}>
-                Create a new Character
+  const handleSelectCharacter = (character) => {
+    selected(character);
+  };
+
+  return (
+    <div>
+      <p>Character List</p>
+      {characters &&
+        characters.map((character) => {
+          return (
+            <button
+              key={character.name}
+              onClick={() => handleSelectCharacter(character)}
+              className="characters-btn"
+            >
+              <p>
+                <strong>{character.charName}</strong>
+              </p>
+              <p>{character.class}</p>
+              <p>Level: {character.level}</p>
             </button>
-        </div>
-    )
+          );
+        })}
+            <CharacterSheet/>
+      <button onClick={toCharacterCreation}>Create a new Character</button>
+    </div>
+  );
 }

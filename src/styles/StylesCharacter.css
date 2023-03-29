@@ -1,0 +1,11 @@
+/* Character Sheet */
+.sheet-modal{
+    position: absolute;
+    background: wheat;
+    width: 30%;
+    height: 1020px;
+    top: 70px;
+    left: 1330px;
+    z-index: 1;
+
+}
