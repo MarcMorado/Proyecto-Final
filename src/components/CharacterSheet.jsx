@@ -1,11 +1,59 @@
 import { CharacterContext } from "../context/CharacterContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import imgBg from "../assets/sheet/asdddd26.png";
-import imgStat from "../assets/sheet/stat.png";
 import "../styles/StylesCharacter.css";
 
 export default function CharacterSheet() {
-  const { selectedCharacter, openSheet } = useContext(CharacterContext);
+  const { selectedCharacter, openSheet, setStatPlus, setStatMinus } =
+    useContext(CharacterContext);
+
+  const tabsData = [
+    {
+      label: "Stats",
+      content: (
+        <div className="sht-stats">
+          {Object.keys(selectedCharacter.stats).map((statName) => (
+            <div className="sht-stat" key={statName}>
+              <div className="container">
+                <div className="content">
+                  <p className="text">{statName}</p>
+                  <p className="stat-number">
+                    {selectedCharacter.stats[statName]}
+                  </p>
+                  <div className="plus-minus">
+                    <button
+                      className="btn-minus"
+                      onClick={() => setStatMinus(`${statName}`)}
+                    >
+                      -
+                    </button>
+                    <p>
+                      {Math.floor((selectedCharacter.stats[statName] - 10) / 2)}
+                    </p>
+                    <button
+                      className="btn-plus"
+                      onClick={() => setStatPlus(`${statName}`)}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    { label: "Skills", content: <div>Skills tab content</div> },
+    { label: "Items", content: <div>Items tab content</div> },
+    { label: "Others", content: <div>Others tab content</div> },
+  ];
+
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+
+  const handleTabClick = (index) => {
+    setActiveTabIndex(index);
+  };
 
   return (
     openSheet && (
@@ -14,88 +62,37 @@ export default function CharacterSheet() {
           <div className="sht-container">
             <img src={imgBg} alt="bg" />
           </div>
-          <div className="sht-stats">
-            <div className="sht-stat">
-              <div className="container">
-                <div className="content">
-                  <p className="text">str</p>
-                  <p className="stat-number">{selectedCharacter.stats.str}</p>
-                  <div className="plus-minus">
-                    <button className="btn-minus">-</button>
-                    <p>{Math.floor((selectedCharacter.stats.str - 10) / 2)}</p>
-                    <button className="btn-plus">+</button>
-                  </div>
-                </div>
-              </div>
+          <div className="main-info">
+            <div className="level-container">
+              <p className="level">{selectedCharacter.level}</p>
             </div>
-            <div className="sht-stat">
-              <div className="container">
-                <div className="content">
-                  <p className="text">dex</p>
-                  <p className="stat-number">{selectedCharacter.stats.dex}</p>
-                  <div className="plus-minus">
-                    <button className="btn-minus">-</button>
-                    <p>{Math.floor((selectedCharacter.stats.dex - 10) / 2)}</p>
-                    <button className="btn-plus">+</button>
-                  </div>
-                </div>
-              </div>
+            <div className="info-container">
+              <p className="prof">{selectedCharacter.proficiencyBonus}</p>
+              <p className="armor-main">{selectedCharacter.armorClass}</p>
+              <progress
+                className="progress progress-error border border-black border-opacity-50 w-56
+                h-3"
+                value="12"
+                max={selectedCharacter.hitPoints}
+              ></progress>
+              <p className="ini">{selectedCharacter.initiative}</p>
             </div>
+          </div>
 
-            <div className="sht-stat">
-              <div className="container">
-                <div className="content">
-                  <p className="text">cons</p>
-                  <p className="stat-number">{selectedCharacter.stats.const}</p>
-                  <div className="plus-minus">
-                    <button className="btn-minus">-</button>
-                    <p>{Math.floor((selectedCharacter.stats.const - 10) / 2)}</p>
-                    <button className="btn-plus">+</button>
-                  </div>
+          <div>
+            <div className="tabs">
+              {tabsData.map((tab, index) => (
+                <div
+                  key={index}
+                  className={`tab ${index === activeTabIndex ? "active" : ""}`}
+                  onClick={() => handleTabClick(index)}
+                >
+                  {tab.label}
                 </div>
-              </div>
+              ))}
             </div>
-
-            <div className="sht-stat">
-              <div className="container">
-                <div className="content">
-                  <p className="text">int</p>
-                  <p className="stat-number">{selectedCharacter.stats.int}</p>
-                  <div className="plus-minus">
-                    <button className="btn-minus">-</button>
-                    <p>{Math.floor((selectedCharacter.stats.int - 10) / 2)}</p>
-                    <button className="btn-plus">+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="sht-stat">
-              <div className="container">
-                <div className="content">
-                  <p className="text">wis</p>
-                  <p className="stat-number">{selectedCharacter.stats.wis}</p>
-                  <div className="plus-minus">
-                    <button className="btn-minus">-</button>
-                    <p>{Math.floor((selectedCharacter.stats.wis - 10) / 2)}</p>
-                    <button className="btn-plus">+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="sht-stat">
-              <div className="container">
-                <div className="content">
-                  <p className="text">char</p>
-                  <p className="stat-number">{selectedCharacter.stats.char}</p>
-                  <div className="plus-minus">
-                    <button className="btn-minus">-</button>
-                    <p>{Math.floor((selectedCharacter.stats.char - 10) / 2)}</p>
-                    <button className="btn-plus">+</button>
-                  </div>
-                </div>
-              </div>
+            <div className="tab-content">
+              {tabsData[activeTabIndex].content}
             </div>
           </div>
         </div>

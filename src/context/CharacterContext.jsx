@@ -20,12 +20,33 @@ export const CharacterProvider = (props) => {
         setOpenSheet(true);
     }
 
+    const setStatPlus = (statName) => {
+  setSelectedCharacter((prevCharacter) => ({
+    ...prevCharacter,
+    stats: {
+      ...prevCharacter.stats,
+      [statName]: prevCharacter.stats[statName] + 1,
+    },
+  }));
+};
+const setStatMinus = (statName) => {
+  setSelectedCharacter((prevCharacter) => ({
+    ...prevCharacter,
+    stats: {
+      ...prevCharacter.stats,
+      [statName]: prevCharacter.stats[statName] - 1,
+    },
+  }));
+};
+
   const values = {
     characters,
     selectedCharacter,
     openSheet,
     toCharacterCreation,
-    selected
+    selected,
+    setStatPlus,
+    setStatMinus
   };
   return (
     <CharacterContext.Provider value={values}>

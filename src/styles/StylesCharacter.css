@@ -97,6 +97,61 @@
     position: relative;
     bottom:3px;
 }
+
+
+/* MAIN STATS  */
+
+.main-info {
+    position: absolute;
+    top:0;
+    display: flex;
+    height: 48.5%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    font-family: 'diabloL';
+  }
+  
+  .level-container {
+    position: relative;
+    right: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 16%;
+    font-size: 30px;
+    font-family: 'diablo';
+  }
+  
+  .info-container {
+    position: relative;
+    top: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    font-size: 30px;
+  }
+
+  .armor-main{
+    font-size: 40px;
+  }
+
+
+
+.tabs{
+    position: absolute;
+    top:49%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 @media screen and (max-width: 500px) {
     .sht-modal{
         left:0;
@@ -107,5 +162,11 @@
     }
     .sht-container img{
         width: 90%;
+    }
+}
+
+@media screen and (max-height: 1100px){
+    .sht-stats{
+        top: 550px;
     }
 }

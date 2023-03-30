@@ -7,6 +7,17 @@ module.exports = {
   variants: {
       extend: {}
   },
-  plugins: [require('daisyui')]
+  plugins: [require('daisyui')],
+  daisyui:{
+    themes:[
+      {
+        dark: {
+					...require('daisyui/src/colors/themes')['[data-theme=dark]'],
+					primary: '#104060',
+					secondary: '#0a2440',
+				}
+      }
+    ]
+  }
 };
 
