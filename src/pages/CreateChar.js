@@ -29,6 +29,7 @@ import "../styles/Styles.css";
 const racesMenu = ["Elf", "Human", "Dragonborn"];
 const classMenu = ["Barbarian", "Rogue", "Sorcerer"];
 
+const characters =[];
 
 //? FUNCTION
 export default function CharCreation() {
@@ -187,6 +188,7 @@ export default function CharCreation() {
   }, [selectedArmor]);
 
   const saveChar = async () => {
+    
     const character = {
       charName: name,
       race: race,
@@ -242,7 +244,10 @@ export default function CharCreation() {
         survival: survival,
       },
     };
-
+    characters.push(character);
+    const json= JSON.stringify(characters);
+    localStorage.setItem("characters", json);
+    console.log(characters);
     //? funcion que manda characters al server, pasando por el charService
     charService.createChar(character);
   };

@@ -3,7 +3,6 @@
     width: auto;
     height: 92vh;
     position: relative;
-    background: rgb(13, 11, 8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,6 +10,9 @@
 }
 
 .sht-modal{
+    background-image: url('../assets/sheet/bg_paper.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     position: absolute;
     top: 70px;
     left: 44%;
@@ -26,7 +28,7 @@
 .sht-stats{
     position: absolute;
     z-index: 3;
-    top:480px;
+    top:55%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -115,7 +117,6 @@
   
   .level-container {
     position: relative;
-    right: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,7 +125,19 @@
     font-size: 30px;
     font-family: 'diablo';
   }
-  
+  .level-container div{
+    background-image: url('../assets/sheet/lvl.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 58px;
+    height: 68px;
+}
+
+.level-container p{
+    position: relative;
+    top: 14%;
+    text-align: center;
+}
   .info-container {
     position: relative;
     top: 70%;
@@ -165,8 +178,3 @@
     }
 }
 
-@media screen and (max-height: 1100px){
-    .sht-stats{
-        top: 550px;
-    }
-}

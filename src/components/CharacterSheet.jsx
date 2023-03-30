@@ -1,6 +1,6 @@
 import { CharacterContext } from "../context/CharacterContext";
 import { useContext, useState } from "react";
-import imgBg from "../assets/sheet/asdddd26.png";
+import imgBg from "../assets/sheet/bgSht.png";
 import "../styles/StylesCharacter.css";
 
 export default function CharacterSheet() {
@@ -10,9 +10,9 @@ export default function CharacterSheet() {
   const tabsData = [
     {
       label: "Stats",
-      content: (
+      content: ( 
         <div className="sht-stats">
-          {Object.keys(selectedCharacter.stats).map((statName) => (
+          {selectedCharacter && Object.keys(selectedCharacter.stats).map((statName) => (
             <div className="sht-stat" key={statName}>
               <div className="container">
                 <div className="content">
@@ -64,7 +64,9 @@ export default function CharacterSheet() {
           </div>
           <div className="main-info">
             <div className="level-container">
+            <div>
               <p className="level">{selectedCharacter.level}</p>
+              </div>
             </div>
             <div className="info-container">
               <p className="prof">{selectedCharacter.proficiencyBonus}</p>
@@ -72,7 +74,7 @@ export default function CharacterSheet() {
               <progress
                 className="progress progress-error border border-black border-opacity-50 w-56
                 h-3"
-                value="12"
+                value={selectedCharacter.hitPoints}
                 max={selectedCharacter.hitPoints}
               ></progress>
               <p className="ini">{selectedCharacter.initiative}</p>

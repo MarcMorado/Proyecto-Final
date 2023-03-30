@@ -4,7 +4,7 @@ import { CharacterContext } from "../context/CharacterContext.jsx";
 import "../styles/Styles.css";
 
 export default function CharacterList() {
-  const { characters, toCharacterCreation, openSheet } = useContext(CharacterContext);
+  const { characters, toCharacterCreation } = useContext(CharacterContext);
   const { selected } = useContext(CharacterContext);
 
   const handleSelectCharacter = (character) => {
@@ -14,7 +14,7 @@ export default function CharacterList() {
   return (
     <div>
       <p>Character List</p>
-      {characters &&
+      {Array.isArray(characters) && 
         characters.map((character) => {
           return (
             <button
