@@ -8,7 +8,7 @@ export const GameProvider = (props) => {
   const [error, setError] = useState("");
 
     const setDice = (e) =>{
-        setDiceString(e);
+        setDiceString(e.target.value);
     }
 
   function rollDice() {

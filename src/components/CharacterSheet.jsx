@@ -76,67 +76,73 @@ export default function CharacterSheet() {
       label: "ITEMS",
       content: (
         <div className="i-container">
-          <div className="item-cont">
-          <div className="weapon-container">
-            <div>
-              <p>
-                <strong>WEAPON:</strong>
-              </p>
-            </div>
-            <div>
-              <div className="w-container">
-                <div className="w-content">
-                  <p className="w-text">
-                    {selectedCharacter.equipment.weapon.name}
+          {selectedCharacter && (
+            <div className="item-cont">
+              <div className="weapon-container">
+                <div>
+                  <p>
+                    <strong>WEAPON:</strong>
                   </p>
-                  <p className="w-text">
-                    {selectedCharacter.equipment.weapon.damage} {selectedCharacter.equipment.weapon.damageType}
+                </div>
+                <div>
+                  <div className="w-container">
+                    <div className="w-content">
+                      <p className="w-text">
+                        {selectedCharacter.equipment.weapon.name}
+                      </p>
+                      <p className="w-text">
+                        {selectedCharacter.equipment.weapon.damage}{" "}
+                        {selectedCharacter.equipment.weapon.damageType}
+                      </p>
+                      <p className="w-text">
+                        {selectedCharacter.equipment.weapon.weight}
+                      </p>
+                      <p className="w-text">
+                        {selectedCharacter.equipment.weapon.properties}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="armor-container">
+                <div>
+                  <p>
+                    <strong>ARMOR:</strong>
                   </p>
-                  <p className="w-text">
-                    {selectedCharacter.equipment.weapon.weight}
-                  </p>
-                  <p className="w-text">
-                    {selectedCharacter.equipment.weapon.properties}
-                  </p>
+                </div>
+                <div>
+                  <div className="a-container">
+                    <div className="a-content">
+                      <p className="a-text">
+                        <strong>Name: </strong>{" "}
+                        {selectedCharacter.equipment.armor.name}
+                      </p>
+                      <p className="a-text">
+                        <strong>ARMOR CLASS: </strong>
+                        {selectedCharacter.equipment.armor.aC}
+                      </p>
+                      <p className="a-text">
+                        <strong>weight: </strong>{" "}
+                        {selectedCharacter.equipment.armor.Weight}
+                      </p>
+                      <p >
+                        <strong>description: </strong>
+                        <br />
+                      </p>
+                      <div className="a-text-desc">{selectedCharacter.equipment.armor.description}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="armor-container">
-            <div>
-              <p>
-                <strong>ARMOR:</strong>
-              </p>
-            </div>
-            <div>
-              <div className="a-container">
-                <div className="a-content">
-                  <p className="a-text">
-                    <strong>Name: </strong>{" "}
-                    {selectedCharacter.equipment.armor.name}
-                  </p>
-                  <p className="a-text">
-                    <strong>ARMOR CLASS: </strong>
-                    {selectedCharacter.equipment.armor.aC}
-                  </p>
-                  <p className="a-text">
-                    <strong>weight: </strong>{" "}
-                    {selectedCharacter.equipment.armor.Weight}
-                  </p>
-                  <p className="a-text-desc">
-                    <strong>description: </strong>
-                    <br />
-                    <div>{selectedCharacter.equipment.armor.description}</div>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
+          )}
         </div>
       ),
     },
-    { label: "OTHERS", content: <div>Others tab content</div> },
+    { label: "OTHERS", content: 
+    <div className="others-container">
+      <p>WIP!</p>
+    </div> },
   ];
 
   const [activeTabIndex, setActiveTabIndex] = useState(0);

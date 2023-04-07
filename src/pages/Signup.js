@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/StyleLogSign.css";
 
@@ -8,14 +9,19 @@ export default function SingUp() {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setPassword("");
     setEmail("");
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-    localStorage.setItem("username", username);
-
+    try {
+      const response = await axios.post('http://localhost:3001/signup', {
+        username,
+        email,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
     if (email !== null && password !== null) {
       navigate("/login");
     }
@@ -26,7 +32,7 @@ export default function SingUp() {
       <div className="login-component">
         <h2 className="login-title">SING UP</h2>
         <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email">Username</label>
+          <label htmlFor="email">Username</label>
           <input
             type="text"
             id="username"
@@ -59,3 +65,4 @@ export default function SingUp() {
     </div>
   );
 }
+

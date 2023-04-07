@@ -1,36 +1,36 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/StyleLogSign.css";
 
 export default function Login() {
-  const emailCheck = localStorage.getItem("email");
-  const passwordCheck = localStorage.getItem("password");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  let errorEmail = true;
-  let errorPassword = true;
+ 
 
   const gotoSingUpPage = () => navigate("/signup");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setPassword("");
     setEmail("");
-    if (email === emailCheck) {
-      localStorage.setItem("email", email);
-      errorEmail = false;
-    }
-    if (password === passwordCheck) {
-      localStorage.setItem("password", password);
-      errorPassword = false;
-    }
-    if (errorEmail === false && errorPassword === false) {
-      localStorage.setItem("isLoggedIn", "true");
-      navigate("/");
-    }
+    
+      axios.post('http://localhost:3001/login', {
+      email,
+      password,
+      })
+      .then((response) => {
+        console.log("asdadsasdasd");
+        console.log(response);
+        localStorage.setItem("isLoggedIn", true);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

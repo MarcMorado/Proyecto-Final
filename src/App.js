@@ -18,11 +18,8 @@ import { CharacterProvider } from "./context/CharacterContext";
 import { GameProvider } from "./context/GameContext";
 
 function App() {
-  const socket = io("http://localhost:3002");
 
-  useEffect(() => {
-    socket.emit("mensaje", "Hola desde el cliente");
-  }, []);
+  
 
   return (
     <WeaponProvider>
