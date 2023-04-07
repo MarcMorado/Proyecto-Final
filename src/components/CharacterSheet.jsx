@@ -2,6 +2,7 @@ import { CharacterContext } from "../context/CharacterContext";
 import { useContext, useState } from "react";
 import imgBg from "../assets/sheet/bgSht.png";
 import "../styles/StylesCharacter.css";
+import { FiberContainer } from "../three/FiberContainer";
 
 export default function CharacterSheet() {
   const { selectedCharacter, openSheet, setStatPlus, setStatMinus } =
@@ -9,44 +10,133 @@ export default function CharacterSheet() {
 
   const tabsData = [
     {
-      label: "Stats",
-      content: ( 
+      label: "STATS",
+      content: (
         <div className="sht-stats">
-          {selectedCharacter && Object.keys(selectedCharacter.stats).map((statName) => (
-            <div className="sht-stat" key={statName}>
-              <div className="container">
-                <div className="content">
-                  <p className="text">{statName}</p>
-                  <p className="stat-number">
-                    {selectedCharacter.stats[statName]}
-                  </p>
-                  <div className="plus-minus">
-                    <button
-                      className="btn-minus"
-                      onClick={() => setStatMinus(`${statName}`)}
-                    >
-                      -
-                    </button>
-                    <p>
-                      {Math.floor((selectedCharacter.stats[statName] - 10) / 2)}
+          {selectedCharacter &&
+            Object.keys(selectedCharacter.stats).map((statName) => (
+              <div className="sht-stat" key={statName}>
+                <div className="container">
+                  <div className="content">
+                    <p className="text">{statName}</p>
+                    <p className="stat-number">
+                      {selectedCharacter.stats[statName]}
                     </p>
-                    <button
-                      className="btn-plus"
-                      onClick={() => setStatPlus(`${statName}`)}
-                    >
-                      +
-                    </button>
+                    <div className="plus-minus">
+                      <button
+                        className="btn-minus"
+                        onClick={() => setStatMinus(`${statName}`)}
+                      >
+                        -
+                      </button>
+                      <p>
+                        {Math.floor(
+                          (selectedCharacter.stats[statName] - 10) / 2
+                        )}
+                      </p>
+                      <button
+                        className="btn-plus"
+                        onClick={() => setStatPlus(`${statName}`)}
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       ),
     },
-    { label: "Skills", content: <div>Skills tab content</div> },
-    { label: "Items", content: <div>Items tab content</div> },
-    { label: "Others", content: <div>Others tab content</div> },
+    {
+      label: "SKILLS",
+      content: (
+        <div className="sht-s">
+          {selectedCharacter &&
+            Object.keys(selectedCharacter.skills).map((skillName) => (
+              <div className="sht-skill" key={skillName}>
+                <div className="s-container">
+                  <div className="s-content">
+                    <input
+                      type="checkbox"
+                      className="checkbox checkbox-xs"
+                    ></input>
+                    <p className="s-text">{skillName}</p>
+                    <p className="s-number">
+                      {selectedCharacter.skills[skillName]}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+      ),
+    },
+    {
+      label: "ITEMS",
+      content: (
+        <div className="i-container">
+          <div className="item-cont">
+          <div className="weapon-container">
+            <div>
+              <p>
+                <strong>WEAPON:</strong>
+              </p>
+            </div>
+            <div>
+              <div className="w-container">
+                <div className="w-content">
+                  <p className="w-text">
+                    {selectedCharacter.equipment.weapon.name}
+                  </p>
+                  <p className="w-text">
+                    {selectedCharacter.equipment.weapon.damage} {selectedCharacter.equipment.weapon.damageType}
+                  </p>
+                  <p className="w-text">
+                    {selectedCharacter.equipment.weapon.weight}
+                  </p>
+                  <p className="w-text">
+                    {selectedCharacter.equipment.weapon.properties}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="armor-container">
+            <div>
+              <p>
+                <strong>ARMOR:</strong>
+              </p>
+            </div>
+            <div>
+              <div className="a-container">
+                <div className="a-content">
+                  <p className="a-text">
+                    <strong>Name: </strong>{" "}
+                    {selectedCharacter.equipment.armor.name}
+                  </p>
+                  <p className="a-text">
+                    <strong>ARMOR CLASS: </strong>
+                    {selectedCharacter.equipment.armor.aC}
+                  </p>
+                  <p className="a-text">
+                    <strong>weight: </strong>{" "}
+                    {selectedCharacter.equipment.armor.Weight}
+                  </p>
+                  <p className="a-text-desc">
+                    <strong>description: </strong>
+                    <br />
+                    <div>{selectedCharacter.equipment.armor.description}</div>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      ),
+    },
+    { label: "OTHERS", content: <div>Others tab content</div> },
   ];
 
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -58,14 +148,17 @@ export default function CharacterSheet() {
   return (
     openSheet && (
       <div className="bg-sht">
+        <div className="model-container">
+          <FiberContainer />
+        </div>
         <div className="sht-modal">
           <div className="sht-container">
             <img src={imgBg} alt="bg" />
           </div>
           <div className="main-info">
             <div className="level-container">
-            <div>
-              <p className="level">{selectedCharacter.level}</p>
+              <div>
+                <p className="level">{selectedCharacter.level}</p>
               </div>
             </div>
             <div className="info-container">

@@ -19,7 +19,7 @@ export default function Navbar() {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li className="px-6">
-            <button className="btn btn-ghost normal-case text-lg" onClick={toCharacterList}>Characters</button>
+            <button className="btn btn-ghost normal-case text-lg" onClick={toCharacterList}>CharacTers</button>
           </li>
           {!isLoggedIn ? (
           <li>

@@ -16,7 +16,6 @@
     position: absolute;
     top: 70px;
     left: 44%;
-    z-index: 1;
 }
 .sht-container img{
     position: relative;
@@ -38,6 +37,7 @@
 }
 
 .sht-stat{
+    text-transform: uppercase;
    padding: 0px 6px 0px 6px ;
 }
 
@@ -164,6 +164,89 @@
     align-items: center;
     width: 100%;
 }
+
+/* SKILLS */
+.sht-s{
+    position: absolute;
+    z-index: 3;
+    top: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 360px;
+    overflow-y: scroll;
+}
+.s-container {
+    border: 2px solid rgb(255, 255, 255, 0.66);
+    border-radius: 5px;
+    width: 300px;
+    height: 40px;
+    background-size: cover;
+    position: relative;
+    font-family: 'diabloL';
+    text-transform: uppercase;
+  }
+  
+  .s-content {
+    display: grid; 
+    padding-top: 7px;
+    grid-template-columns: 1fr 2fr 1fr; 
+    grid-column-gap: 10px; 
+    align-items: center;
+    justify-items: center; 
+  }
+  
+  .s-text {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+/* 3D MODEL */
+.model-container{
+    position: absolute;
+    left:48.5%;
+    bottom: 47%;
+    width: 250px;
+    height: 40%;
+    z-index: 11;
+}
+
+
+/* ITEMS */
+.i-container{
+    position: absolute;
+    z-index: 3;
+    top: 55%;
+    width: 100%;
+    height: 385px;
+    overflow-y: scroll;
+}
+
+.item-cont{
+    padding: 20px;
+    
+}
+
+.weapon-container{
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.66);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.264);
+}
+.armor-container{
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.66);
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.264);
+}
+
+.a-text-desc div{
+    font-size: 14px;
+}
+
+
 
 @media screen and (max-width: 500px) {
     .sht-modal{

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CreateGameContext } from "../context/CreateGameContext";
+import '../styles/Styles.css'
 
 export default function CreateGame() {
   const { generatedCode } = useContext(CreateGameContext);
@@ -13,12 +14,13 @@ export default function CreateGame() {
   const { roomCodeInput } = useContext(CreateGameContext);
 
   return (
-    <div>
-      <button className="btn btn-ghost btn-outline" onClick={handleJoinGame}>
+    <div className="select-menu">
+      <div className="join-game">
+      <button className="join-game-b btn btn-ghost btn-outline" onClick={handleJoinGame}>
         Join Game as Player
       </button>
       {playerJoin && (
-        <div>
+        <div className="join-ok">
           <input
             type="text"
             name="code"
@@ -30,9 +32,13 @@ export default function CreateGame() {
           <button onClick={handlePlayerJoinGame}>Join game</button>
         </div>
       )}
+      </div>
+      <div className="create-game">
       <button className="btn btn-ghost btn-outline" onClick={handleCreateGame}>
         Create Game as Master
       </button>
+      </div>
+      
       {roomCreated && (
         <div>
           <p>{generatedCode}</p>

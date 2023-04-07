@@ -31,7 +31,7 @@ export default function CharacterList() {
           );
         })}
             <CharacterSheet/>
-      <button onClick={toCharacterCreation}>Create a new Character</button>
+      <button onClick={toCharacterCreation}>CreaTe a new CharacTer</button>
     </div>
   );
 }

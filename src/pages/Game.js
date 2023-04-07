@@ -12,11 +12,14 @@ import ArmorSelector from "../components/ArmorSelector";
 //?CONTEXT
 import { WeaponContext } from "../context/WeaponContext";
 import { ArmorContext } from "../context/ArmorContext";
+import { GameContext } from "../context/GameContext";
 
 //? CUSTOM CSS
 import "../styles/StylesGame.css";
 
 export default function Game() {
+  const { result, diceString, setDice, rollDice, error } =
+    useContext(GameContext);
   const { id } = useParams();
   return (
     <div>
@@ -26,7 +29,20 @@ export default function Game() {
         </h1>
       </div>
       <div>
-
+        <div className="inp-dice">
+          <input
+            type="text"
+            name="dice"
+            value={diceString}
+            required
+            onChange={setDice}
+            placeholder="dice"
+          ></input>
+          <button onClick={rollDice}>Roll</button>
+          <p>{result}</p>
+          <p>{error}</p>
+        </div>
+        <div></div>
       </div>
     </div>
   );

@@ -9,38 +9,38 @@ export function CharPresention() {
   
   //! Interactivity
 
-  let mouseX = 0;
-  let mouseY = 0;
+  // let mouseX = 0;
+  // let mouseY = 0;
 
-  let targetX = 0;
-  let targetY = 0;
+  // let targetX = 0;
+  // let targetY = 0;
 
-  const windowX = window.innerWidth / 2;
-  const windowY = window.innerHeight / 2;
+  // const windowX = window.innerWidth / 2;
+  // const windowY = window.innerHeight / 2;
 
-  const onDocumentMouseMove = (event) => {
-    mouseX = event.clientX - windowX;
-    mouseY = event.clientY - windowY;
-  };
+  // const onDocumentMouseMove = (event) => {
+  //   mouseX = event.clientX - windowX;
+  //   mouseY = event.clientY - windowY;
+  // };
 
-  document.addEventListener("mousemove", onDocumentMouseMove);
+  // document.addEventListener("mousemove", onDocumentMouseMove);
 
 
-  useFrame(() => {
-    const { current: group } = refChar;
+  // useFrame(() => {
+  //   const { current: group } = refChar;
 
-    targetX = mouseX * .001;
-    targetY = mouseY * .001;
+  //   targetX = mouseX * .001;
+  //   targetY = mouseY * .001;
 
-    group.rotation.y += .5 * (targetX -group.rotation.y)
-    group.rotation.x += .05 * (targetY -group.rotation.x)
-    group.rotation.z += -.05 * (targetY -group.rotation.x)
+  //   group.rotation.y += .5 * (targetX -group.rotation.y)
+  //   group.rotation.x += .05 * (targetY -group.rotation.x)
+  //   group.rotation.z += -.05 * (targetY -group.rotation.x)
 
     
-    if (group) {
-      group.rotation.y += 0.005;
-    }
-  });
+  //   if (group) {
+  //     group.rotation.y += 0.005;
+  //   }
+  // });
 
   //* GUI
   // const { current: group } = refChar;
