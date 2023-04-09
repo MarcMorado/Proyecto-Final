@@ -4,7 +4,7 @@ import { Vector3 } from "three";
 import { Shader } from "./materials/Shader";
 import { CharacterCreateContext } from "../context/CharacterCreateContext";
 
-export const KenkuBers = forwardRef((props, ref) => {
+export const Character = forwardRef((props, ref) => {
   const { modelo } = useContext(CharacterCreateContext);
 
   const { nodes } = useGLTF(`/${modelo}.glb`);
@@ -37,3 +37,12 @@ export const KenkuBers = forwardRef((props, ref) => {
     </group>
   );
 });
+
+useGLTF.preload("/archer.glb");
+useGLTF.preload("/barbarian.glb");
+useGLTF.preload("/dragon.glb");
+useGLTF.preload("/berserker.glb");
+useGLTF.preload("/warrior.glb");
+useGLTF.preload("/marauder.glb");
+useGLTF.preload("/wizard.glb");
+useGLTF.preload("/warlock.glb");

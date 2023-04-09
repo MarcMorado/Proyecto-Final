@@ -1,5 +1,4 @@
-import { KenkuWarrior } from "../three/kenkuWarrior";
-import { KenkuBers } from "../three/kenkuBerserk";
+import { Character } from "../three/Character";
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Color } from "three";
@@ -77,7 +76,7 @@ export function CharPresention() {
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}
       />
-      <KenkuBers
+      <Character
         ref={refChar}
         position={[0, 0, 0]}
         scale={[0.08, 0.08, 0.08]}
