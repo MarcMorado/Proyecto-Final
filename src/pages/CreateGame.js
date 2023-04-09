@@ -3,14 +3,11 @@ import { CreateGameContext } from "../context/CreateGameContext";
 import '../styles/Styles.css'
 
 export default function CreateGame() {
-  const { generatedCode } = useContext(CreateGameContext);
-  const { roomCreated } = useContext(CreateGameContext);
   const { playerJoin } = useContext(CreateGameContext);
   const { roomCode } = useContext(CreateGameContext);
   const { handleCreateGame } = useContext(CreateGameContext);
   const { handleJoinGame } = useContext(CreateGameContext);
   const { handlePlayerJoinGame } = useContext(CreateGameContext);
-  const { handleMasterJoinGame } = useContext(CreateGameContext);
   const { roomCodeInput } = useContext(CreateGameContext);
 
   return (
@@ -38,13 +35,6 @@ export default function CreateGame() {
         Create Game as Master
       </button>
       </div>
-      
-      {roomCreated && (
-        <div>
-          <p>{generatedCode}</p>
-          <button onClick={handleMasterJoinGame}>Join Game</button>
-        </div>
-      )}
     </div>
   );
 }

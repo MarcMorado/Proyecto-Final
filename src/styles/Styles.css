@@ -37,6 +37,16 @@ body{
     text-transform: uppercase;
 }
 
+
+
+.model-selector{
+  position: absolute;
+  top: 0;
+  background-color: aliceblue;
+  z-index: 20;
+}
+
+
 .home-body{
   background-color: black;
   width: 100vw;

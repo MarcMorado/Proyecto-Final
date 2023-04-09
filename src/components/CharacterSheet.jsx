@@ -104,7 +104,7 @@ export default function CharacterSheet() {
                   </div>
                 </div>
               </div>
-              <div className="armor-container">
+              <div className="armor-cont">
                 <div>
                   <p>
                     <strong>ARMOR:</strong>

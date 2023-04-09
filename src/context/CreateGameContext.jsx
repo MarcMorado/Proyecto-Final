@@ -7,7 +7,6 @@ export const CreateGameContext = createContext();
 export const CreateGameProvider = (props) => {
     const navigate = useNavigate();
     const [generatedCode, setGeneratedCode] = useState("");
-    const [roomCreated, setRoomCreated] = useState(false);
     const [playerJoin, setPlayerJoin] = useState(false);
     const [roomCode, setRoomCode] = useState("")
   
@@ -15,14 +14,15 @@ export const CreateGameProvider = (props) => {
       const newRoomCode = Math.random().toString(36).substr(2, 5); 
       setGeneratedCode(newRoomCode);
       await axios.post("http://localhost:3001/createRoom", { roomCode: newRoomCode }); 
-      setRoomCreated(true);
+      navigate(`/game/${generatedCode}`);
     };
   
     const handleJoinGame = () => {
       setPlayerJoin(true);
     };
     const handlePlayerJoinGame = () => {
-      navigate(`/game/${generatedCode}`); 
+      let roomCodeLower = roomCode.toLowerCase();
+      navigate(`/game/${roomCodeLower}`); 
     };
   
     const handleMasterJoinGame = () => {
@@ -30,11 +30,10 @@ export const CreateGameProvider = (props) => {
     };
 
     const roomCodeInput = (e) => {
-        setRoomCode(e.target.value)
+      setRoomCode(e.target.value)
     }
   const values = {
     generatedCode,
-    roomCreated,
     playerJoin,
     roomCode,
     handleCreateGame,

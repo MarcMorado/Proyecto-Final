@@ -16,33 +16,36 @@ import { useEffect } from "react";
 import { CreateGameProvider } from "./context/CreateGameContext";
 import { CharacterProvider } from "./context/CharacterContext";
 import { GameProvider } from "./context/GameContext";
+import { CharacterCreateProvider } from "./context/CharacterCreateContext";
 
 function App() {
-
-  
-
   return (
     <WeaponProvider>
       <ArmorProvider>
         <CreateGameProvider>
           <GameProvider>
             <CharacterProvider>
-              <div className="App">
-                <Navbar />
-                <div className="">
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/new-char" element={<CreateChar />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/my-characters" element={<CharacterList />} />
-                    <Route path="/my-profile" element={<Profile />} />
-                    <Route path="/game" element={<Game />} />
-                    <Route path="/find-game" element={<CreateGame />} />
-                    <Route path="/game/:id" element={<Game />} />
-                  </Routes>
+              <CharacterCreateProvider>
+                <div className="App">
+                  <Navbar />
+                  <div className="">
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/new-char" element={<CreateChar />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/signup" element={<Signup />} />
+                      <Route
+                        path="/my-characters"
+                        element={<CharacterList />}
+                      />
+                      <Route path="/my-profile" element={<Profile />} />
+                      <Route path="/game" element={<Game />} />
+                      <Route path="/find-game" element={<CreateGame />} />
+                      <Route path="/game/:id" element={<Game />} />
+                    </Routes>
+                  </div>
                 </div>
-              </div>
+              </CharacterCreateProvider>
             </CharacterProvider>
           </GameProvider>
         </CreateGameProvider>

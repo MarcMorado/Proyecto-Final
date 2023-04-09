@@ -12,6 +12,7 @@ import ArmorSelector from "../components/ArmorSelector";
 //?CONTEXT
 import { WeaponContext } from "../context/WeaponContext";
 import { ArmorContext } from "../context/ArmorContext";
+import { CharacterCreateContext } from "../context/CharacterCreateContext";
 
 //? DROPDOWN
 import { Dropdown } from "primereact/dropdown";
@@ -33,8 +34,11 @@ const characters =[];
 
 //? FUNCTION
 export default function CharCreation() {
-  
-  //* WEAPON CONTEXT
+  //*CHARACTER CONTEXT
+  const { minus, plus} = useContext(CharacterCreateContext);
+
+
+  //* ITEMS CONTEXT
 
   const { selectedWeapon } = useContext(WeaponContext);
   const { selectedArmor } = useContext(ArmorContext);
@@ -278,6 +282,14 @@ export default function CharCreation() {
               </svg>
               <div className="char-model">
                 <FiberContainer />
+              </div>
+              <div className="model-selector">
+                  <button onClick={minus}>
+                    atras
+                  </button>
+                  <button onClick={plus}>
+                    delante
+                  </button>
               </div>
             </div>
           </div>
