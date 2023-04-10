@@ -13,6 +13,10 @@ export const CharacterCreateProvider = (props) => {
   const plus = () => {
     if (modelCount < 7) setModelCount(modelCount + 1);
   };
+  const modelSetter = (e) => {
+    setModelCount(e.model)
+    console.log('esto es la e', e.model);
+  }
 
   useEffect(() => {
     switch (modelCount) {
@@ -38,13 +42,15 @@ export const CharacterCreateProvider = (props) => {
         setModel("wizard");
         break;
     }
-  }, [modelCount]);
+  }, [modelCount, modelSetter]);
 
   const values = {
     modelCount,
     modelo,
+    modelCount,
     minus,
     plus,
+    modelSetter
   };
 
   return (

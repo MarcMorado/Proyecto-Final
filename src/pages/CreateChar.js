@@ -35,7 +35,7 @@ const characters =[];
 //? FUNCTION
 export default function CharCreation() {
   //*CHARACTER CONTEXT
-  const { minus, plus} = useContext(CharacterCreateContext);
+  const { minus, plus, modelCount } = useContext(CharacterCreateContext);
 
 
   //* ITEMS CONTEXT
@@ -194,6 +194,7 @@ export default function CharCreation() {
   const saveChar = async () => {
     
     const character = {
+      model: modelCount,
       charName: name,
       race: race,
       class: clase,

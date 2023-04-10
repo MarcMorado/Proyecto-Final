@@ -4,12 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "../styles/StyleLogSign.css";
 
 export default function Login() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
- 
 
   const gotoSingUpPage = () => navigate("/signup");
 
@@ -17,10 +14,11 @@ export default function Login() {
     e.preventDefault();
     setPassword("");
     setEmail("");
-    
-      axios.post('http://localhost:3001/login', {
-      email,
-      password,
+
+    axios
+      .post("http://localhost:3001/login", {
+        email,
+        password,
       })
       .then((response) => {
         console.log("asdadsasdasd");
@@ -56,7 +54,9 @@ export default function Login() {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <button className="login-Btn">SIGN IN</button>
+          <div className="btn-log">
+            <button className="login-Btn">SIGN IN</button>
+          </div>
           <p>
             Don't have an account?{" "}
             <span className="link" onClick={gotoSingUpPage}>

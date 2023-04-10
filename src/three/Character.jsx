@@ -1,6 +1,6 @@
 import { forwardRef, useMemo, useContext } from "react";
 import { useGLTF } from "@react-three/drei";
-import { Vector3 } from "three";
+import { Vector3, TextureLoader } from "three";
 import { Shader } from "./materials/Shader";
 import { CharacterCreateContext } from "../context/CharacterCreateContext";
 
@@ -8,6 +8,9 @@ export const Character = forwardRef((props, ref) => {
   const { modelo } = useContext(CharacterCreateContext);
 
   const { nodes } = useGLTF(`/${modelo}.glb`);
+
+  const textureLoader = new TextureLoader();
+  const texture = textureLoader.load("/warrior.png");
 
   const uniforms = useMemo(
     () => ({
@@ -29,10 +32,14 @@ export const Character = forwardRef((props, ref) => {
         receiveShadow
         geometry={nodes[modelo].geometry}
         position={[0.33, -0.05, -0.68]}
-        rotation={[1.6,0,0]}
+        rotation={[1.6, 0, 0]}
         scale={[0.3, 0.3, 0.3]}
       >
-        <shaderMaterial attach="material" {...Shader} uniforms={uniforms} />
+        {modelo === "warrior" ? (
+          <meshStandardMaterial map={texture} />
+        ) : (
+          <shaderMaterial attach="material" {...Shader} uniforms={uniforms} />
+        )}
       </mesh>
     </group>
   );

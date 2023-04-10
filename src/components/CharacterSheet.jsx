@@ -5,7 +5,7 @@ import "../styles/StylesCharacter.css";
 import { FiberContainer } from "../three/FiberContainer";
 
 export default function CharacterSheet() {
-  const { selectedCharacter, openSheet, setStatPlus, setStatMinus } =
+  const { selectedCharacter, openSheet, setStatPlus, setStatMinus, closeSheet } =
     useContext(CharacterContext);
 
   const tabsData = [
@@ -154,6 +154,11 @@ export default function CharacterSheet() {
   return (
     openSheet && (
       <div className="bg-sht">
+        <div className="close-btn">
+          <button onClick={closeSheet}>
+            x
+          </button>
+        </div>
         <div className="model-container">
           <FiberContainer />
         </div>
@@ -197,6 +202,7 @@ export default function CharacterSheet() {
             </div>
           </div>
         </div>
+        
       </div>
     )
   );

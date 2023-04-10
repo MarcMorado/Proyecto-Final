@@ -14,7 +14,7 @@ export default function SingUp() {
     setPassword("");
     setEmail("");
     try {
-      const response = await axios.post('http://localhost:3001/signup', {
+      const response = await axios.post("http://localhost:3001/signup", {
         username,
         email,
         password,
@@ -59,10 +59,11 @@ export default function SingUp() {
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <button className="login-Btn">SIGN UP</button>
+          <div className="btn-log">
+            <button className="login-Btn">SIGN UP</button>
+          </div>
         </form>
       </div>
     </div>
   );
 }
-

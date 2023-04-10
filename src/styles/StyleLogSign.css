@@ -1,9 +1,17 @@
 .login-container{
+    background-image: url('../assets/bg_logSign.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: auto;
     height: 100vh;
+    max-height: 950px;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-family: 'diabloL';
 }
 .login-title{
     display: flex;
@@ -11,16 +19,14 @@
     align-items: center;
     flex-direction: column;
     text-decoration: none;
-    font-size: 30px;
-    font-family: 'Bold';
-    color: #fff;
+    font-size: 80px;
     text-transform: uppercase;
 }
 
 .login-component{
     position: relative;
     bottom:100px;
-    background-color: rgb(00, 00, 00,0.7);
+    background-color: rgba(0, 0, 0, 0.411);
     padding: 10px 20px 10px 20px; 
     border-radius: 10px;
     box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.7);
@@ -33,18 +39,33 @@
     align-items: center;
     flex-direction: column;
     text-decoration: none;
-    font-family: 'Regular';
     font-size: 20px;
-    color: #232323;
 }
-
+.login-form input{
+    padding-left: 8px;
+    font-family: 'Regular';
+    color: rgb(25, 23, 23);
+}
 .login-form label{
     padding: 10px;
 }
-
-.login-Btn{
-    background-color: rgb(20, 108, 148);
-    border-radius: 15px;
-    padding: 10px 15px 10px 15px;
-    margin-top: 10px;
+.btn-log{
+    padding: 20px;
 }
+.login-Btn{
+    background-color: #9c640c;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 0px #6b3f00;
+}
+.login-Btn:hover{
+    background-color: #c68627;
+  box-shadow: 0px 2px 0px #864e00;
+}
+.login-Btn:active {
+    background-color: #6b3f00;
+    box-shadow: none;
+  }

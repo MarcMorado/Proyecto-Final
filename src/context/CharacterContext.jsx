@@ -20,6 +20,10 @@ export const CharacterProvider = (props) => {
         setOpenSheet(true);
     }
 
+    const closeSheet = () => {
+      setOpenSheet(false)
+    }
+
     const setStatPlus = (statName) => {
   setSelectedCharacter((prevCharacter) => ({
     ...prevCharacter,
@@ -46,7 +50,8 @@ const setStatMinus = (statName) => {
     toCharacterCreation,
     selected,
     setStatPlus,
-    setStatMinus
+    setStatMinus,
+    closeSheet
   };
   return (
     <CharacterContext.Provider value={values}>

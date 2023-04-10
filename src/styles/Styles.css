@@ -674,15 +674,73 @@ body{
 }
 
 /* Character List */
-
-.characters-btn{
-  border: 2px solid rgb(16, 88, 121);
-  border-radius: 5px;
-  padding: 5px;
-  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
-  margin: 10px;
+.char-list{
+  padding-top: 2em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  background-image: url('../assets/bg_select.png');
+  height: 970px;
+}
+.char-list-cont{
+  width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
+.characters-btn{
+  background-image: url('../assets/bg-class/Barbarian.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgba(4, 48, 68, 0.486);
+  border-radius: 5px;
+  width: 260px;
+  height: 260px;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  text-shadow: 0px 0px 8px black ;
+}
+.char-name-list{
+  font-size: 30px;
+  position: relative;
+  bottom: 10px;
+  text-transform: uppercase;
+  color: rgb(243, 235, 235);
+}
+
+.char-class-list{
+  position: relative;
+  top:10px;
+  font-size: 20px;
+  color: rgb(220, 211, 211);
+}
+
+.char-level-list{
+  position: relative;
+  top:20px;
+  color: white;
+  font-size: 20px;
+}
+
+.new-char{
+  position: absolute;
+  top: 90%;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.323);
+  padding: 0px 8px 0px 8px;
+  background-color: rgba(0, 0, 0, 0.338);
+  font-size: 20px;
+}
+.characters-btn:hover{
+  box-shadow: 0px 0px 12px rgb(108, 1, 1);
+}
+
+.new-char:hover{
+  text-shadow: 0px 0px 8px white;
+}
 
 /* CREATE GAME */
 
