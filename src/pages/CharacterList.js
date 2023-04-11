@@ -1,19 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import CharacterSheet from "../components/CharacterSheet";
 import { CharacterContext } from "../context/CharacterContext.jsx";
 import { CharacterCreateContext } from "../context/CharacterCreateContext";
 import "../styles/Styles.css";
 
 export default function CharacterList() {
-  const { characters, toCharacterCreation } = useContext(CharacterContext);
+  const { characters, toCharacterCreation, fetchCharacters } = useContext(CharacterContext);
   const { modelSetter } = useContext(CharacterCreateContext);
   const { selected } = useContext(CharacterContext);
+
+  useEffect(() => {
+    fetchCharacters();
+  }, []);
 
   const handleSelectCharacter = (character) => {
     selected(character);
     modelSetter(character);
-    console.log(character.model);
-  };
+  };  
 
   return (
     <div className="char-list">
@@ -23,7 +26,7 @@ export default function CharacterList() {
         characters.map((character) => {
           return (
             <button
-              key={character.name}
+              key={character._id}
               onClick={() => handleSelectCharacter(character)}
               className="characters-btn"
               style={{backgroundImage:`url(${require('../assets/bg-class/' + character.class + '.png')})`}}

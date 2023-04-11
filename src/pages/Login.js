@@ -26,8 +26,10 @@ export default function Login() {
       })
       .then((response) => {
         console.log(response);
-        const { userId, token } = response.data;
+        const { userId, token, username } = response.data;
         saveId(userId);
+        localStorage.setItem("username", username);
+        localStorage.setItem("userId", userId);
         localStorage.setItem("isLoggedIn", true);
         navigate("/");
       })

@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { FiberContainer } from "../three/FiberContainer";
+import { useNavigate } from "react-router-dom";
 
 //? JSON
 import Races from "../data/race.json";
@@ -30,13 +31,12 @@ import "../styles/Styles.css";
 const racesMenu = ["Elf", "Human", "Dragonborn"];
 const classMenu = ["Barbarian", "Rogue", "Sorcerer"];
 
-const characters =[];
 
 //? FUNCTION
 export default function CharCreation() {
   //*CHARACTER CONTEXT
-  const { minus, plus, modelCount, userId } = useContext(CharacterCreateContext);
-
+  const { minus, plus, modelCount } = useContext(CharacterCreateContext);
+  const userId = localStorage.getItem("userId");
 
   //* ITEMS CONTEXT
 
@@ -102,6 +102,8 @@ export default function CharCreation() {
   const [savingInt, setSavingInt] = useState(0);
   const [savingWis, setSavingWis] = useState(0);
   const [savingCha, setSavingCha] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setAcrobatics(Math.floor((dex - 10) / 2));
@@ -250,12 +252,9 @@ export default function CharCreation() {
         survival: survival,
       },
     };
-    characters.push(character);
-    const json= JSON.stringify(characters);
-    localStorage.setItem("characters", json);
-    console.log(characters);
     //? funcion que manda characters al server, pasando por el charService
     charService.createChar(character);
+    navigate('/my-characters')
   };
 
   return (

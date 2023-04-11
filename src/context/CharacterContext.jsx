@@ -13,19 +13,27 @@ export const CharacterProvider = (props) => {
   const navigate = useNavigate();
   const toCharacterCreation = () => navigate("/new-char");
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3001/characters/${userId}`)
-      .then((response) => {
-        console.log('hola');
-        setCharacters(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [userId]);
+  const fetchCharacters = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/characters/${userId}`);
+      setCharacters(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-console.log(characters);
+  
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:3001/characters/${userId}`)
+  //     .then((response) => {
+  //       setCharacters(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [userId]);
+
 
   const selected = (e) => {
     setSelectedCharacter(e);
@@ -69,6 +77,7 @@ console.log(characters);
     setStatPlus,
     setStatMinus,
     closeSheet,
+    fetchCharacters
   };
   return (
     <CharacterContext.Provider value={values}>

@@ -23,31 +23,33 @@ function App() {
     <WeaponProvider>
       <ArmorProvider>
         <CreateGameProvider>
-          <GameProvider>
-            <CharacterCreateProvider>
-              <CharacterProvider>
-                <div className="App">
-                  <Navbar />
-                  <div className="">
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/new-char" element={<CreateChar />} />
-                      <Route path="/login" element={<Login />} />
-                      <Route path="/signup" element={<Signup />} />
-                      <Route
-                        path="/my-characters"
-                        element={<CharacterList />}
-                      />
-                      <Route path="/my-profile" element={<Profile />} />
-                      <Route path="/game" element={<Game />} />
-                      <Route path="/find-game" element={<CreateGame />} />
-                      <Route path="/game/:id" element={<Game />} />
-                    </Routes>
+          <CharacterCreateProvider>
+            <CharacterProvider>
+              <CharacterCreateProvider>
+                <GameProvider>
+                  <div className="App">
+                    <Navbar />
+                    <div className="">
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/new-char" element={<CreateChar />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} />
+                        <Route
+                          path="/my-characters"
+                          element={<CharacterList />}
+                        />
+                        <Route path="/my-profile" element={<Profile />} />
+                        <Route path="/game" element={<Game />} />
+                        <Route path="/find-game" element={<CreateGame />} />
+                        <Route path="/game/:id" element={<Game />} />
+                      </Routes>
+                    </div>
                   </div>
-                </div>
-              </CharacterProvider>
-            </CharacterCreateProvider>
-          </GameProvider>
+                </GameProvider>
+              </CharacterCreateProvider>
+            </CharacterProvider>
+          </CharacterCreateProvider>
         </CreateGameProvider>
       </ArmorProvider>
     </WeaponProvider>

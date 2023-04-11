@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react";
+import { useCallback } from "react";
 import { useEffect } from "react";
 
 export const CharacterCreateContext = createContext();
@@ -17,10 +18,13 @@ export const CharacterCreateProvider = (props) => {
   };
   const plus = () => {
     if (modelCount < 7) setModelCount(modelCount + 1);
+    console.log('delante');
   };
-  const modelSetter = (e) => {
-    setModelCount(e.model);
-  };
+  const modelSetter = useCallback((e) => {
+    setModelCount(parseInt(e.model));
+    console.log('el modelo seleccionado es =>', e.model); 
+  },[]);
+
 
   useEffect(() => {
     switch (modelCount) {
@@ -45,13 +49,15 @@ export const CharacterCreateProvider = (props) => {
       case 7:
         setModel("wizard");
         break;
+        default: 
+        console.log('error en switch modelos');
+        break;
     }
   }, [modelCount, modelSetter]);
 
   const values = {
     modelCount,
     modelo,
-    modelCount,
     minus,
     plus,
     modelSetter,
