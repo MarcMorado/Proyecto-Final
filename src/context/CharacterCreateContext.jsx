@@ -6,7 +6,12 @@ export const CharacterCreateContext = createContext();
 export const CharacterCreateProvider = (props) => {
   const [modelCount, setModelCount] = useState(1);
   const [modelo, setModel] = useState("");
+  const [userId, setUserId] = useState("");
 
+  const saveId = (e) => {
+    setUserId(e);
+    localStorage.setItem('userId', JSON.stringify(userId));
+  };
   const minus = () => {
     if (modelCount > 1) setModelCount(modelCount - 1);
   };
@@ -14,9 +19,8 @@ export const CharacterCreateProvider = (props) => {
     if (modelCount < 7) setModelCount(modelCount + 1);
   };
   const modelSetter = (e) => {
-    setModelCount(e.model)
-    console.log('esto es la e', e.model);
-  }
+    setModelCount(e.model);
+  };
 
   useEffect(() => {
     switch (modelCount) {
@@ -50,7 +54,9 @@ export const CharacterCreateProvider = (props) => {
     modelCount,
     minus,
     plus,
-    modelSetter
+    modelSetter,
+    userId,
+    saveId
   };
 
   return (

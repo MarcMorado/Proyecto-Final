@@ -24,8 +24,8 @@ function App() {
       <ArmorProvider>
         <CreateGameProvider>
           <GameProvider>
-            <CharacterProvider>
-              <CharacterCreateProvider>
+            <CharacterCreateProvider>
+              <CharacterProvider>
                 <div className="App">
                   <Navbar />
                   <div className="">
@@ -45,8 +45,8 @@ function App() {
                     </Routes>
                   </div>
                 </div>
-              </CharacterCreateProvider>
-            </CharacterProvider>
+              </CharacterProvider>
+            </CharacterCreateProvider>
           </GameProvider>
         </CreateGameProvider>
       </ArmorProvider>

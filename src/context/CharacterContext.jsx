@@ -1,47 +1,64 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 
 export const CharacterContext = createContext();
 
 export const CharacterProvider = (props) => {
+  const [selectedCharacter, setSelectedCharacter] = useState("");
+  const [openSheet, setOpenSheet] = useState(false);
+  const [characters, setCharacters] = useState();
+  const userId = localStorage.getItem("userId");
 
-    const [selectedCharacter, setSelectedCharacter] = useState('');
-    const [openSheet, setOpenSheet] = useState(false);
+  const navigate = useNavigate();
+  const toCharacterCreation = () => navigate("/new-char");
 
-    const navigate = useNavigate();
-    const json = localStorage.getItem("characters");
-    const characters= JSON.parse(json);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/characters/${userId}`)
+      .then((response) => {
+        console.log('hola');
+        setCharacters(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [userId]);
+
+console.log(characters);
+
+  const selected = (e) => {
+    setSelectedCharacter(e);
+    setOpenSheet(true);
+  };
+
+  const closeSheet = () => {
+    setOpenSheet(false);
+  };
+
+  const setStatPlus = (statName) => {
+    setSelectedCharacter((prevCharacter) => ({
+      ...prevCharacter,
+      stats: {
+        ...prevCharacter.stats,
+        [statName]: prevCharacter.stats[statName] + 1,
+      },
+    }));
+  };
+  const setStatMinus = (statName) => {
+    setSelectedCharacter((prevCharacter) => ({
+      ...prevCharacter,
+      stats: {
+        ...prevCharacter.stats,
+        [statName]: prevCharacter.stats[statName] - 1,
+      },
+    }));
+  };
+
   
-    const toCharacterCreation = () =>navigate('/new-char');
   
-    const selected=(e)=>{
-        setSelectedCharacter(e);
-        setOpenSheet(true);
-    }
 
-    const closeSheet = () => {
-      setOpenSheet(false)
-    }
 
-    const setStatPlus = (statName) => {
-  setSelectedCharacter((prevCharacter) => ({
-    ...prevCharacter,
-    stats: {
-      ...prevCharacter.stats,
-      [statName]: prevCharacter.stats[statName] + 1,
-    },
-  }));
-};
-const setStatMinus = (statName) => {
-  setSelectedCharacter((prevCharacter) => ({
-    ...prevCharacter,
-    stats: {
-      ...prevCharacter.stats,
-      [statName]: prevCharacter.stats[statName] - 1,
-    },
-  }));
-};
 
   const values = {
     characters,
@@ -51,7 +68,7 @@ const setStatMinus = (statName) => {
     selected,
     setStatPlus,
     setStatMinus,
-    closeSheet
+    closeSheet,
   };
   return (
     <CharacterContext.Provider value={values}>

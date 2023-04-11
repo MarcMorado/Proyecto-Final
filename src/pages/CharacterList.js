@@ -3,11 +3,10 @@ import CharacterSheet from "../components/CharacterSheet";
 import { CharacterContext } from "../context/CharacterContext.jsx";
 import { CharacterCreateContext } from "../context/CharacterCreateContext";
 import "../styles/Styles.css";
-import { FiberContainer } from "../three/FiberContainer";
 
 export default function CharacterList() {
   const { characters, toCharacterCreation } = useContext(CharacterContext);
-  const { modelSetter, modelo } = useContext(CharacterCreateContext);
+  const { modelSetter } = useContext(CharacterCreateContext);
   const { selected } = useContext(CharacterContext);
 
   const handleSelectCharacter = (character) => {

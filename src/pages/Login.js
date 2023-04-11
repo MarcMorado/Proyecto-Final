@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/StyleLogSign.css";
+import { CharacterCreateContext } from "../context/CharacterCreateContext";
+import { useContext } from "react";
 
 export default function Login() {
+  const { saveId } = useContext(CharacterCreateContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -21,8 +25,9 @@ export default function Login() {
         password,
       })
       .then((response) => {
-        console.log("asdadsasdasd");
         console.log(response);
+        const { userId, token } = response.data;
+        saveId(userId);
         localStorage.setItem("isLoggedIn", true);
         navigate("/");
       })
