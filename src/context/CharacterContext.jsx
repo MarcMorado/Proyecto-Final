@@ -1,6 +1,8 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import io from "socket.io-client";
+const socket = io("http://localhost:3002");
 
 export const CharacterContext = createContext();
 
@@ -33,7 +35,9 @@ export const CharacterProvider = (props) => {
   //       console.log(error);
   //     });
   // }, [userId]);
-
+  useEffect(()=>{
+    socket.emit("selectCharacter", selectedCharacter);
+  },[selectedCharacter])
 
   const selected = (e) => {
     setSelectedCharacter(e);

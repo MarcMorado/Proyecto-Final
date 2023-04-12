@@ -4,6 +4,7 @@ import { FiberContainer } from "../three/FiberContainer";
 import { useNavigate } from "react-router-dom";
 //? COMPONENTS
 import CharacterSelect from "../components/CharacterSelect";
+import Enemy from "../components/Boss";
 
 //?CONTEXT
 import { GameContext } from "../context/GameContext";
@@ -25,6 +26,7 @@ export default function Game() {
     error,
     charSel,
     selectedCharacter,
+    playerRolls,
   } = useContext(GameContext);
   const { id } = useParams();
   const [otherRoll, setOtherRoll] = useState("");
@@ -34,11 +36,12 @@ export default function Game() {
   const handleExitRoom = () => {
     socket.emit("exitRoom", selectedCharacter.charName);
     // navigate("/");
-    setPlayers(players.filter((player) => player._id !== selectedCharacter._id));
+    setPlayers(
+      players.filter((player) => player._id !== selectedCharacter._id)
+    );
   };
-
   useEffect(() => {
-    const user = new Date();
+    const user = selectedCharacter._id;
     socket.emit("roll", { roll: result, user: user });
 
     socket.on("userRoll", (data) => {
@@ -52,51 +55,98 @@ export default function Game() {
       setPlayers(players);
     });
   }, []);
-
+  console.log(players);
   return (
     <div>
       <h1>
         Your room id is: <strong>{id}</strong>
       </h1>
       <CharacterSelect />
+
       {!charSel && (
         <div>
-          {players.map((player) => (
-            <div key={player._id}>
-              <div>
-                <FiberContainer />
-              </div>
-              <div>
-                <p>{player.charName}</p>
-                <p>{player.aC}</p>
-                <p>{player.class}</p>
-                <p>{player.level}</p>
-                <p>{player.initiative}</p>
-                <progress
-                  className="progress progress-error border border-black border-opacity-50 w-56
+          <Enemy />
+          <div className="game-characters">
+            <div className="character-game">
+              <div className="game-player">
+                <div className="dice-result">
+                  <p>{playerRolls[selectedCharacter._id]}</p>
+                </div>
+                <div className="game-3dmodel">
+                  <FiberContainer />
+                </div>
+                <div>
+                  <p className="game-name">{selectedCharacter.charName}</p>
+                  <p className="game-class">
+                    {selectedCharacter.class} lvl: {selectedCharacter.level}
+                  </p>
+                  <div className="game-health">
+                    <p className="game-armor" title="amor class">
+                      {selectedCharacter.armorClass}
+                    </p>
+                    <progress
+                      className="progress progress-error border border-black border-opacity-50 w-56
                 h-3"
-                  value={player.hitPoints}
-                  max={player.hitPoints}
-                ></progress>
+                      value={selectedCharacter.hitPoints}
+                      max={selectedCharacter.hitPoints}
+                    ></progress>
+                    <p className="game-initiative" title="initiative">
+                      {selectedCharacter.initiative}
+                    </p>
+                  </div>
+                </div>
+                <div className="inp-dice">
+                  <div className="inp-dice-pos">
+                    <input
+                      type="text"
+                      name="dice"
+                      value={diceString}
+                      required
+                      onChange={setDice}
+                      placeholder="dice"
+                    ></input>
+                    <button onClick={rollDice}>Roll</button>
+                  </div>
+                  <p>{error}</p>
+                </div>
               </div>
-              <div className="inp-dice">
-                <input
-                  type="text"
-                  name="dice"
-                  value={diceString}
-                  required
-                  onChange={setDice}
-                  placeholder="dice"
-                ></input>
-                <button onClick={rollDice}>Roll</button>
-                <p>{result}</p>
-                <p>{error}</p>
-                <p>{otherRoll && `Other Roll: ${otherRoll}`}</p>
-                <p>{otherUser && `Other User: ${otherUser}`}</p>
-              </div>
+              {players
+                .filter((player) => player._id !== selectedCharacter._id)
+                .map((player) => (
+                  <div key={player._id} className="game-player">
+                    <div className="dice-result">
+                      <p>{playerRolls[player._id]}</p>
+                    </div>
+                    <div className="game-3dmodel">
+                      <FiberContainer />
+                    </div>
+                    <div>
+                      <p className="game-name">{player.charName}</p>
+                      <p className="game-class">
+                        {player.class} lvl: {player.level}
+                      </p>
+                      <div className="game-health">
+                        <p className="game-armor" title="amor class">
+                          {player.armorClass}
+                        </p>
+                        <progress
+                          className="progress progress-error border border-black border-opacity-50 w-56
+                h-3"
+                          value={player.hitPoints}
+                          max={player.hitPoints}
+                        ></progress>
+                        <p className="game-initiative" title="initiative">
+                          {player.initiative}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              <button className="exit-game" onClick={handleExitRoom}>
+                Exit game
+              </button>
             </div>
-          ))}
-          <button onClick={handleExitRoom}>Exit game</button>
+          </div>
         </div>
       )}
     </div>

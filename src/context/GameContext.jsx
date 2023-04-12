@@ -15,6 +15,8 @@ export const GameProvider = (props) => {
   const [result, setResult] = useState(0);
   const [error, setError] = useState("");
   const [charSel, setCharSel] = useState(true);
+  const [playerRolls, setPlayerRolls] = useState({});
+
   useEffect(() => {
     setCharSel(true);
   }, [handlePlayerJoinGame, handleMasterJoinGame]);
@@ -26,11 +28,9 @@ export const GameProvider = (props) => {
     setCharSel(false);
   };
 
-
-  
-
-
   function rollDice() {
+    const playerId = selectedCharacter._id;
+
     const diceMatch = diceString.match(/^(\d+)d(\d+)$/);
     if (!diceMatch) {
       setError("Invalid dice format. Please use format 'NdM'");
@@ -41,10 +41,13 @@ export const GameProvider = (props) => {
     for (let i = 0; i < numDice; i++) {
       total += Math.floor(Math.random() * numFaces) + 1;
     }
+    const newRolls = { ...playerRolls, [playerId]: total };
+    setPlayerRolls(newRolls);
     setResult(total);
     setError("");
   }
   function rollDiceWeapon() {
+    const playerId = selectedCharacter._id;
     const diceMatch = selectedCharacter.equipment.weapon.damage.match(/^(\d+)d(\d+)$/);
     if (!diceMatch) {
       setError("Invalid dice format. Please use format 'NdM'");
@@ -55,6 +58,8 @@ export const GameProvider = (props) => {
     for (let i = 0; i < numDice; i++) {
       total += Math.floor(Math.random() * numFaces) + 1;
     }
+    const newRolls = { ...playerRolls, [playerId]: total };
+    setPlayerRolls(newRolls);
     setResult(total);
     setError("");
   }
@@ -68,7 +73,8 @@ export const GameProvider = (props) => {
     selectedCharacter,
     characterSelected,
     charSel,
-    rollDiceWeapon
+    rollDiceWeapon,
+    playerRolls
     
   };
   return (

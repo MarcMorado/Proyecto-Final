@@ -16,12 +16,12 @@ export default function CharacterSelect() {
   useEffect(() => {
     fetchCharacters();
   }, []);
-console.log(generatedCode);
   const handleSelectCharacter = (character) => {
     selected(character);
     modelSetter(character);
     characterSelected();
-    socket.emit("selectCharacter", selectedCharacter, generatedCode);
+    // socket.emit("selectCharacter", selectedCharacter, generatedCode);
+    // console.log(selectedCharacter);
   };
 
   return (
