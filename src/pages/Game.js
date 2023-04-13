@@ -12,8 +12,7 @@ import { GameContext } from "../context/GameContext";
 //? CUSTOM CSS
 import "../styles/StylesGame.css";
 
-import io from "socket.io-client";
-const socket = io("http://localhost:3002");
+
 
 export default function Game() {
   const navigate = useNavigate();
@@ -27,35 +26,13 @@ export default function Game() {
     charSel,
     selectedCharacter,
     playerRolls,
+    otherRoll,
+    otherUser,
+    handleExitRoom,
+    players
   } = useContext(GameContext);
   const { id } = useParams();
-  const [otherRoll, setOtherRoll] = useState("");
-  const [otherUser, setOtherUser] = useState("");
-  const [players, setPlayers] = useState([]);
 
-  const handleExitRoom = () => {
-    socket.emit("exitRoom", selectedCharacter.charName);
-    // navigate("/");
-    setPlayers(
-      players.filter((player) => player._id !== selectedCharacter._id)
-    );
-  };
-  useEffect(() => {
-    const user = selectedCharacter._id;
-    socket.emit("roll", { roll: result, user: user });
-
-    socket.on("userRoll", (data) => {
-      setOtherRoll(data.roll);
-      setOtherUser(data.user);
-    });
-  }, [result, rollDice]);
-
-  useEffect(() => {
-    socket.on("updatePlayers", (players) => {
-      setPlayers(players);
-    });
-  }, []);
-  console.log(players);
   return (
     <div>
       <h1>
@@ -66,7 +43,7 @@ export default function Game() {
       {!charSel && (
         <div>
           <Enemy />
-          <div className="game-characters">
+          <div className="game-characters" key={selectedCharacter._id}>
             <div className="character-game">
               <div className="game-player">
                 <div className="dice-result">
@@ -115,7 +92,7 @@ export default function Game() {
                 .map((player) => (
                   <div key={player._id} className="game-player">
                     <div className="dice-result">
-                      <p>{playerRolls[player._id]}</p>
+                      <p>{(otherUser === player._id) && otherRoll}</p>
                     </div>
                     <div className="game-3dmodel">
                       <FiberContainer />

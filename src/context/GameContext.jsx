@@ -3,7 +3,8 @@ import { CharacterContext } from "./CharacterContext";
 import { CreateGameContext } from "./CreateGameContext";
 import { useContext } from "react";
 import { useEffect } from "react";
-
+import io from "socket.io-client";
+const socket = io("http://localhost:3002");
 
 export const GameContext = createContext();
 
@@ -16,6 +17,24 @@ export const GameProvider = (props) => {
   const [error, setError] = useState("");
   const [charSel, setCharSel] = useState(true);
   const [playerRolls, setPlayerRolls] = useState({});
+  const [otherRoll, setOtherRoll] = useState("");
+  const [otherUser, setOtherUser] = useState("");
+  const [players, setPlayers] = useState([]);
+
+  const handleExitRoom = () => {
+    socket.emit("exitRoom", selectedCharacter.charName);
+    // navigate("/");
+    setPlayers(
+      players.filter((player) => player._id !== selectedCharacter._id)
+    );
+  };
+ 
+
+  useEffect(() => {
+    socket.on("updatePlayers", (players) => {
+      setPlayers(players);
+    });
+  }, []);
 
   useEffect(() => {
     setCharSel(true);
@@ -45,6 +64,13 @@ export const GameProvider = (props) => {
     setPlayerRolls(newRolls);
     setResult(total);
     setError("");
+    const user = selectedCharacter._id;
+    socket.emit("roll", { roll: result, user: user });
+
+    socket.on("userRoll", (data) => {
+      setOtherRoll(data.roll);
+      setOtherUser(data.user);
+    });
   }
   function rollDiceWeapon() {
     const playerId = selectedCharacter._id;
@@ -74,7 +100,11 @@ export const GameProvider = (props) => {
     characterSelected,
     charSel,
     rollDiceWeapon,
-    playerRolls
+    playerRolls,
+    otherRoll,
+    otherUser,
+    handleExitRoom,
+    players
     
   };
   return (

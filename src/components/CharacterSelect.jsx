@@ -4,8 +4,6 @@ import { CharacterCreateContext } from "../context/CharacterCreateContext";
 import { CreateGameContext } from "../context/CreateGameContext.jsx";
 import { GameContext } from "../context/GameContext.jsx";
 import "../styles/Styles.css";
-import io from "socket.io-client";
-const socket = io("http://localhost:3002");
 
 export default function CharacterSelect() {
   const { characters, fetchCharacters, selected, selectedCharacter } = useContext(CharacterContext);
@@ -20,8 +18,6 @@ export default function CharacterSelect() {
     selected(character);
     modelSetter(character);
     characterSelected();
-    // socket.emit("selectCharacter", selectedCharacter, generatedCode);
-    // console.log(selectedCharacter);
   };
 
   return (

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 export default function Enemy() {
-  const { result } = useContext(GameContext);
+  const { otherRoll } = useContext(GameContext);
   let enemy = {
     name: "Robert",
     level: 6,
@@ -17,8 +17,8 @@ export default function Enemy() {
 const [currentHps, SetCurrentHps] = useState(enemy.hitPoints)
 
   useEffect(() => {
-    SetCurrentHps(currentHps - result)
-  }, [result]);
+    SetCurrentHps(currentHps - otherRoll)
+  }, [otherRoll]);
 
   return (
     <div className="boss-sht">
