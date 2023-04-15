@@ -44,6 +44,10 @@ export const CharacterProvider = (props) => {
     setOpenSheet(true);
   };
 
+  const open = () =>{
+    setOpenSheet(true);
+  }
+
   const closeSheet = () => {
     setOpenSheet(false);
   };
@@ -81,7 +85,8 @@ export const CharacterProvider = (props) => {
     setStatPlus,
     setStatMinus,
     closeSheet,
-    fetchCharacters
+    fetchCharacters,
+    open
   };
   return (
     <CharacterContext.Provider value={values}>

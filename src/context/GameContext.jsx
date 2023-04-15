@@ -4,12 +4,14 @@ import { CreateGameContext } from "./CreateGameContext";
 import { useContext } from "react";
 import { useEffect } from "react";
 import io from "socket.io-client";
+import { useNavigate } from "react-router-dom";
 const socket = io("http://localhost:3002");
 
 export const GameContext = createContext();
 
 export const GameProvider = (props) => {
-  const { selectedCharacter } = useContext(CharacterContext);
+  const navigate = useNavigate();
+  const { selectedCharacter, openSheet } = useContext(CharacterContext);
   const { handlePlayerJoinGame, handleMasterJoinGame } =
     useContext(CreateGameContext);
   const [diceString, setDiceString] = useState("");
@@ -23,7 +25,7 @@ export const GameProvider = (props) => {
 
   const handleExitRoom = () => {
     socket.emit("exitRoom", selectedCharacter.charName);
-    // navigate("/");
+    navigate("/");
     setPlayers(
       players.filter((player) => player._id !== selectedCharacter._id)
     );
@@ -104,7 +106,7 @@ export const GameProvider = (props) => {
     otherRoll,
     otherUser,
     handleExitRoom,
-    players
+    players,
     
   };
   return (

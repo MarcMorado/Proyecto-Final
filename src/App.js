@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateChar from "./pages/CreateChar";
 import Login from "./pages/Login";
@@ -11,14 +11,14 @@ import Game from "./pages/Game";
 import CreateGame from "./pages/CreateGame";
 import { WeaponProvider } from "./context/WeaponContext";
 import { ArmorProvider } from "./context/ArmorContext";
-import io from "socket.io-client";
-import { useEffect } from "react";
 import { CreateGameProvider } from "./context/CreateGameContext";
 import { CharacterProvider } from "./context/CharacterContext";
 import { GameProvider } from "./context/GameContext";
 import { CharacterCreateProvider } from "./context/CharacterCreateContext";
 
 function App() {
+  const location = useLocation();
+  const hideNav = /^\/game\/.*/.test(location.pathname);  
   return (
     <WeaponProvider>
       <ArmorProvider>
@@ -28,7 +28,7 @@ function App() {
               <CharacterCreateProvider>
                 <GameProvider>
                   <div className="App">
-                    <Navbar />
+                    {!hideNav && <Navbar />}
                     <div className="">
                       <Routes>
                         <Route path="/" element={<Home />} />

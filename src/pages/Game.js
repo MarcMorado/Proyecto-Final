@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 //? COMPONENTS
 import CharacterSelect from "../components/CharacterSelect";
 import Enemy from "../components/Boss";
+import CharacterSheet from "../components/CharacterSheet";
 
 //?CONTEXT
 import { GameContext } from "../context/GameContext";
+import { CharacterContext } from "../context/CharacterContext";
 
 //? CUSTOM CSS
 import "../styles/StylesGame.css";
@@ -15,7 +17,6 @@ import "../styles/StylesGame.css";
 
 
 export default function Game() {
-  const navigate = useNavigate();
   const {
     result,
     diceString,
@@ -29,8 +30,9 @@ export default function Game() {
     otherRoll,
     otherUser,
     handleExitRoom,
-    players
+    players,
   } = useContext(GameContext);
+  const { open } = useContext(CharacterContext);
   const { id } = useParams();
 
   return (
@@ -53,7 +55,7 @@ export default function Game() {
                   <FiberContainer />
                 </div>
                 <div>
-                  <p className="game-name">{selectedCharacter.charName}</p>
+                  <button onClick={open} className="game-name">{selectedCharacter.charName}</button>
                   <p className="game-class">
                     {selectedCharacter.class} lvl: {selectedCharacter.level}
                   </p>
@@ -126,6 +128,7 @@ export default function Game() {
           </div>
         </div>
       )}
+      <CharacterSheet/>
     </div>
   );
 }
