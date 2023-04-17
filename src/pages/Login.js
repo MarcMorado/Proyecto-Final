@@ -26,11 +26,12 @@ export default function Login() {
       })
       .then((response) => {
         console.log(response);
-        const { userId, token, username } = response.data;
+        const { userId, token, username, emailB } = response.data;
         saveId(userId);
         localStorage.setItem("username", username);
         localStorage.setItem("userId", userId);
         localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("email", emailB);
         navigate("/");
       })
       .catch((error) => {

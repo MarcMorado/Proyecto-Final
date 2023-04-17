@@ -1,9 +1,9 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import io from "socket.io-client";
 const socket = io("http://localhost:3002");
-
 export const CharacterContext = createContext();
 
 export const CharacterProvider = (props) => {

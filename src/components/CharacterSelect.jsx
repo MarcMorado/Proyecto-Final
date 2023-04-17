@@ -30,7 +30,7 @@ export default function CharacterSelect() {
       ) : (
         charSel && (
           <div className="char-list-2">
-            <p>ELIGE TU PERSONAJE</p>
+            <p className="title-char-list">Choose your Character</p>
             <div className="char-list-cont">
               {Array.isArray(characters) &&
                 characters.map((character) => {

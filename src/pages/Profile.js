@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/StyleLogSign.css";
+import axios from "axios";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -8,24 +10,48 @@ export default function Profile() {
   const [username, setUsername] = useState("");
   const [correctPassword, setCorrectPassword] = useState(false);
   const [passwordCheck, setPasswordCheck] = useState("");
+  const oldEmail = localStorage.getItem("email");
 
   useEffect(() => {
     setEmail(localStorage.getItem("email"));
-    setPassword(localStorage.getItem("password"));
     setUsername(localStorage.getItem("username"));
   }, []);
 
-  const passwordChecking = () => {
-    if (passwordCheck === password) setCorrectPassword(true);
+  const passwordChecking = (e) => {
+    e.preventDefault();
+    console.log(oldEmail);
+    axios
+      .post("http://localhost:3001/checkPassword", {
+        oldEmail,
+        passwordCheck,
+      })
+      .then((response) => {
+        console.log(response);
+        const { checked } = response.data;
+        if(checked){
+          console.log(checked);
+          setCorrectPassword(true)
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setPassword("");
-    setEmail("");
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-    localStorage.setItem("username", username);
+    let newEmail = email;
+    try {
+      const response = await axios.post('http://localhost:3001/updateUser', {
+        username,
+        newEmail,
+        password,
+        oldEmail
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleLogout = () => {
@@ -36,7 +62,7 @@ export default function Profile() {
     <div className="login-container">
       <div className="login-component">
         <h2 className="login-title">Profile</h2>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form">
           <label htmlFor="email">Username</label>
           <input
             type="text"
@@ -83,7 +109,7 @@ export default function Profile() {
             </div>
           )}
 
-          <button className="login-Btn">Change Information</button>
+          <button className="login-Btn" onClick={handleSubmit}>Change Information</button>
         </form>
       </div>
       <div>

@@ -159,10 +159,11 @@ export default function CharacterSheet() {
             x
           </button>
         </div>
+        
+        <div className="sht-modal">
         <div className="model-container">
           <FiberContainer />
         </div>
-        <div className="sht-modal">
           <div className="sht-container">
             <img src={imgBg} alt="bg" />
           </div>

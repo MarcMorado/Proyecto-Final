@@ -129,6 +129,9 @@ export default function Game() {
         </div>
       )}
       <CharacterSheet/>
+      <div className="wip">
+                  <p>***work in progress***</p>
+      </div>
     </div>
   );
 }
