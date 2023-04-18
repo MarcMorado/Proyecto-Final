@@ -15,21 +15,11 @@ import { CreateGameProvider } from "./context/CreateGameContext";
 import { CharacterProvider } from "./context/CharacterContext";
 import { GameProvider } from "./context/GameContext";
 import { CharacterCreateProvider } from "./context/CharacterCreateContext";
+import PrivateRoutes from "./components/PrivateRoutes";
 
 function App() {
-  const logged = localStorage.getItem("isLoggedIn");
-  console.log("is logged",logged);
   const location = useLocation();
   const hideNav = /^\/game\/.*/.test(location.pathname);
-  const renderComponent = (Component) => {
-    if (logged == null) {
-      console.log("el if es", true);
-      return <Component />;
-    } else {
-      console.log("el if es", false);
-      return redirect("/login") 
-    }
-  };
 
   return (
     <WeaponProvider>
@@ -46,31 +36,17 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
-                        <Route
-                          path="/new-char"
-                          render={() => renderComponent(CreateChar)}
-                        />
-                        <Route
-                          path="/my-characters"
-                          render={() => renderComponent(CharacterList)}
-                        />
-                        <Route
-                          path="/my-profile"
-                          render={() => renderComponent(Profile)}
-                        />
-                        <Route
-                          exact
-                          path="/game"
-                          render={() => renderComponent(Game)}
-                        />
-                        <Route
-                          path="/find-game"
-                          render={() => renderComponent(CreateGame)}
-                        />
-                        <Route
-                          path="/game/:id"
-                          render={() => renderComponent(Game)}
-                        />
+                        <Route element={<PrivateRoutes />}>
+                          <Route element={<CreateChar />} path="/new-char" />
+                          <Route
+                            element={<CharacterList />}
+                            path="/my-characters"
+                          />
+                          <Route element={<Profile />} path="/my-profile" />
+                          <Route element={<Game />} exact path="/game" />
+                          <Route element={<CreateGame />} path="/find-game" />
+                          <Route element={<Game />} path="/game/:id" />
+                        </Route>
                       </Routes>
                     </div>
                   </div>
