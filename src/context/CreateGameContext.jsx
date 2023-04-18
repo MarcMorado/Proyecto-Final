@@ -10,7 +10,8 @@ export const CreateGameProvider = (props) => {
   const [generatedCode, setGeneratedCode] = useState("");
   const [playerJoin, setPlayerJoin] = useState(false);
   const [roomCode, setRoomCode] = useState("");
-  
+  const [showFloatingMessage, setShowFloatingMessage] = useState(false);
+
   const handleCreateGame = async () => {
     const newRoomCode = Math.random().toString(36).substr(2, 5);
     setGeneratedCode(newRoomCode);
@@ -38,6 +39,21 @@ export const CreateGameProvider = (props) => {
   const roomCodeInput = (e) => {
     setRoomCode(e.target.value);
   };
+
+  socket.on("roomFull", () => {
+    setShowFloatingMessage(true);
+    setTimeout(() => {
+      setShowFloatingMessage(false);
+      window.location.href = "/join";
+    }, 5000);
+  });
+  
+  socket.on('redirect', (location) => {
+    window.location.href = location;
+  });
+
+
+
   const values = {
     generatedCode,
     playerJoin,

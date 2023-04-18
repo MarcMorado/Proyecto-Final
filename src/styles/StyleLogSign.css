@@ -69,3 +69,43 @@
     background-color: #6b3f00;
     box-shadow: none;
   }
+
+  .edit-password{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px 20px 10px;
+  }
+
+  .edit-password p{
+    font-size: 15px;
+  }
+
+  .edit-password input{
+    margin: 10px;
+  }
+  .edit-password button{
+background-color: #9c640c;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 0px #6b3f00;
+}
+.edit-password button:hover{
+    background-color: #c68627;
+  box-shadow: 0px 2px 0px #864e00;
+}
+.edit-password button:active {
+    background-color: #6b3f00;
+    box-shadow: none;
+  }
+
+  .new-password{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }

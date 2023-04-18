@@ -795,6 +795,23 @@ body {
   font-size: 50px;
 }
 
+
+.floating-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 999;
+}
+
+
+
+
+
 @media only screen and (max-width: 1920px) {
   .select-menu {
     max-height: fit-content;

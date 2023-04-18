@@ -10,6 +10,7 @@ export const CharacterProvider = (props) => {
   const [selectedCharacter, setSelectedCharacter] = useState("");
   const [openSheet, setOpenSheet] = useState(false);
   const [characters, setCharacters] = useState();
+  const [selectedTimeout, setSelectedTimeout] = useState(null);
   const userId = localStorage.getItem("userId");
 
   const navigate = useNavigate();
@@ -35,14 +36,21 @@ export const CharacterProvider = (props) => {
   //       console.log(error);
   //     });
   // }, [userId]);
-  useEffect(()=>{
-    socket.emit("selectCharacter", selectedCharacter);
-  },[selectedCharacter])
 
-  const selected = (e) => {
+const selected = (e) => {
+  if (e !== selectedCharacter) {
     setSelectedCharacter(e);
     setOpenSheet(true);
-  };
+    if (selectedTimeout) {
+      clearTimeout(selectedTimeout);
+    }
+    setSelectedTimeout(
+      setTimeout(() => {
+        socket.emit("selectCharacter", e);
+      }, 2000)
+    );
+  }
+};
 
   const open = () =>{
     setOpenSheet(true);

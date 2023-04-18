@@ -21,7 +21,9 @@ export default function Game() {
     result,
     diceString,
     setDice,
-    rollDiceWeapon,
+    bossRolls,
+    bossResult,
+    bossRoll,
     rollDice,
     error,
     charSel,
@@ -34,6 +36,25 @@ export default function Game() {
   } = useContext(GameContext);
   const { open } = useContext(CharacterContext);
   const { id } = useParams();
+  const [hpP1, sethpP1] = useState(selectedCharacter.hitPoints)
+  const [hpP2, sethpP2] = useState(players[1].hitPoints)
+  
+  const handleBossAttack = () => {
+    const targetPlayer = Math.floor(Math.random() * 2) + 1; // select player 1 or 2 randomly
+    // reduce the target player's hit points by the boss's attack value
+    if (targetPlayer === 1) {
+      sethpP1((prev) => prev - bossResult);
+    } else if (targetPlayer === 2) {
+      sethpP2((prev) => prev - bossResult);
+    }
+  };
+
+  useEffect(() => {
+    // Call handleBossAttack when the bossResult changes
+    if (bossResult !== null) {
+      handleBossAttack();
+    }
+  }, [bossResult]);
 
   return (
     <div>
@@ -66,7 +87,7 @@ export default function Game() {
                     <progress
                       className="progress progress-error border border-black border-opacity-50 w-56
                 h-3"
-                      value={selectedCharacter.hitPoints}
+                      value={hpP1}
                       max={selectedCharacter.hitPoints}
                     ></progress>
                     <p className="game-initiative" title="initiative">
@@ -111,7 +132,7 @@ export default function Game() {
                         <progress
                           className="progress progress-error border border-black border-opacity-50 w-56
                 h-3"
-                          value={player.hitPoints}
+                          value={hpP2}
                           max={player.hitPoints}
                         ></progress>
                         <p className="game-initiative" title="initiative">

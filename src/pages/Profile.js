@@ -81,10 +81,9 @@ export default function Profile() {
             required
             onChange={(e) => setEmail(e.target.value)}
           ></input>
-          <label htmlFor="password">Password</label>
           {!correctPassword ? (
-            <div>
-              <p>Please enter your password</p>
+            <div className="edit-password">
+              <p>Please enter your old password</p>
               <input
                 type="password"
                 id="password"
@@ -96,7 +95,7 @@ export default function Profile() {
               <button onClick={passwordChecking}>Change password</button>
             </div>
           ) : (
-            <div>
+            <div className="new-password">
               <p>New password</p>
               <input
                 type="password"
@@ -109,11 +108,11 @@ export default function Profile() {
             </div>
           )}
 
-          <button className="login-Btn" onClick={handleSubmit}>Change Information</button>
+          <button className="login-Btn" onClick={handleSubmit}>Change InformaTion</button>
         </form>
       </div>
       <div>
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout}>LogouT</button>
       </div>
     </div>
   );

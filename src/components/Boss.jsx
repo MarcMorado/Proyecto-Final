@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 export default function Enemy() {
-  const { otherRoll } = useContext(GameContext);
+  const { otherRoll, bossRoll } = useContext(GameContext);
   let enemy = {
     name: "Robert",
     level: 6,
@@ -14,12 +14,17 @@ export default function Enemy() {
     initiative: 4,
     attack: "1d20",
   };
-const [currentHps, SetCurrentHps] = useState(enemy.hitPoints)
+const [currentHps, setCurrentHps] = useState(enemy.hitPoints)
+const [attackCount, setAttackCount] = useState(0);
 
   useEffect(() => {
-    SetCurrentHps(currentHps - otherRoll)
+    setCurrentHps(currentHps - otherRoll);
+    setAttackCount(attackCount + 1);
+    if (attackCount % 2 === 0) {
+      bossRoll();
+    }
   }, [otherRoll]);
-
+  
   return (
     <div className="boss-sht">
       <div className="boss-modal">

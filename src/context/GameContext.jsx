@@ -15,13 +15,15 @@ export const GameProvider = (props) => {
   const { handlePlayerJoinGame, handleMasterJoinGame } =
     useContext(CreateGameContext);
   const [diceString, setDiceString] = useState("");
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState();
   const [error, setError] = useState("");
   const [charSel, setCharSel] = useState(true);
   const [playerRolls, setPlayerRolls] = useState({});
   const [otherRoll, setOtherRoll] = useState("");
   const [otherUser, setOtherUser] = useState("");
   const [players, setPlayers] = useState([]);
+  const [bossRolls, setBossRolls] = useState('')
+  const [bossResult, setBossResult] = useState();
 
   const handleExitRoom = () => {
     socket.emit("exitRoom", selectedCharacter.charName);
@@ -74,9 +76,9 @@ export const GameProvider = (props) => {
       setOtherUser(data.user);
     });
   }
-  function rollDiceWeapon() {
-    const playerId = selectedCharacter._id;
-    const diceMatch = selectedCharacter.equipment.weapon.damage.match(/^(\d+)d(\d+)$/);
+  function bossRoll() {
+    let dice = "1d12";
+    const diceMatch = dice.match(/^(\d+)d(\d+)$/);
     if (!diceMatch) {
       setError("Invalid dice format. Please use format 'NdM'");
       return;
@@ -86,9 +88,9 @@ export const GameProvider = (props) => {
     for (let i = 0; i < numDice; i++) {
       total += Math.floor(Math.random() * numFaces) + 1;
     }
-    const newRolls = { ...playerRolls, [playerId]: total };
-    setPlayerRolls(newRolls);
-    setResult(total);
+    const newBossRolls = { ...bossRolls, };
+    setBossRolls(newBossRolls);
+    setBossResult(total);
     setError("");
   }
 
@@ -101,12 +103,14 @@ export const GameProvider = (props) => {
     selectedCharacter,
     characterSelected,
     charSel,
-    rollDiceWeapon,
+    bossRoll,
     playerRolls,
     otherRoll,
     otherUser,
     handleExitRoom,
     players,
+    bossResult,
+    bossRolls
     
   };
   return (

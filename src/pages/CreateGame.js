@@ -4,7 +4,7 @@ import '../styles/Styles.css'
 
 export default function CreateGame() {
   const { playerJoin } = useContext(CreateGameContext);
-  const { roomCode } = useContext(CreateGameContext);
+  const { roomCode, showFloatingMessage } = useContext(CreateGameContext);
   const { handleCreateGame } = useContext(CreateGameContext);
   const { handleJoinGame } = useContext(CreateGameContext);
   const { handlePlayerJoinGame } = useContext(CreateGameContext);
@@ -35,6 +35,13 @@ export default function CreateGame() {
         Create Game as Master
       </button>
       </div>
+      <div>
+      {showFloatingMessage && 
+        <div className="floating-message">
+          <p>The Room is Full</p>
+          </div>
+      }
+    </div>
     </div>
   );
 }
