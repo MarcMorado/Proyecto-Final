@@ -35,7 +35,7 @@ export const Character = forwardRef((props, ref) => {
         rotation={[1.6, 0, 0]}
         scale={[0.3, 0.3, 0.3]}
       >
-        {modelo === "warrior" ? (
+        {modelo === "asd" ? (
           <meshStandardMaterial map={texture} />
         ) : (
           <shaderMaterial attach="material" {...Shader} uniforms={uniforms} />

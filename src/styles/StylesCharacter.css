@@ -10,7 +10,7 @@
 }
 
 .sht-modal{
-    background-image: url('../assets/sheet/bg_paper.png');
+    background-image: url('https://imgur.com/986meaK.png');
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
@@ -42,7 +42,7 @@
 }
 
 .container {
-    background-image: url('../assets/sheet/stat.png');
+    background-image: url('https://imgur.com/hA9PgdT.png');
     width: 115px;
     height: 141px;
     background-size: cover;
@@ -126,7 +126,7 @@
     font-family: 'diablo';
   }
   .level-container div{
-    background-image: url('../assets/sheet/lvl.png');
+    background-image: url('https://imgur.com/S2zIkJM.png');
     background-repeat: no-repeat;
     background-size: cover;
     width: 58px;
