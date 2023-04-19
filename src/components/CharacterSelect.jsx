@@ -7,10 +7,9 @@ import "../styles/Styles.css";
 
 export default function CharacterSelect() {
   const [isLoading, setIsLoading] = useState(true);
-  const { characters, fetchCharacters, selected, selectedCharacter } = useContext(CharacterContext);
+  const { characters, fetchCharacters, selected } = useContext(CharacterContext);
   const { modelSetter } = useContext(CharacterCreateContext);
-  const { generatedCode } = useContext(CreateGameContext);
-  const { characterSelected, charSel, handleSelectedCharacter } = useContext(GameContext);
+  const { characterSelected, charSel } = useContext(GameContext);
 
   useEffect(() => {
     setIsLoading(true);

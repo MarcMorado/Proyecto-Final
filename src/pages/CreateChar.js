@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { FiberContainer } from "../three/FiberContainer";
+import { FiberContainer1 } from "../three/FiberContainer";
 import { useNavigate } from "react-router-dom";
 
 //? JSON
@@ -282,7 +282,7 @@ export default function CharCreation() {
                 ></path>
               </svg>
               <div className="char-model">
-                <FiberContainer />
+                <FiberContainer1 />
               </div>
               <div className="model-selector">
                   <button onClick={minus}>

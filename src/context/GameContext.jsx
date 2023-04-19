@@ -5,13 +5,16 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
+import { OtherPlayersContext } from "./OtherPlayersContext";
+
 const socket = io("http://localhost:3002");
 
 export const GameContext = createContext();
 
 export const GameProvider = (props) => {
   const navigate = useNavigate();
-  const { selectedCharacter, openSheet } = useContext(CharacterContext);
+  const {modelSetter1} = useContext(OtherPlayersContext);
+  const { selectedCharacter } = useContext(CharacterContext);
   const { handlePlayerJoinGame, handleMasterJoinGame } =
     useContext(CreateGameContext);
   const [diceString, setDiceString] = useState("");
@@ -24,6 +27,17 @@ export const GameProvider = (props) => {
   const [players, setPlayers] = useState([]);
   const [bossRolls, setBossRolls] = useState('')
   const [bossResult, setBossResult] = useState();
+  const [hpP1, sethpP1] = useState(0);
+  const [hpP2, sethpP2] = useState(0);
+
+  useEffect(() => {
+    sethpP1(selectedCharacter.hitPoints);
+    if (players.length > 1) {
+      sethpP2(players[1].hitPoints);
+      const otherPlayer = players.find(player => player._id !== selectedCharacter._id);
+      modelSetter1(otherPlayer);
+    }
+  }, [players]);
 
   const handleExitRoom = () => {
     socket.emit("exitRoom", selectedCharacter.charName);
@@ -77,7 +91,7 @@ export const GameProvider = (props) => {
     });
   }
   function bossRoll() {
-    let dice = "1d12";
+    let dice = "1d6";
     const diceMatch = dice.match(/^(\d+)d(\d+)$/);
     if (!diceMatch) {
       setError("Invalid dice format. Please use format 'NdM'");
@@ -88,11 +102,22 @@ export const GameProvider = (props) => {
     for (let i = 0; i < numDice; i++) {
       total += Math.floor(Math.random() * numFaces) + 1;
     }
-    const newBossRolls = { ...bossRolls, };
-    setBossRolls(newBossRolls);
-    setBossResult(total);
+    socket.emit("bossDiceRoll", { roll: total });
+    socket.on("bossRolled", (data) => {
+      setBossRolls(data.roll);
+      setBossResult(data.roll);
+    });
     setError("");
+    handleBossAttack();
   }
+  const handleBossAttack = () => {
+    const targetPlayer = Math.floor(Math.random() * 2) + 1; 
+    if (targetPlayer === 1) {
+      sethpP1((prev) => prev - bossResult);
+    } else if (targetPlayer === 2) {
+      sethpP2((prev) => prev - bossResult);
+    }
+  };
 
   const values = {
     result,
@@ -110,7 +135,9 @@ export const GameProvider = (props) => {
     handleExitRoom,
     players,
     bossResult,
-    bossRolls
+    bossRolls,
+    hpP1,
+    hpP2
     
   };
   return (

@@ -2,7 +2,7 @@ import { CharacterContext } from "../context/CharacterContext";
 import { useContext, useState } from "react";
 import imgBg from "../assets/sheet/bgSht.png";
 import "../styles/StylesCharacter.css";
-import { FiberContainer } from "../three/FiberContainer";
+import { FiberContainer1 } from "../three/FiberContainer";
 
 export default function CharacterSheet() {
   const { selectedCharacter, openSheet, setStatPlus, setStatMinus, closeSheet } =
@@ -162,7 +162,7 @@ export default function CharacterSheet() {
         
         <div className="sht-modal">
         <div className="model-container">
-          <FiberContainer />
+          <FiberContainer1 />
         </div>
           <div className="sht-container">
             <img src={imgBg} alt="bg" />

@@ -15,6 +15,7 @@ import { CreateGameProvider } from "./context/CreateGameContext";
 import { CharacterProvider } from "./context/CharacterContext";
 import { GameProvider } from "./context/GameContext";
 import { CharacterCreateProvider } from "./context/CharacterCreateContext";
+import { OtherPlayersProvider } from "./context/OtherPlayersContext";
 import PrivateRoutes from "./components/PrivateRoutes";
 
 function App() {
@@ -28,29 +29,31 @@ function App() {
           <CharacterCreateProvider>
             <CharacterProvider>
               <CharacterCreateProvider>
-                <GameProvider>
-                  <div className="App">
-                    {!hideNav && <Navbar />}
-                    <div className="">
-                      <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/signup" element={<Signup />} />
-                        <Route element={<PrivateRoutes />}>
-                          <Route element={<CreateChar />} path="/new-char" />
-                          <Route
-                            element={<CharacterList />}
-                            path="/my-characters"
-                          />
-                          <Route element={<Profile />} path="/my-profile" />
-                          <Route element={<Game />} exact path="/game" />
-                          <Route element={<CreateGame />} path="/find-game" />
-                          <Route element={<Game />} path="/game/:id" />
-                        </Route>
-                      </Routes>
+                <OtherPlayersProvider>
+                  <GameProvider>
+                    <div className="App">
+                      {!hideNav && <Navbar />}
+                      <div className="">
+                        <Routes>
+                          <Route path="/" element={<Home />} />
+                          <Route path="/login" element={<Login />} />
+                          <Route path="/signup" element={<Signup />} />
+                          <Route element={<PrivateRoutes />}>
+                            <Route element={<CreateChar />} path="/new-char" />
+                            <Route
+                              element={<CharacterList />}
+                              path="/my-characters"
+                            />
+                            <Route element={<Profile />} path="/my-profile" />
+                            <Route element={<Game />} exact path="/game" />
+                            <Route element={<CreateGame />} path="/find-game" />
+                            <Route element={<Game />} path="/game/:id" />
+                          </Route>
+                        </Routes>
+                      </div>
                     </div>
-                  </div>
-                </GameProvider>
+                  </GameProvider>
+                </OtherPlayersProvider>
               </CharacterCreateProvider>
             </CharacterProvider>
           </CharacterCreateProvider>

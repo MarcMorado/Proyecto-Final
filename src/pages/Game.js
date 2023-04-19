@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
-import { FiberContainer } from "../three/FiberContainer";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { FiberContainer1, FiberContainer2 } from "../three/FiberContainer";
+
 //? COMPONENTS
 import CharacterSelect from "../components/CharacterSelect";
 import Enemy from "../components/Boss";
@@ -14,16 +14,10 @@ import { CharacterContext } from "../context/CharacterContext";
 //? CUSTOM CSS
 import "../styles/StylesGame.css";
 
-
-
 export default function Game() {
   const {
-    result,
     diceString,
     setDice,
-    bossRolls,
-    bossResult,
-    bossRoll,
     rollDice,
     error,
     charSel,
@@ -33,29 +27,11 @@ export default function Game() {
     otherUser,
     handleExitRoom,
     players,
+    hpP1,
+    hpP2,
   } = useContext(GameContext);
   const { open } = useContext(CharacterContext);
   const { id } = useParams();
-  const [hpP1, sethpP1] = useState(selectedCharacter.hitPoints)
-  const [hpP2, sethpP2] = useState(players[1].hitPoints)
-  
-  const handleBossAttack = () => {
-    const targetPlayer = Math.floor(Math.random() * 2) + 1; // select player 1 or 2 randomly
-    // reduce the target player's hit points by the boss's attack value
-    if (targetPlayer === 1) {
-      sethpP1((prev) => prev - bossResult);
-    } else if (targetPlayer === 2) {
-      sethpP2((prev) => prev - bossResult);
-    }
-  };
-
-  useEffect(() => {
-    // Call handleBossAttack when the bossResult changes
-    if (bossResult !== null) {
-      handleBossAttack();
-    }
-  }, [bossResult]);
-
   return (
     <div>
       <h1>
@@ -73,10 +49,12 @@ export default function Game() {
                   <p>{playerRolls[selectedCharacter._id]}</p>
                 </div>
                 <div className="game-3dmodel">
-                  <FiberContainer />
+                  <FiberContainer1 />
                 </div>
                 <div>
-                  <button onClick={open} className="game-name">{selectedCharacter.charName}</button>
+                  <button onClick={open} className="game-name">
+                    {selectedCharacter.charName}
+                  </button>
                   <p className="game-class">
                     {selectedCharacter.class} lvl: {selectedCharacter.level}
                   </p>
@@ -115,10 +93,10 @@ export default function Game() {
                 .map((player) => (
                   <div key={player._id} className="game-player">
                     <div className="dice-result">
-                      <p>{(otherUser === player._id) && otherRoll}</p>
+                      <p>{otherUser === player._id && otherRoll}</p>
                     </div>
                     <div className="game-3dmodel">
-                      <FiberContainer />
+                      <FiberContainer2 />
                     </div>
                     <div>
                       <p className="game-name">{player.charName}</p>
@@ -149,9 +127,9 @@ export default function Game() {
           </div>
         </div>
       )}
-      <CharacterSheet/>
+      <CharacterSheet />
       <div className="wip">
-                  <p>***work in progress***</p>
+        <p>***work in progress***</p>
       </div>
     </div>
   );

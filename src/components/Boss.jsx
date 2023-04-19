@@ -1,5 +1,5 @@
 import "../styles/StylesGame.css";
-import { FiberContainer } from "../three/FiberContainer";
+import { FiberContainer3 } from "../three/FiberContainer";
 import { GameContext } from "../context/GameContext";
 import { useContext } from "react";
 import { useEffect } from "react";
@@ -51,7 +51,7 @@ const [attackCount, setAttackCount] = useState(0);
         </div>
       </div>
       <div className="boss-model-container">
-        <FiberContainer />
+        <FiberContainer3 />
       </div>
     </div>
   );
