@@ -1,13 +1,32 @@
 .weapon-select{
+    text-transform: uppercase;
     position: relative;
-    bottom:140px;
-    left: 10px;
+    border: 2px solid #202c337c;
+    border-radius: 5px;
+    box-shadow:inset 0 0px 5px 5px #384a553f;
+    max-width: 420px;
+    padding: 10px;
 }
-
+.weapon-select button{
+    color: rgb(167, 73, 73);
+}
+.weapon-select button:hover{
+    color: rgb(202, 42, 42);
+    text-shadow: 0px 0px 5px rgb(255, 153, 0);
+}
 .armor-select{
     position: relative;
-    bottom:380px;
-    left: 400px;
+    border: 2px solid #202c337c;
+    border-radius: 5px;
+    box-shadow:inset 0 0px 5px 5px #384a553f;
     z-index: 10;
-    max-width: 300px;
+    padding: 10px;
+    max-width: 420px;
+}
+.armor-select button{
+    color: rgb(167, 73, 73);
+}
+.armor-select button:hover{
+    color: rgb(202, 42, 42);
+    text-shadow: 0px 0px 5px rgb(255, 153, 0);
 }
