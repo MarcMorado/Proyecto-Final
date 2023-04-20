@@ -48,7 +48,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transition: background-image 3s ease-out;
+  transition: background-image 5s ease-out;
 }
 
 .home-body.alt {
@@ -696,5 +696,11 @@ body {
   }
   .home-body {
     max-height: fit-content;
+  }
+  .select-menu{
+    max-height: fit-content;
+  }
+  .char-list{
+    height: 1100px;
   }
 }
