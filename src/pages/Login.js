@@ -20,7 +20,7 @@ export default function Login() {
     setEmail("");
 
     axios
-      .post("http://sanctum.up.railway.app/login", {
+      .post("https://sanctum.up.railway.app/login", {
         email,
         password,
       })
