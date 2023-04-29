@@ -21,7 +21,7 @@ export default function Profile() {
     e.preventDefault();
     console.log(oldEmail);
     axios
-      .post("http://localhost:3001/checkPassword", {
+      .post("http://sanctum.up.railway.app/checkPassword", {
         oldEmail,
         passwordCheck,
       })
@@ -42,7 +42,7 @@ export default function Profile() {
     e.preventDefault();
     let newEmail = email;
     try {
-      const response = await axios.post('http://localhost:3001/updateUser', {
+      const response = await axios.post('http://sanctum.up.railway.app/updateUser', {
         username,
         newEmail,
         password,

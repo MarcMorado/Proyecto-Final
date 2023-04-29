@@ -7,7 +7,7 @@ import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import { OtherPlayersContext } from "./OtherPlayersContext";
 
-const socket = io("http://localhost:3002");
+const socket = io("http://sanctum.up.railway.app:3002");
 
 export const GameContext = createContext();
 

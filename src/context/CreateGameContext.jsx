@@ -2,7 +2,7 @@ import React, { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import io from "socket.io-client";
-const socket = io("http://localhost:3002");
+const socket = io("http://sanctum.up.railway.app:3002");
 export const CreateGameContext = createContext();
 
 export const CreateGameProvider = (props) => {
@@ -15,7 +15,7 @@ export const CreateGameProvider = (props) => {
   const handleCreateGame = async () => {
     const newRoomCode = Math.random().toString(36).substr(2, 5);
     setGeneratedCode(newRoomCode);
-    await axios.post("http://localhost:3001/createRoom", {
+    await axios.post("http://sanctum.up.railway.app/createRoom", {
       roomCode: generatedCode,
     });
     socket.emit("joinRoom",generatedCode);
