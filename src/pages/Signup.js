@@ -14,7 +14,7 @@ export default function SingUp() {
     setPassword("");
     setEmail("");
     try {
-      const response = await axios.post("http://sanctum.up.railway.app/signup", {
+      const response = await axios.post("https://sanctum.up.railway.app/signup", {
         username,
         email,
         password,
