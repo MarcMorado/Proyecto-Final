@@ -15,7 +15,7 @@ export const CreateGameProvider = (props) => {
   const handleCreateGame = async () => {
     const newRoomCode = Math.random().toString(36).substr(2, 5);
     setGeneratedCode(newRoomCode);
-    await axios.post("http://sanctum.up.railway.app/createRoom", {
+    await axios.post("https://sanctum.up.railway.app/createRoom", {
       roomCode: generatedCode,
     });
     socket.emit("joinRoom",generatedCode);

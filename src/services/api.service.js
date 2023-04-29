@@ -1,5 +1,5 @@
 
-const URL = "http://sanctum.up.railway.app";
+const URL = "https://sanctum.up.railway.app";
 export function post(endpoint, data) {
     let uri = URL + endpoint
     return fetch(uri, {
